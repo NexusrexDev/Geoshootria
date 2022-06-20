@@ -2,19 +2,22 @@
 extends KinematicBody2D
 
 # Variables
+var health = 3
 export var speed = 200
 var motion = Vector2.ZERO
 onready var shootingPos = $Position2D
 onready var shootTimer = $shootTimer
 onready var invisTimer = $iframeTimer
+signal healthChange(value)
+signal death()
 
 # Constants
 const projectile = preload("res://Scenes/Projectile.tscn")
 
-func _process(delta):
+func _process(_delta):
 	shooting()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Movement
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	var y_input = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -38,3 +41,16 @@ func shooting():
 			get_parent().add_child(shot)
 			shot.position = shootingPos.global_position
 			shootTimer.start()
+
+func damage():
+	if invisTimer.is_stopped():
+		health -= 1
+		emit_signal("healthChange", health)
+		invisTimer.start()
+		if health <= 0:
+			emit_signal("death")
+			queue_free()
+
+func _on_DamageBox_area_entered(area):
+	if area.is_in_group("enemy"):
+		damage()
