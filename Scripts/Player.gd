@@ -8,11 +8,15 @@ var motion = Vector2.ZERO
 onready var shootingPos = $Position2D
 onready var shootTimer = $shootTimer
 onready var invisTimer = $iframeTimer
+
 signal healthChange(value)
 signal death()
 
-# Constants
-const projectile = preload("res://Scenes/Projectile.tscn")
+# Packed scenes
+export(PackedScene) var projectile
+
+func _ready():
+	print(projectile)
 
 func _process(_delta):
 	shooting()

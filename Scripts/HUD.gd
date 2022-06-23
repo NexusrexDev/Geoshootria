@@ -42,6 +42,13 @@ func healthUpdate(value):
 	health = value
 	refreshHUD()
 
+func scoreUpdate(value):
+	score += value
+	# Update the highscore if the current score is bigger
+	if score > highscore:
+		highscore = score
+	refreshHUD()
+
 func gameOver():
 	#Enables input to restart, should be replaced with death animation then the prompt to restart
 	set_process(true)

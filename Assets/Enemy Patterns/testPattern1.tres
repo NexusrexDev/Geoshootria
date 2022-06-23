@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/spawnableResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/spawnableClass.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Enemies/basicEnemy.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Enemy 1"
+script = ExtResource( 2 )
+type = ExtResource( 3 )
+position = Vector2( 672, 48 )
+pauseTime = 0.8
+
+[sub_resource type="Resource" id=2]
+resource_name = "Enemy 2"
+script = ExtResource( 2 )
+type = ExtResource( 3 )
+position = Vector2( 672, 164 )
+pauseTime = 0.8
+
+[sub_resource type="Resource" id=3]
+resource_name = "Enemy 3"
+script = ExtResource( 2 )
+type = ExtResource( 3 )
+position = Vector2( 672, 280 )
+pauseTime = 0.001
+
+[resource]
+script = ExtResource( 1 )
+enemy = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]
