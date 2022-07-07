@@ -1,6 +1,7 @@
 # spawnableResource.gd
 tool
 extends Resource
+
 class_name SpawnPattern
 
 # Variables

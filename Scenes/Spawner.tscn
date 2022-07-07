@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scripts/Spawner.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Enemy Patterns/testPattern2.tres" type="Resource" id=2]
-[ext_resource path="res://Assets/Enemy Patterns/testPattern3.tres" type="Resource" id=3]
-[ext_resource path="res://Assets/Enemy Patterns/testPattern1.tres" type="Resource" id=4]
 
 [node name="Spawner" type="Node"]
 script = ExtResource( 1 )
-pattern = [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ]
 
 [node name="patternTimer" type="Timer" parent="."]
 wait_time = 0.35

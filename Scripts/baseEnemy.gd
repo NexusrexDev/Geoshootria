@@ -1,11 +1,13 @@
 # baseEnemy.gd
 extends Area2D
+class_name baseEnemy
 
 # Variables
 export var health: int
-export var score: int
+var score: int
 export var motion: Vector2
 onready var invisTimer = $iframeTimer
+var temp_motion: Vector2
 
 signal death(score)
 signal completed()
@@ -17,6 +19,7 @@ func _ready():
 	# Connecting the death and safe passing/destruction to the spawner
 	var Spawner = get_node("/root/Level/Spawner")
 	connect("completed", Spawner, "enemyPassed")
+	score = health * 5
 
 func _process(delta):
 	# Basic movement, use the inherited scripts to apply motion
@@ -27,6 +30,10 @@ func damage(area):
 		health -= 1
 		area.queue_free()
 		invisTimer.start()
+		# Knockback
+		temp_motion = motion
+		motion = Vector2(motion.x * 0.75, motion.y)
+		position += Vector2(6, 0)
 		if health <= 0:
 			#Should include death effects and death signal to the spawner
 			emit_signal("death", score)
@@ -40,3 +47,7 @@ func _on_Enemy_area_entered(area):
 	if area.is_in_group("enemyLimit"):
 		emit_signal("completed")
 		queue_free()
+
+
+func invisOver():
+	motion = temp_motion

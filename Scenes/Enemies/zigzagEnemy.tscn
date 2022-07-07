@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Enemies/Variant Bases/timerEnemy.tscn" type="PackedScene" id=1]
+
+[node name="zigzagEnemy" instance=ExtResource( 1 )]
+health = 1
+score = 5
+motion = Vector2( -225, 0 )
+firstMotion = Vector2( 125, 96 )
+secondMotion = Vector2( -225, 0 )

@@ -15,9 +15,6 @@ signal death()
 # Packed scenes
 export(PackedScene) var projectile
 
-func _ready():
-	print(projectile)
-
 func _process(_delta):
 	shooting()
 

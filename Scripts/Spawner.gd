@@ -10,6 +10,8 @@ var completedEnemy
 onready var patternTimer = $patternTimer
 onready var enemyTimer = $enemyTimer
 
+var propExtra = [""]
+
 func _ready():
 	randomize()
 	patternSelector()
