@@ -14,9 +14,18 @@ signal death()
 
 # Packed scenes
 export(PackedScene) var projectile
+export(PackedScene) var debugEnemy
+export(Vector2) var debugVector
 
 func _process(_delta):
 	shooting()
+	
+	#Temporary stuff
+	if Input.is_action_just_released("ui_customspawn"):
+		assert(debugEnemy, "No debug enemies were found")
+		var enemy = debugEnemy.instance()
+		enemy.position = debugVector
+		get_parent().add_child(enemy)
 
 func _physics_process(_delta):
 	# Movement

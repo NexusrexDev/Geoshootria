@@ -39,11 +39,14 @@ func _ready():
 			# Calculating the time to spend for the tween
 			var tweenTime: float = global_position.distance_to(introEndPos) / 232
 			# Start tweening!
-			tween.interpolate_property(self, "position", global_position, introEndPos, 
+			tween.interpolate_property(self, "position", position, introEndPos, 
 					tweenTime, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 			tween.start()
 		
 		intro.special:
+			# Disabling the collision for the intro and setting the enemy in front
+			$CollisionShape2D.disabled = true
+			z_index = 11
 			# Getting the initial position from the resource
 			var introEndPos: Vector2 = creationProperties.gotoPos
 			# Calculating the time to spend for the tween
@@ -52,8 +55,8 @@ func _ready():
 			var sprite = $Sprite
 			sprite.scale = Vector2(4,4)
 			# Start tweening, but include the sprite as well!
-			tween.interpolate_property(self, "position", global_position, introEndPos, 
-					tweenTime, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+			tween.interpolate_property(self, "position", position, introEndPos, 
+					tweenTime, Tween.TRANS_BACK, Tween.EASE_OUT)
 			tween.interpolate_property(sprite, "scale", sprite.scale, Vector2(1,1), 
 					tweenTime, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 			tween.start()
@@ -99,5 +102,8 @@ func invisOver():
 
 
 func startAction():
-	#motion = Vector2(-200,0)
+	# You *MUST* include the super function for reenabling the shots
+	if $CollisionShape2D.disabled:
+		$CollisionShape2D.disabled = false
+		z_index = 5
 	pass
