@@ -9,31 +9,49 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Resource",
-"class": "SpawnPattern",
-"language": "GDScript",
-"path": "res://Scripts/spawnableResource.gd"
-}, {
-"base": "Resource",
-"class": "Spawnable",
-"language": "GDScript",
-"path": "res://Scripts/spawnableClass.gd"
-}, {
 "base": "Area2D",
 "class": "baseEnemy",
 "language": "GDScript",
 "path": "res://Scripts/baseEnemy.gd"
 }, {
 "base": "Resource",
+"class": "directionResource",
+"language": "GDScript",
+"path": "res://Scripts/CustomResources/directionResource.gd"
+}, {
+"base": "Resource",
+"class": "enemyResource",
+"language": "GDScript",
+"path": "res://Scripts/CustomResources/Spawner/enemyResource.gd"
+}, {
+"base": "Resource",
 "class": "introResource",
 "language": "GDScript",
 "path": "res://Scripts/CustomResources/introResource.gd"
+}, {
+"base": "Resource",
+"class": "patternResource",
+"language": "GDScript",
+"path": "res://Scripts/CustomResources/Spawner/patternResource.gd"
+}, {
+"base": "Position2D",
+"class": "projectileCreator",
+"language": "GDScript",
+"path": "res://Scripts/projectileCreator.gd"
+}, {
+"base": "Resource",
+"class": "rungunResource",
+"language": "GDScript",
+"path": "res://Scripts/CustomResources/rungunResource.gd"
 } ]
 _global_script_class_icons={
-"SpawnPattern": "",
-"Spawnable": "",
 "baseEnemy": "",
-"introResource": ""
+"directionResource": "",
+"enemyResource": "",
+"introResource": "",
+"patternResource": "",
+"projectileCreator": "",
+"rungunResource": ""
 }
 
 [application]

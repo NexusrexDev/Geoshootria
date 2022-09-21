@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Enemies/chargerEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/projectileCreator.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Objects/enemyProjectile.tscn" type="PackedScene" id=5]
+
+[node name="chargerEnemy" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+introType = 1
+health = 4
+forwardMotion = Vector2( -200, 0 )
+chargeTime = 1.0
+
+[node name="projectileCreator" type="Position2D" parent="." index="4"]
+position = Vector2( 0, -16 )
+script = ExtResource( 3 )
+projectileReferences = [ ExtResource( 5 ) ]

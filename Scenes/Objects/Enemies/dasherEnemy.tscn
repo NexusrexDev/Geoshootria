@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Objects/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Enemies/dasherEnemy.gd" type="Script" id=2]
+
+[node name="dasherEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+introType = 2
+health = 2
+anticipateTime = 0.2
+forwardMotion = Vector2( -550, 0 )
+
+[node name="Sprite" parent="." index="1"]
+modulate = Color( 1, 0.52549, 0.890196, 1 )

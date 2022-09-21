@@ -52,3 +52,5 @@ func scoreUpdate(value):
 func gameOver():
 	#Enables input to restart, should be replaced with death animation then the prompt to restart
 	set_process(true)
+	#var spawner = get_node("/root/Level/Spawner")
+	#spawner.stopSpawner()

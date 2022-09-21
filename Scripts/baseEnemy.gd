@@ -35,7 +35,8 @@ func _ready():
 	match(introType):
 		intro.tween:
 			# Getting the initial position from the resource
-			var introEndPos: Vector2 = creationProperties.gotoPos
+			var introEndPos: Vector2 = Vector2(position.x + creationProperties.gotoPos.x,
+				position.y + creationProperties.gotoPos.y)
 			# Calculating the time to spend for the tween
 			var tweenTime: float = global_position.distance_to(introEndPos) / 232
 			# Start tweening!
@@ -48,7 +49,8 @@ func _ready():
 			$CollisionShape2D.disabled = true
 			z_index = 11
 			# Getting the initial position from the resource
-			var introEndPos: Vector2 = creationProperties.gotoPos
+			var introEndPos: Vector2 = Vector2(position.x + creationProperties.gotoPos.x,
+				position.y + creationProperties.gotoPos.y)
 			# Calculating the time to spend for the tween
 			var tweenTime: float = global_position.distance_to(introEndPos) / 232
 			# Setting the sprite to be double the size
@@ -80,13 +82,17 @@ func damage(area):
 		# Knockback
 		temp_motion = motion
 		motion = Vector2(motion.x * 0.75, motion.y)
-		position += Vector2(-motion.x * 0.025, 0)
+		var knockBack = abs(motion.x) * 0.025
+		position += Vector2(knockBack, 0)
 		if health <= 0:
 			#Should include death effects and death signal to the spawner
 			emit_signal("death", score)
 			emit_signal("completed")
-			queue_free()
+			death()
 
+func death():
+	# This function will be overriden, but pls don't forget queue_free
+	queue_free()
 
 func _on_Enemy_area_entered(area):
 	if area.is_in_group("playerProj"):
@@ -106,4 +112,3 @@ func startAction():
 	if $CollisionShape2D.disabled:
 		$CollisionShape2D.disabled = false
 		z_index = 5
-	pass

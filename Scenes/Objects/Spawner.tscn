@@ -1,9 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Spawner.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/Enemies/dasherEnemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Objects/Enemies/sineEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/Enemies/normalEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/Enemies/zigzagEnemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/Enemies/chargerEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/Enemies/bombEnemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Objects/Enemies/aimEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Objects/Enemies/rungunEnemy.tscn" type="PackedScene" id=9]
 
 [node name="Spawner" type="Node"]
 script = ExtResource( 1 )
+enemyRange = 65
+bossRange = 15
+selectionMinMax = [ 1, 7 ]
+enemyReferences = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 7 ), null, null ]
 
 [node name="patternTimer" type="Timer" parent="."]
 wait_time = 0.35
@@ -12,5 +24,5 @@ one_shot = true
 [node name="enemyTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="patternTimer" to="." method="patternSelector"]
-[connection signal="timeout" from="enemyTimer" to="." method="spawnEnemy"]
+[connection signal="timeout" from="patternTimer" to="." method="patternPicker"]
+[connection signal="timeout" from="enemyTimer" to="." method="createEnemy"]

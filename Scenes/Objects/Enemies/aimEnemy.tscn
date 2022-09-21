@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Objects/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Enemies/aimEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/projectileCreator.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Objects/enemyProjectile.tscn" type="PackedScene" id=4]
+
+[node name="aimEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+health = 2
+forwardMotion = Vector2( -200, 0 )
+
+[node name="Sprite" parent="." index="1"]
+modulate = Color( 1, 0.972549, 0.52549, 1 )
+
+[node name="projectileCreator" type="Position2D" parent="." index="4"]
+position = Vector2( 0, -16 )
+script = ExtResource( 3 )
+projectileReferences = [ ExtResource( 4 ) ]
