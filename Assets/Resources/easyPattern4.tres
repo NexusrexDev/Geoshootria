@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CustomResources/directionResource.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Direction"
+script = ExtResource( 2 )
+dir = 1
+
+[sub_resource type="Resource" id=2]
+resource_name = "Zigzag"
+script = ExtResource( 3 )
+enemyType = 6
+createAtPlayer = false
+enemyPosition = Vector2( 688, 72 )
+creationProperties = SubResource( 1 )
+timeBreak = 1.8
+
+[sub_resource type="Resource" id=3]
+resource_name = "Direction"
+script = ExtResource( 2 )
+dir = -1
+
+[sub_resource type="Resource" id=4]
+resource_name = "Zigzag"
+script = ExtResource( 3 )
+enemyType = 6
+createAtPlayer = false
+enemyPosition = Vector2( 688, 256 )
+creationProperties = SubResource( 3 )
+timeBreak = 0.0
+
+[resource]
+resource_name = "Easy-4"
+script = ExtResource( 1 )
+enemyList = [ SubResource( 2 ), SubResource( 4 ) ]

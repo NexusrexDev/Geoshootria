@@ -18,7 +18,7 @@ selectionMinMax = [ 1, 7 ]
 enemyReferences = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 7 ), null, null ]
 
 [node name="patternTimer" type="Timer" parent="."]
-wait_time = 0.35
+wait_time = 0.5
 one_shot = true
 
 [node name="enemyTimer" type="Timer" parent="."]

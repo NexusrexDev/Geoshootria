@@ -1,0 +1,136 @@
+[gd_resource type="Resource" load_steps=22 format=2]
+
+[ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/CustomResources/directionResource.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=2]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 688, 164 )
+creationProperties = SubResource( 1 )
+timeBreak = 0.3
+
+[sub_resource type="Resource" id=3]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=4]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 688, 164 )
+creationProperties = SubResource( 3 )
+timeBreak = 0.3
+
+[sub_resource type="Resource" id=5]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=6]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 688, 164 )
+creationProperties = SubResource( 5 )
+timeBreak = 2.0
+
+[sub_resource type="Resource" id=10]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=7]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 688, 256 )
+creationProperties = SubResource( 10 )
+timeBreak = 0.3
+
+[sub_resource type="Resource" id=11]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=8]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 688, 256 )
+creationProperties = SubResource( 11 )
+timeBreak = 0.3
+
+[sub_resource type="Resource" id=12]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=9]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 688, 256 )
+creationProperties = SubResource( 12 )
+timeBreak = 2.0
+
+[sub_resource type="Resource" id=13]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=14]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 688, 72 )
+creationProperties = SubResource( 13 )
+timeBreak = 0.3
+
+[sub_resource type="Resource" id=15]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=16]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 688, 72 )
+creationProperties = SubResource( 15 )
+timeBreak = 0.3
+
+[sub_resource type="Resource" id=17]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=18]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 688, 72 )
+creationProperties = SubResource( 17 )
+timeBreak = 0.0
+
+[resource]
+resource_name = "Easy-1"
+script = ExtResource( 1 )
+enemyList = [ SubResource( 2 ), SubResource( 4 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 14 ), SubResource( 16 ), SubResource( 18 ) ]

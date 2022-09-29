@@ -80,7 +80,7 @@ func damage(area):
 		area.queue_free()
 		invisTimer.start()
 		# Knockback
-		temp_motion = motion
+		temp_motion = Vector2(motion.x, motion.y)
 		motion = Vector2(motion.x * 0.75, motion.y)
 		var knockBack = abs(motion.x) * 0.025
 		position += Vector2(knockBack, 0)

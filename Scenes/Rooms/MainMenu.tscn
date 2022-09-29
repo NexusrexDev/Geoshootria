@@ -33,7 +33,7 @@ margin_top = 48.0
 margin_right = 200.0
 margin_bottom = 68.0
 focus_neighbour_top = NodePath("../Settings")
-focus_neighbour_bottom = NodePath(".")
+focus_neighbour_bottom = NodePath("../Play")
 mouse_filter = 2
 text = "Exit"
 

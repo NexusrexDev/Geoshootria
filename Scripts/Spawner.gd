@@ -100,9 +100,12 @@ func createEnemy():
 	
 	# Incrementing the currentEnemy variable and setting the timer
 	currentEnemy += 1
-	enemyTimer.wait_time = currentTimeBreak
 	if currentEnemy != fullEnemies:
-		enemyTimer.start()
+		if currentTimeBreak == 0:
+			createEnemy()
+		else:
+			enemyTimer.wait_time = currentTimeBreak
+			enemyTimer.start()
 
 # This method is called once an enemy is destroyed/passed safely (using a signal)
 func enemyPassed():

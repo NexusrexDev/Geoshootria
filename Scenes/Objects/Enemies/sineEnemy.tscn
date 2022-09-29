@@ -5,9 +5,9 @@
 [ext_resource path="res://Scripts/Enemies/sineEnemy.gd" type="Script" id=3]
 
 [sub_resource type="Resource" id=1]
-resource_name = "Sine direction"
+resource_name = "Direction"
 script = ExtResource( 2 )
-sineDir = 1
+dir = 1
 
 [node name="sineEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 3 )

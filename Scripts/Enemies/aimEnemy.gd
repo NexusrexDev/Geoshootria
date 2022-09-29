@@ -16,7 +16,7 @@ func shooting():
 	if player:
 		projectileCreator.shoot(0, projectileCreator.AT_OBJECT, 1, 0, player)
 	else:
-		projectileCreator.shoot(0, projectileCreator.ANGLE, 1, 0)
+		projectileCreator.shoot(0, projectileCreator.ANGLE, 1, 180)
 	shotCount -= 1
 	if shotCount > 0:
 		shooting()

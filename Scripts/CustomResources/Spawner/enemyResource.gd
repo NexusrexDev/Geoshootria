@@ -20,7 +20,7 @@ export(enemies) var enemyType setget setEnemyType
 export(bool) var createAtPlayer
 export(Vector2) var enemyPosition
 export(Resource) var creationProperties
-export(float, 0.05, 60) var timeBreak
+export(float, 0, 60) var timeBreak
 
 tool
 func _init():

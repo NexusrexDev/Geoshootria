@@ -1,0 +1,57 @@
+[gd_resource type="Resource" load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 164 )
+timeBreak = 0.3
+
+[sub_resource type="Resource" id=2]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 100 )
+timeBreak = 0.0
+
+[sub_resource type="Resource" id=3]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 228 )
+timeBreak = 0.3
+
+[sub_resource type="Resource" id=4]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 40 )
+timeBreak = 0.0
+
+[sub_resource type="Resource" id=5]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 164 )
+timeBreak = 0.0
+
+[sub_resource type="Resource" id=6]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 288 )
+timeBreak = 0.0
+
+[resource]
+resource_name = "empowering"
+script = ExtResource( 1 )
+enemyList = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ]

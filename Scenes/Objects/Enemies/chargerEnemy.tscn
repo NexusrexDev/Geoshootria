@@ -8,7 +8,7 @@
 [node name="chargerEnemy" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 introType = 1
-health = 4
+health = 3
 forwardMotion = Vector2( -200, 0 )
 chargeTime = 1.0
 
