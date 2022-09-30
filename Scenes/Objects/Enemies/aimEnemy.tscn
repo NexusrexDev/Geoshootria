@@ -7,8 +7,9 @@
 
 [node name="aimEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-health = 2
+health = 1
 forwardMotion = Vector2( -200, 0 )
+shotCount = 1
 
 [node name="Sprite" parent="." index="1"]
 modulate = Color( 1, 0.972549, 0.52549, 1 )

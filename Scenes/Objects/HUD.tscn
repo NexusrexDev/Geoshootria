@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/FPSLabel.gd" type="Script" id=2]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -22,3 +23,12 @@ margin_right = 640.0
 margin_bottom = 30.0
 text = "Highscore: 0"
 align = 2
+
+[node name="FPSLabel" type="Label" parent="."]
+margin_left = 552.0
+margin_top = 344.0
+margin_right = 638.0
+margin_bottom = 358.0
+text = "FPS: XXX"
+align = 2
+script = ExtResource( 2 )

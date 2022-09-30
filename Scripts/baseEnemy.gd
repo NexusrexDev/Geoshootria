@@ -80,8 +80,8 @@ func damage(area):
 		area.queue_free()
 		invisTimer.start()
 		# Knockback
-		temp_motion = Vector2(motion.x, motion.y)
-		motion = Vector2(motion.x * 0.75, motion.y)
+		#temp_motion = Vector2(motion.x, motion.y)
+		#motion = Vector2(motion.x * 0.75, motion.y)
 		var knockBack = abs(motion.x) * 0.025
 		position += Vector2(knockBack, 0)
 		if health <= 0:
@@ -104,7 +104,8 @@ func _on_Enemy_area_entered(area):
 
 
 func invisOver():
-	motion = temp_motion
+	pass
+	#motion = temp_motion
 
 
 func startAction():

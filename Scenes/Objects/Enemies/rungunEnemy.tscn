@@ -8,6 +8,7 @@
 [node name="rungunEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 introType = 1
+health = 4
 forwardMotion = Vector2( -200, 0 )
 
 [node name="Sprite" parent="." index="1"]

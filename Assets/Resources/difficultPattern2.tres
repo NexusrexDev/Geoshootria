@@ -1,0 +1,70 @@
+[gd_resource type="Resource" load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/CustomResources/rungunResource.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Run and Gun properties"
+script = ExtResource( 3 )
+gotoPos = Vector2( -96, 0 )
+dir = 1
+
+[sub_resource type="Resource" id=2]
+resource_name = "Run And Gun"
+script = ExtResource( 2 )
+enemyType = 2
+createAtPlayer = false
+enemyPosition = Vector2( 688, 88 )
+creationProperties = SubResource( 1 )
+timeBreak = 0.2
+
+[sub_resource type="Resource" id=3]
+resource_name = "Run and Gun properties"
+script = ExtResource( 3 )
+gotoPos = Vector2( -96, 0 )
+dir = 1
+
+[sub_resource type="Resource" id=4]
+resource_name = "Run And Gun"
+script = ExtResource( 2 )
+enemyType = 2
+createAtPlayer = false
+enemyPosition = Vector2( 688, 40 )
+creationProperties = SubResource( 3 )
+timeBreak = 2.0
+
+[sub_resource type="Resource" id=5]
+resource_name = "Run and Gun properties"
+script = ExtResource( 3 )
+gotoPos = Vector2( -96, 0 )
+dir = -1
+
+[sub_resource type="Resource" id=6]
+resource_name = "Run And Gun"
+script = ExtResource( 2 )
+enemyType = 2
+createAtPlayer = false
+enemyPosition = Vector2( 688, 240 )
+creationProperties = SubResource( 5 )
+timeBreak = 0.2
+
+[sub_resource type="Resource" id=7]
+resource_name = "Run and Gun properties"
+script = ExtResource( 3 )
+gotoPos = Vector2( -96, 0 )
+dir = -1
+
+[sub_resource type="Resource" id=8]
+resource_name = "Run And Gun"
+script = ExtResource( 2 )
+enemyType = 2
+createAtPlayer = false
+enemyPosition = Vector2( 688, 288 )
+creationProperties = SubResource( 7 )
+timeBreak = 0.0
+
+[resource]
+resource_name = "Difficult-2"
+script = ExtResource( 1 )
+enemyList = [ SubResource( 2 ), SubResource( 4 ), SubResource( 6 ), SubResource( 8 ) ]

@@ -115,3 +115,5 @@ func enemyPassed():
 	# Check if all enemies are done, then restart by calling the reset timer
 	if currentEnemy == completedEnemies && currentEnemy == fullEnemies:
 		patternTimer.start()
+		# Adding up to the finished patterns counter to increase the range
+		# finishedPatterns += 1

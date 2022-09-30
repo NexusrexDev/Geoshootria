@@ -6,7 +6,6 @@ export var forwardMotion: Vector2
 export(Array, float) var timerValues
 var zigzagDirection: int
 onready var projectileCreator = $projectileCreator
-var actionComplete: bool = false
 
 func startAction():
 	zigzagDirection = creationProperties.dir
@@ -23,11 +22,4 @@ func startAction():
 		projectileCreator.shoot(0, projectileCreator.ANGLE, 1, 180)
 	# Going forwards again
 	tempTween = get_tree().create_tween()
-	yield(tempTween.tween_property(self,"motion",forwardMotion,0.2), "finished")
-	actionComplete = true
-
-func _process(delta):
-	# This line is used to fix the speed when hitting the enemy
-	if actionComplete:
-		if motion.x != -200 || motion.x != -150:
-			motion = forwardMotion
+	tempTween.tween_property(self,"motion",forwardMotion,0.2)
