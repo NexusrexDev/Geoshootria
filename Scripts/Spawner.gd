@@ -26,7 +26,8 @@ onready var enemyTimer = $enemyTimer
 
 func _ready():
 	# This will be removed once an intro animation is made
-	startSpawner()
+	#startSpawner()
+	pass
 
 func startSpawner():
 	# Used to start the pattern, preferably using a signal after finishing the intro anim

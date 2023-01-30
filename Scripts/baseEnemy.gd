@@ -79,11 +79,6 @@ func damage(area):
 		health -= 1
 		area.queue_free()
 		invisTimer.start()
-		# Knockback
-		#temp_motion = Vector2(motion.x, motion.y)
-		#motion = Vector2(motion.x * 0.75, motion.y)
-		var knockBack = abs(motion.x) * 0.025
-		position += Vector2(knockBack, 0)
 		if health <= 0:
 			#Should include death effects and death signal to the spawner
 			emit_signal("death", score)

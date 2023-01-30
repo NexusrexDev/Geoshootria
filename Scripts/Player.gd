@@ -5,7 +5,7 @@ extends KinematicBody2D
 var health = 3
 export var speed = 200
 var motion = Vector2.ZERO
-onready var shootingPos = $Position2D
+onready var projectileCreator = $projectileCreator
 onready var shootTimer = $shootTimer
 onready var invisTimer = $iframeTimer
 
@@ -13,16 +13,16 @@ signal healthChange(value)
 signal death()
 
 # Packed scenes
-export(PackedScene) var projectile
 export(PackedScene) var debugEnemy
 export(Vector2) var debugVector
 
 func _process(_delta):
-	shooting()
+	if Input.is_action_pressed("ui_accept"):
+		shooting()
 	
 	#Temporary stuff
 	if Input.is_action_just_released("ui_customspawn"):
-		assert(debugEnemy, "No debug enemies were found")
+		assert(debugEnemy, "No debug objects were found")
 		var enemy = debugEnemy.instance()
 		enemy.position = debugVector
 		get_parent().add_child(enemy)
@@ -35,22 +35,19 @@ func _physics_process(_delta):
 	if x_input != 0:
 		motion.x = lerp(motion.x, x_input, .25)
 	else:
-		motion.x = lerp(motion.x, 0, .2)
+		motion.x = lerp(motion.x, 0, .25)
 	
 	if y_input != 0:
 		motion.y = lerp(motion.y, y_input, .25)
 	else:
-		motion.y = lerp(motion.y, 0, .2)
+		motion.y = lerp(motion.y, 0, .25)
 	
 	move_and_slide(motion * speed)
 
 func shooting():
-	if Input.is_action_pressed("ui_accept"):
-		if shootTimer.is_stopped():
-			var shot = projectile.instance()
-			get_parent().add_child(shot)
-			shot.position = shootingPos.global_position
-			shootTimer.start()
+	if shootTimer.is_stopped():
+		projectileCreator.shoot(0, projectileCreator.ANGLE, 1, 0)
+		shootTimer.start()
 
 func damage():
 	if invisTimer.is_stopped():

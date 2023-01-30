@@ -6,4 +6,4 @@
 [node name="normalEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 health = 1
-forwardMotion = Vector2( -200, 0 )
+forwardMotion = Vector2( -90, 0 )
