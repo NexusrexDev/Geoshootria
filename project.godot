@@ -58,8 +58,13 @@ _global_script_class_icons={
 
 config/name="Shootemupthing"
 run/main_scene="res://Scenes/Rooms/MainMenu.tscn"
+boot_splash/show_image=false
 boot_splash/use_filter=false
 config/icon="res://icon.png"
+
+[autoload]
+
+SFXManager="*res://Scripts/SFXManager.gd"
 
 [debug]
 

@@ -4,14 +4,22 @@ extends Node2D
 # Variables
 onready var playButton = $Main/Play
 onready var settingsPanel = $Settings
-onready var masterVolButton = $Settings/MarginContainer/VBoxContainer/MasterVol/HSlider
+onready var masterVolSlider = $Settings/MarginContainer/VBoxContainer/MasterVol/HSlider
+onready var musicVolSlider = $Settings/MarginContainer/VBoxContainer/MusicVol/HSlider
+onready var sfxVolSlider = $Settings/MarginContainer/VBoxContainer/SFXVol/HSlider
+onready var fullscreenCheck = $Settings/MarginContainer/VBoxContainer/Fullscreen/CheckBox
 
 func _ready():
 	# Grabbing focus on start, allowing keyboard control
 	playButton.grab_focus()
+	configureSettings()
 
 func configureSettings():
-	pass
+	# Reading the values from the system temporarily, should also read from a file when available
+	masterVolSlider.value = AudioServer.get_bus_volume_db(0)
+	musicVolSlider.value = AudioServer.get_bus_volume_db(1)
+	sfxVolSlider.value = AudioServer.get_bus_volume_db(2)
+	fullscreenCheck.pressed = OS.window_fullscreen
 
 func playPressed():
 	# Moving to the gameplay scene, should be replaced with a fadeout first
@@ -20,19 +28,19 @@ func playPressed():
 func settingsPressed():
 	# Triggering the settings menu to show up and passing focus to the first slider
 	settingsPanel.visible = true
-	masterVolButton.grab_focus()
+	masterVolSlider.grab_focus()
 
 func masterVolChanged(value:float):
-	print("Master volume: " + str(value))
-
-func sfxVolChanged(value:float):
-	print("SFX volume: " + str(value))
+	AudioServer.set_bus_volume_db(0, value)
 
 func musicVolChanged(value:float):
-	print("Music volume: " + str(value))
+	AudioServer.set_bus_volume_db(1, value)
+
+func sfxVolChanged(value:float):
+	AudioServer.set_bus_volume_db(2, value)
 
 func fullscreenToggled(button_pressed:bool):
-	print("Fullscreen mode: " + str(button_pressed))
+	OS.window_fullscreen = button_pressed
 
 func backPressed():
 	# Hiding the settings menu and passing focus to the play button again
