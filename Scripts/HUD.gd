@@ -11,15 +11,21 @@ var hscoreString = ""
 onready var healthLabel = $HealthLabel
 onready var scoreLabel = $ScoreLabel
 onready var hscoreLabel = $HighscoreLabel
+onready var pauseNode = $Pause
 
 func _ready():
-	set_process(false)
 	refreshHUD()
 
 func _process(_delta):
-	#Temporary code to restart levels
+	# Pausing
 	if Input.is_action_just_pressed("ui_select"):
-		get_tree().reload_current_scene()
+		var isPaused = get_tree().paused
+		get_tree().paused = !isPaused
+		pauseNode.visible = !isPaused
+		if !isPaused == true:
+			AudioServer.add_bus_effect(1, AudioEffectBandPassFilter.new())
+		else:
+			AudioServer.remove_bus_effect(1, 0)
 
 func refreshHUD():
 	scoreString = formatConv(score)

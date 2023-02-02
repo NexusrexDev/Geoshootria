@@ -19,7 +19,7 @@ export(Vector2) var debugVector
 func _process(_delta):
 	if Input.is_action_pressed("ui_accept"):
 		shooting()
-	
+
 	#Temporary stuff
 	if Input.is_action_just_released("ui_customspawn"):
 		assert(debugEnemy, "No debug objects were found")

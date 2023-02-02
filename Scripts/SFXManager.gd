@@ -10,6 +10,9 @@ var available = []  # The available players.
 var queue = []  # The queue of sounds to play.
 
 func _ready():
+    # Setting pause mode to process for the pause menu
+    pause_mode = Node.PAUSE_MODE_PROCESS
+    
     # Create the pool of AudioStreamPlayer nodes.
     for i in playersNum:
         var p = AudioStreamPlayer.new()

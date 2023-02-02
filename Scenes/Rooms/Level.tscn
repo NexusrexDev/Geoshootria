@@ -127,6 +127,7 @@ empoweringPattern = ExtResource( 11 )
 selectionMinMax = [ 8, 7 ]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 19 )
 autoplay = true
 bus = "Music"
