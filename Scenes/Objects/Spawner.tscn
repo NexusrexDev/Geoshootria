@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/Objects/Enemies/rungunEnemy.tscn" type="PackedScene" id=9]
 
 [node name="Spawner" type="Node"]
+pause_mode = 1
 script = ExtResource( 1 )
 enemyRange = 65
 bossRange = 15

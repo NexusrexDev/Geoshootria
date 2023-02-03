@@ -24,13 +24,8 @@ var selectionRange: int
 onready var patternTimer = $patternTimer
 onready var enemyTimer = $enemyTimer
 
-func _ready():
-	# This will be removed once an intro animation is made
-	#startSpawner()
-	pass
-
 func startSpawner():
-	# Used to start the pattern, preferably using a signal after finishing the intro anim
+	# Used to start the pattern, using an AnimationPlayer
 	randomize()
 	patternPicker()
 
@@ -117,4 +112,4 @@ func enemyPassed():
 	if currentEnemy == completedEnemies && currentEnemy == fullEnemies:
 		patternTimer.start()
 		# Adding up to the finished patterns counter to increase the range
-		# finishedPatterns += 1
+		finishedPatterns += 1
