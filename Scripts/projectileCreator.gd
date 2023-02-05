@@ -8,7 +8,8 @@ enum {
 	CIRCULAR,
 	AT_OBJECT
 }
-export(Array,PackedScene) var projectileReferences
+export(Array, PackedScene) var projectileReferences
+export(Array, AudioStreamSample) var audioReferences
 
 func shoot(projectile: int, aimType, count: float, angle: float = 0, object: Node = null):
 	var creationAngle: float
@@ -35,3 +36,6 @@ func shoot(projectile: int, aimType, count: float, angle: float = 0, object: Nod
 		proj.position = global_position
 		proj.angle = creationAngle + (incrementValue * (i + 1))
 		level.call_deferred("add_child", proj)
+	# Playing on shooting
+	if audioReferences.size() > 0:
+		SFXManager.playSound(audioReferences[projectile].resource_path)

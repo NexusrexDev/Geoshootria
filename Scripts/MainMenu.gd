@@ -15,11 +15,41 @@ func _ready():
 	configureSettings()
 
 func configureSettings():
-	# Reading the values from the system temporarily, should also read from a file when available
+	readSettingsFile()
 	masterVolSlider.value = AudioServer.get_bus_volume_db(0)
 	musicVolSlider.value = AudioServer.get_bus_volume_db(1)
 	sfxVolSlider.value = AudioServer.get_bus_volume_db(2)
 	fullscreenCheck.pressed = OS.window_fullscreen
+
+func readSettingsFile():
+	# This method is used to read all the values from a settings file
+	var file = File.new()
+	if file.file_exists("user://settings.txt"):
+		file.open("user://settings.txt", File.READ)
+
+		# Reading the first 3 values (Audio bus levels)
+		for i in range(3):
+			AudioServer.set_bus_volume_db(i, file.get_64())
+
+		# Reading the last value (Fullscreen boolean)
+		OS.window_fullscreen = bool(file.get_8())
+
+		file.close()
+
+func updateSettingsFile():
+	# This method is used to overwrite all the values of a settings file
+	var file = File.new()
+	file.open("user://settings.txt", File.WRITE)
+
+	# Saving the audio bus levels
+	for i in range(3):
+		file.store_64(AudioServer.get_bus_volume_db(i))
+
+	# Saving the fullscreen boolean (in 8bits)
+	file.store_8(OS.window_fullscreen)
+
+	file.close()
+
 
 func playPressed():
 	# Moving to the gameplay scene, should be replaced with a fadeout first
@@ -43,8 +73,9 @@ func fullscreenToggled(button_pressed:bool):
 	OS.window_fullscreen = button_pressed
 
 func backPressed():
-	# Hiding the settings menu and passing focus to the play button again
+	# Hiding the settings menu and passing focus to the play button again, saving all data to file
 	settingsPanel.visible = false
+	updateSettingsFile()
 	playButton.grab_focus()
 
 func exitPressed():
