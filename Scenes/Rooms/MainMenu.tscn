@@ -167,6 +167,7 @@ text = "Back"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+autoplay = true
 bus = "Music"
 
 [connection signal="pressed" from="Main/Play" to="." method="playPressed"]

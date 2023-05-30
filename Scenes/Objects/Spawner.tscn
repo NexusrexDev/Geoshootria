@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Spawner.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Objects/Enemies/dasherEnemy.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Objects/Enemies/bombEnemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Objects/Enemies/aimEnemy.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Objects/Enemies/rungunEnemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Objects/Interfaces/SpawnerDebug.tscn" type="PackedScene" id=10]
 
 [node name="Spawner" type="Node"]
 pause_mode = 1
@@ -25,5 +26,14 @@ one_shot = true
 [node name="enemyTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DebugInterface" parent="CanvasLayer" instance=ExtResource( 10 )]
+visible = false
+
 [connection signal="timeout" from="patternTimer" to="." method="patternPicker"]
 [connection signal="timeout" from="enemyTimer" to="." method="createEnemy"]
+[connection signal="pressed" from="CanvasLayer/DebugInterface/ColorRect/PlayStop/StopResume" to="." method="debugSpawnerControl"]
+[connection signal="pressed" from="CanvasLayer/DebugInterface/ColorRect/SelectPattern/PatternPlay" to="." method="debugPatternPlay"]
+
+[editable path="CanvasLayer/DebugInterface"]

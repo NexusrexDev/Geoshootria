@@ -25,13 +25,6 @@ func _process(_delta):
 		if Input.is_action_pressed("ui_accept"):
 			shooting()
 
-	#Debug instantiation code
-	if Input.is_action_just_released("ui_customspawn"):
-		assert(debugEnemy, "No debug objects were found")
-		var enemy = debugEnemy.instance()
-		enemy.position = debugVector
-		get_parent().add_child(enemy)
-
 func _physics_process(_delta):
 	# Movement
 	if canControl:

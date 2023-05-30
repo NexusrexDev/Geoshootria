@@ -170,16 +170,17 @@ modulate = Color( 0.121569, 0.384314, 0.454902, 1 )
 position = Vector2( -48, 164 )
 shape = SubResource( 4 )
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 19 )
+autoplay = true
+bus = "Music"
+
 [node name="Spawner" parent="." instance=ExtResource( 7 )]
 enemyPatterns = [ ExtResource( 10 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 9 ) ]
 bossPatterns = [ ExtResource( 11 ), ExtResource( 11 ) ]
 empoweringPattern = ExtResource( 11 )
 selectionMinMax = [ 3, 7 ]
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-stream = ExtResource( 19 )
-bus = "Music"
 
 [connection signal="death" from="Player" to="HUD" method="gameOver"]
 [connection signal="healthChange" from="Player" to="HUD" method="healthUpdate"]

@@ -14,6 +14,7 @@ export(Array, int) var selectionMinMax
 # Enemy arrays
 export(Array, PackedScene) var enemyReferences
 # Inner spawner variables
+var running:bool
 var finishedPatterns: int
 var currentPattern
 var fullEnemies: int
@@ -23,14 +24,17 @@ var selectionRange: int
 # References
 onready var patternTimer = $patternTimer
 onready var enemyTimer = $enemyTimer
+onready var debugInterface = $CanvasLayer/DebugInterface
 
 func startSpawner():
 	# Used to start the pattern, using an AnimationPlayer
 	randomize()
+	running = true
 	patternPicker()
 
 func stopSpawner():
 	# Used to stop the patterns by stopping all timers
+	running = false
 	patternTimer.stop()
 	enemyTimer.stop()
 
@@ -42,40 +46,50 @@ func patternPicker():
 	# Random number generation (from 0 to 100)
 	# warning-ignore:narrowing_conversion
 	var randomRangeNumber: int = (randf() * 100)
+
+	var index
 	
 	# Selecting with ranges based on the player's progress
 	if selectionRange == selectionMinMax[1]:
 		if randomRangeNumber < enemyRange:
 			# Enemy pattern selection
 			var randomEnemyNumber: int = (randi() % selectionRange)
-			currentPattern = enemyPatterns[randomEnemyNumber]
+			index = enemyPatterns[randomEnemyNumber]
 		elif randomRangeNumber < (enemyRange + bossRange):
 			# Boss pattern selection
 			var randomBossNumber: int = (randi() % 2)
-			currentPattern = bossPatterns[randomBossNumber]
+			index = bossPatterns[randomBossNumber]
 		else:
 			# Empowering pattern selection
-			currentPattern = empoweringPattern
+			index = empoweringPattern
 	else:
 		# Excluding the boss range value from the entire equation by extending the enemy range
 		if randomRangeNumber < (enemyRange + bossRange):
 			# Enemy pattern selection
 			var randomEnemyNumber: int = (randi() % selectionRange)
-			currentPattern = enemyPatterns[randomEnemyNumber]
+			index = enemyPatterns[randomEnemyNumber]
 		else:
 			# Empowering pattern selection
-			currentPattern = empoweringPattern
+			index = empoweringPattern
 	
-	# Setting the additional variables
+	startPattern(index)
+
+# This method starts a pattern, used for debugging and separating the creation from the pattern selection
+func startPattern(patternIndex):
+	currentPattern = patternIndex
+
+	# Setting the counters/pointers
 	currentEnemy = 0
 	completedEnemies = 0
 	fullEnemies = currentPattern.enemyList.size()
-	
+
 	# Starting by creating an enemy
 	createEnemy()
 
 # This method creates an enemy, called in the start of a pattern, and when a timer is off
 func createEnemy():
+	if !running:
+		return
 	# Variables to utilize for creating enemies
 	var currentEnemyRef = currentPattern.enemyList[currentEnemy]
 	var currentEnemyAtPlayer: bool = currentEnemyRef.createAtPlayer
@@ -105,6 +119,8 @@ func createEnemy():
 
 # This method is called once an enemy is destroyed/passed safely (using a signal)
 func enemyPassed():
+	if !running:
+		return
 	# Increment the completed enemy variable
 	completedEnemies += 1
 	
@@ -113,3 +129,22 @@ func enemyPassed():
 		patternTimer.start()
 		# Adding up to the finished patterns counter to increase the range
 		finishedPatterns += 1
+
+# Turning the debug menu on and off
+func _process(_delta):
+	if Input.is_action_just_released("ui_customspawn"):
+		debugInterface.visible = !debugInterface.visible
+
+# Starts/Stops the regular spawning behavior
+func debugSpawnerControl():
+	if running:
+		stopSpawner()
+	else:
+		startSpawner()
+
+# Plays a chosen pattern
+func debugPatternPlay():
+	var patternIndex: int = $CanvasLayer/DebugInterface/ColorRect/SelectPattern/PatternIndex.get_selected_id()
+	stopSpawner()
+	running = true
+	startPattern(enemyPatterns[patternIndex])
