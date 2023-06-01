@@ -11,7 +11,7 @@ func startAction():
 	shooting()
 
 func shooting():
-	yield(get_tree().create_timer(0.5),"timeout")
+	yield(get_tree().create_timer(0.5, false),"timeout")
 	var player = get_node("/root/Level/Player")
 	if player:
 		projectileCreator.shoot(0, projectileCreator.AT_OBJECT, 1, 0, player)
