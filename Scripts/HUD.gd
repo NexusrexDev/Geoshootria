@@ -2,11 +2,11 @@
 extends CanvasLayer
 
 # Variables
-var health = 3
-var score = 0
-var scoreString = ""
-var highscore = 0
-var hscoreString = ""
+var health : int = 3
+var score : int = 0
+var highscore : int = 0
+var highscoreBroken = false
+var highscoreFile = "user://highscore.save"
 
 onready var healthLabel = $HealthLabel
 onready var scoreLabel = $ScoreLabel
@@ -14,7 +14,9 @@ onready var hscoreLabel = $HighscoreLabel
 onready var pauseNode = $Pause
 
 func _ready():
-	refreshHUD()
+	readHighscore()
+	refreshScore()
+	refreshHealth()
 
 func _process(_delta):
 	# Pausing
@@ -27,14 +29,24 @@ func _process(_delta):
 		else:
 			AudioServer.remove_bus_effect(1, 0)
 
-func refreshHUD():
-	scoreString = formatConv(score)
-	hscoreString = formatConv(highscore)
+func readHighscore():
+	var file = File.new()
+	if file.file_exists(highscoreFile):
+		file.open(highscoreFile, File.READ)
+		highscore = file.get_var()
+		file.close()
+
+func refreshHealth():
+	# Updates the health-related nodes, expect changing when using a new UI
 	healthLabel.text = "Health: " + str(health)
-	scoreLabel.text = "Score: " + scoreString
-	hscoreLabel.text = "Highscore: " + hscoreString
+
+func refreshScore():
+	# Updates the score-related labels
+	scoreLabel.text = "Score: " + formatConv(score)
+	hscoreLabel.text = "Highscore: " + formatConv(highscore)
 
 func formatConv(number):
+	# Turns a number into a six digit string
 	var numberString = ""
 	number = str(number)
 	var zeroes = 6 - number.length()
@@ -45,18 +57,29 @@ func formatConv(number):
 	return numberString
 
 func healthUpdate(value):
+	# Connected to a signal, when the player's health is updated
 	health = value
-	refreshHUD()
+	refreshHealth()
 
 func scoreUpdate(value):
+	# Connected to a signal, when an enemy is dead
 	score += value
-	# Update the highscore if the current score is bigger
+	# Update the highscore if the current score is higher
 	if score > highscore:
 		highscore = score
-	refreshHUD()
+		highscoreBroken = true
+	refreshScore()
 
 func gameOver():
-	#Enables input to restart, should be replaced with death animation then the prompt to restart
-	set_process(true)
-	#var spawner = get_node("/root/Level/Spawner")
-	#spawner.stopSpawner()
+	# In case of a new highscore, it's saved to the file
+	if highscoreBroken:
+		var file = File.new()
+		file.open(highscoreFile, File.WRITE)
+		file.store_var(highscore)
+		file.close()
+
+	# Stopping the spawner
+	var spawner = get_node("/root/Level/Spawner")
+	spawner.stopSpawner()
+
+	# Showing the game over UI

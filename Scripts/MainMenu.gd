@@ -8,6 +8,7 @@ onready var masterVolSlider = $Settings/MarginContainer/VBoxContainer/MasterVol/
 onready var musicVolSlider = $Settings/MarginContainer/VBoxContainer/MusicVol/HSlider
 onready var sfxVolSlider = $Settings/MarginContainer/VBoxContainer/SFXVol/HSlider
 onready var fullscreenCheck = $Settings/MarginContainer/VBoxContainer/Fullscreen/CheckBox
+var settingsFile = "user://settings.save"
 
 func _ready():
 	# Grabbing focus on start, allowing keyboard control
@@ -24,29 +25,29 @@ func configureSettings():
 func readSettingsFile():
 	# This method is used to read all the values from a settings file
 	var file = File.new()
-	if file.file_exists("user://settings.txt"):
-		file.open("user://settings.txt", File.READ)
+	if file.file_exists(settingsFile):
+		file.open(settingsFile, File.READ)
 
 		# Reading the first 3 values (Audio bus levels)
 		for i in range(3):
-			AudioServer.set_bus_volume_db(i, file.get_64())
+			AudioServer.set_bus_volume_db(i, file.get_float())
 
 		# Reading the last value (Fullscreen boolean)
-		OS.window_fullscreen = bool(file.get_8())
+		OS.window_fullscreen = bool(file.get_var())
 
 		file.close()
 
 func updateSettingsFile():
 	# This method is used to overwrite all the values of a settings file
 	var file = File.new()
-	file.open("user://settings.txt", File.WRITE)
+	file.open(settingsFile, File.WRITE)
 
 	# Saving the audio bus levels
 	for i in range(3):
-		file.store_64(AudioServer.get_bus_volume_db(i))
+		file.store_float(AudioServer.get_bus_volume_db(i))
 
 	# Saving the fullscreen boolean (in 8bits)
-	file.store_8(OS.window_fullscreen)
+	file.store_var(OS.window_fullscreen)
 
 	file.close()
 
