@@ -8,9 +8,9 @@ var highscore : int = 0
 var highscoreBroken = false
 var highscoreFile = "user://highscore.save"
 
-onready var healthLabel = $HealthLabel
-onready var scoreLabel = $ScoreLabel
-onready var hscoreLabel = $HighscoreLabel
+onready var healthLabel = $Game/HealthLabel
+onready var scoreLabel = $Game/ScoreLabel
+onready var hscoreLabel = $Game/HighscoreLabel
 onready var pauseNode = $Pause
 
 func _ready():
@@ -71,15 +71,35 @@ func scoreUpdate(value):
 	refreshScore()
 
 func gameOver():
-	# In case of a new highscore, it's saved to the file
+	var gmovr_scoreLabel = $GameOver/Menu/ScoreLabel
+	var gmovr_highscoreLabel = $GameOver/Menu/HighscoreLabel
+	# Disabling the pause menu
+	set_process(false)
+
+	# In case of a new highscore, it's saved to the file and the label is adjusted
 	if highscoreBroken:
 		var file = File.new()
 		file.open(highscoreFile, File.WRITE)
 		file.store_var(highscore)
 		file.close()
+		gmovr_highscoreLabel.text = "New Highscore!"
+	else:
+		gmovr_highscoreLabel.text = "Highscore: " + str(highscore)
+	
+	# Setting the score label in advance
+	gmovr_scoreLabel.text = str(score)
 
 	# Stopping the spawner
 	var spawner = get_node("/root/Level/Spawner")
 	spawner.stopSpawner()
 
-	# Showing the game over UI
+	# Playing the game over animation
+	var animPlayer = get_node("/root/Level/AnimationPlayer")
+	animPlayer.play("GameOver")
+
+
+func mainPressed():
+	get_tree().change_scene("res://Scenes/Rooms/MainMenu.tscn")
+
+func replayPressed():
+	get_tree().change_scene("res://Scenes/Rooms/Level.tscn")

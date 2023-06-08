@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Prototype/Sprites/groundPlaceholder.png" type="Texture" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/Prototype/Sprites/bushPlaceholder.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/ParallaxManager.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Objects/Spawner.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Objects/HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Objects/Interfaces/Gameplay/HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Resources/difficultPattern2.tres" type="Resource" id=9]
 [ext_resource path="res://Assets/Resources/easyPattern0.tres" type="Resource" id=10]
 [ext_resource path="res://Assets/Resources/empoweringPattern.tres" type="Resource" id=11]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Assets/Resources/difficultPattern0.tres" type="Resource" id=17]
 [ext_resource path="res://Scenes/Objects/Enemies/normalEnemy.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Assets/Prototype/Audio/gamefirst.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Assets/Animations/GameOver.tres" type="Animation" id=20]
 
 [sub_resource type="Animation" id=5]
 resource_name = "Intro"
@@ -81,6 +82,7 @@ extents = Vector2( 16, 196 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Intro"
+anims/GameOver = ExtResource( 20 )
 anims/Intro = SubResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -163,6 +165,9 @@ texture = ExtResource( 2 )
 
 [node name="HUD" parent="." instance=ExtResource( 8 )]
 
+[node name="BackColor" parent="HUD/GameOver" index="0"]
+color = Color( 0.270588, 0.243137, 0.243137, 0 )
+
 [node name="EnemyLimit" type="Area2D" parent="." groups=["enemyLimit"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyLimit"]
@@ -184,3 +189,5 @@ selectionMinMax = [ 3, 7 ]
 
 [connection signal="death" from="Player" to="HUD" method="gameOver"]
 [connection signal="healthChange" from="Player" to="HUD" method="healthUpdate"]
+
+[editable path="HUD"]
