@@ -14,9 +14,9 @@ func startAction():
 	for _i in range(3):
 		var player = get_node("/root/Level/Player")
 		if player:
-			projectileCreator.shoot(0, projectileCreator.AT_OBJECT, 1, 0, player)
+			projectileCreator.targetShoot(0, player)
 		else:
-			projectileCreator.shoot(0, projectileCreator.ANGLE, 1, 180)
+			projectileCreator.angleShoot(0, 180)
 		yield(get_tree().create_timer(0.15, false),"timeout")
 	# Move on
 	var tempTween = get_tree().create_tween()

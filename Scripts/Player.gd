@@ -6,6 +6,7 @@ var health : int = 3
 export var speed = 200
 var motion : Vector2 = Vector2.ZERO
 var canControl : bool
+var lerpValue : float = .35
 onready var projectileCreator = $projectileCreator
 onready var shootTimer = $shootTimer
 onready var invisTimer = $iframeTimer
@@ -32,20 +33,20 @@ func _physics_process(_delta):
 		var y_input = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	
 		if x_input != 0:
-			motion.x = lerp(motion.x, x_input, .25)
+			motion.x = lerp(motion.x, x_input, lerpValue)
 		else:
-			motion.x = lerp(motion.x, 0, .25)
+			motion.x = lerp(motion.x, 0, lerpValue)
 		
 		if y_input != 0:
-			motion.y = lerp(motion.y, y_input, .25)
+			motion.y = lerp(motion.y, y_input, lerpValue)
 		else:
-			motion.y = lerp(motion.y, 0, .25)
+			motion.y = lerp(motion.y, 0, lerpValue)
 	
 	move_and_slide(motion * speed)
 
 func shooting():
 	if shootTimer.is_stopped():
-		projectileCreator.shoot(0, projectileCreator.ANGLE, 1, 0)
+		projectileCreator.angleShoot(0)
 		shootTimer.start()
 
 func damage():

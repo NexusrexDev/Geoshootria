@@ -19,7 +19,8 @@ enum enemies {
 export(enemies) var enemyType setget setEnemyType
 export(bool) var createAtPlayer
 export(Vector2) var enemyPosition
-export(Resource) var creationProperties
+export(Resource) var introProperties
+export(Resource) var actionProperties
 export(float, 0, 60) var timeBreak
 
 tool

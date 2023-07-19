@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Prototyping/enemytesting.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/EnemyFile/dummyEnemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/CustomResources/repositionResource.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Reposition properties"
+script = ExtResource( 3 )
+repositionPos = [ Vector2( -64, 0 ), Vector2( 128, -32 ), Vector2( 32, 0 ) ]
+shootOnStop = [ true, false, true ]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+enemyScene = ExtResource( 2 )
+spawnPosition = Vector2( 320, 196 )
+actionProperties = SubResource( 1 )

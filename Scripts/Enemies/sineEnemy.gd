@@ -9,7 +9,7 @@ var sineDirection: int
 var sineX: float
 
 func startAction():
-	sineDirection = creationProperties.dir
+	sineDirection = actionProperties.dir
 	motion = forwardMotion
 
 func _process(delta):

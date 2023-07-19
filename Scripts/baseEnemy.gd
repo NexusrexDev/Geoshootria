@@ -5,13 +5,14 @@ class_name baseEnemy
 enum intro {
 	none,
 	tween,
-	special
+	foreground
 }
 
 ### Variables
 export(intro) var introType
 export var health: int
-export(Resource) var creationProperties
+export(Resource) var introProperties
+export(Resource) var actionProperties
 var score: int
 onready var invisTimer = $iframeTimer
 onready var tween = $Tween
@@ -35,8 +36,8 @@ func _ready():
 	match(introType):
 		intro.tween:
 			# Getting the initial position from the resource
-			var introEndPos: Vector2 = Vector2(position.x + creationProperties.gotoPos.x,
-				position.y + creationProperties.gotoPos.y)
+			var introEndPos: Vector2 = Vector2(position.x + introProperties.gotoPos.x,
+				position.y + introProperties.gotoPos.y)
 			# Calculating the time to spend for the tween
 			var tweenTime: float = global_position.distance_to(introEndPos) / 232
 			# Start tweening!
@@ -44,13 +45,13 @@ func _ready():
 					tweenTime, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 			tween.start()
 		
-		intro.special:
+		intro.foreground:
 			# Disabling the collision for the intro and setting the enemy in front
 			$CollisionShape2D.disabled = true
 			z_index = 11
 			# Getting the initial position from the resource
-			var introEndPos: Vector2 = Vector2(position.x + creationProperties.gotoPos.x,
-				position.y + creationProperties.gotoPos.y)
+			var introEndPos: Vector2 = Vector2(position.x + introProperties.gotoPos.x,
+				position.y + introProperties.gotoPos.y)
 			# Calculating the time to spend for the tween
 			var tweenTime: float = global_position.distance_to(introEndPos) / 232
 			# Setting the sprite to be double the size

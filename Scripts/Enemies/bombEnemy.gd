@@ -9,5 +9,5 @@ func startAction():
 	motion = forwardMotion
 
 func death():
-	projectileCreator.shoot(0, projectileCreator.CIRCULAR, 8)
+	projectileCreator.radialShoot(0, 0, 8)
 	queue_free()
