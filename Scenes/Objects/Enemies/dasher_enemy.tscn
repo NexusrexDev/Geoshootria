@@ -6,9 +6,7 @@
 [node name="dasherEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 introType = 2
-health = 2
+health = 3
 anticipateTime = 0.2
-forwardMotion = Vector2( -400, 0 )
-
-[node name="Sprite" parent="." index="1"]
-modulate = Color( 1, 0.52549, 0.890196, 1 )
+forwardMotion = 320.0
+isVariant = false

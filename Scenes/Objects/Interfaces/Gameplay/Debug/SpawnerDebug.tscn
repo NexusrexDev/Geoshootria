@@ -32,8 +32,8 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -24.0
 margin_right = 58.0
-text = "0"
-items = [ "0", null, false, 0, null, "1", null, false, 1, null, "2", null, false, 2, null, "3", null, false, 3, null, "4", null, false, 4, null, "5", null, false, 5, null, "6", null, false, 6, null, "7", null, false, 7, null, "8", null, false, 8, null ]
+text = "Easy-1"
+items = [ "Easy-1", null, false, 0, null, "Easy-2", null, false, 1, null, "Diff-1", null, false, 2, null, "Boss-1", null, false, 3, null, "Emp", null, false, 4, null ]
 selected = 0
 
 [node name="PatternPlay" type="Button" parent="ColorRect/SelectPattern"]

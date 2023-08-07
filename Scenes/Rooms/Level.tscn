@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Prototype/Sprites/groundPlaceholder.png" type="Texture" id=2]
@@ -8,10 +8,11 @@
 [ext_resource path="res://Scripts/ParallaxManager.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Objects/Spawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Objects/Interfaces/Gameplay/HUD.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Resources/easyPattern0.tres" type="Resource" id=10]
-[ext_resource path="res://Assets/Resources/empoweringPattern.tres" type="Resource" id=11]
-[ext_resource path="res://Assets/Resources/easyPattern1.tres" type="Resource" id=16]
-[ext_resource path="res://Scenes/Objects/Enemies/normalEnemy.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Assets/Resources/Prototype/empoweringPattern.tres" type="Resource" id=9]
+[ext_resource path="res://Assets/Resources/Prototype/diffPattern_1.tres" type="Resource" id=10]
+[ext_resource path="res://Assets/Resources/Prototype/easyPattern_1.tres" type="Resource" id=11]
+[ext_resource path="res://Assets/Resources/Prototype/easyPattern_2.tres" type="Resource" id=12]
+[ext_resource path="res://Assets/Resources/Prototype/basicBoss.tres" type="Resource" id=13]
 [ext_resource path="res://Assets/Prototype/Audio/gamefirst.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Assets/Animations/GameOver.tres" type="Animation" id=20]
 
@@ -29,7 +30,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 0.5, -2, 1 ),
 "update": 0,
-"values": [ Vector2( -64, 168 ), Vector2( 80, 168 ), Vector2( 64, 168 ) ]
+"values": [ Vector2( -64, 164 ), Vector2( 80, 164 ), Vector2( 64, 164 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -80,10 +81,7 @@ anims/GameOver = ExtResource( 20 )
 anims/Intro = SubResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -64, 168 )
-speed = 250
-debugEnemy = ExtResource( 18 )
-debugVector = Vector2( 688, 296 )
+position = Vector2( -64, 164 )
 
 [node name="CollisionLimits" type="StaticBody2D" parent="."]
 
@@ -176,10 +174,11 @@ autoplay = true
 bus = "Music"
 
 [node name="Spawner" parent="." instance=ExtResource( 7 )]
-enemyPatterns = [ ExtResource( 10 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 16 ) ]
-bossPatterns = [ ExtResource( 11 ), ExtResource( 11 ) ]
-empoweringPattern = ExtResource( 11 )
-selectionMinMax = [ 3, 7 ]
+easyPatterns = [ ExtResource( 11 ), ExtResource( 12 ) ]
+diffPatterns = [ ExtResource( 10 ) ]
+bossPatterns = [ ExtResource( 13 ) ]
+empoweringPattern = ExtResource( 9 )
+bossThreshold = 3
 
 [connection signal="death" from="Player" to="HUD" method="gameOver"]
 [connection signal="healthChange" from="Player" to="HUD" method="healthUpdate"]

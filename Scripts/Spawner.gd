@@ -3,32 +3,33 @@ extends Node
 
 ### Variables
 # Pattern variables
-export(Array, Resource) var enemyPatterns
+export(Array, Resource) var easyPatterns
+export(Array, Resource) var diffPatterns
 export(Array, Resource) var bossPatterns
 export(Resource) var empoweringPattern
-# Range variables for the enemy/boss percentages
-export(int, 0, 100) var enemyRange
-export(int, 0, 100) var bossRange
-# SelectionRange's minimum and maximum ranges
-export(Array, int) var selectionMinMax
+export(int) var bossThreshold
 # Enemy arrays
 export(Array, PackedScene) var enemyReferences
 # Inner spawner variables
-var running:bool
+var running: bool
 var finishedPatterns: int
 var currentPattern
 var fullEnemies: int
 var currentEnemy: int
 var completedEnemies: int
 var selectionRange: int
+var currentBoss: bool = false
 # References
 onready var patternTimer = $patternTimer
 onready var enemyTimer = $enemyTimer
 onready var debugInterface = $CanvasLayer/DebugInterface
 
+func _ready():
+	$CanvasLayer/DebugInterface/ColorRect/PlayStop/StopResume.connect("pressed", self, "debugSpawnerControl")
+	$CanvasLayer/DebugInterface/ColorRect/SelectPattern/PatternPlay.connect("pressed", self, "debugPatternPlay")
+
 func startSpawner():
 	# Used to start the pattern, using an AnimationPlayer
-	randomize()
 	running = true
 	patternPicker()
 
@@ -40,56 +41,80 @@ func stopSpawner():
 
 # This method starts the spawner by selecting a pattern
 func patternPicker():
-	# Sets the selection range to the fullest if the desired number of patterns is passed
-	selectionRange = selectionMinMax[1] if (finishedPatterns > 5) else selectionMinMax[0]
-	
-	# Random number generation (from 0 to 100)
-	# warning-ignore:narrowing_conversion
-	var randomRangeNumber: int = (randf() * 100)
+	var selectedPattern
+	var isBoss = false
 
-	var index
-	
-	# Selecting with ranges based on the player's progress
-	if selectionRange == selectionMinMax[1]:
-		if randomRangeNumber < enemyRange:
-			# Enemy pattern selection
-			var randomEnemyNumber: int = (randi() % selectionRange)
-			index = enemyPatterns[randomEnemyNumber]
-		elif randomRangeNumber < (enemyRange + bossRange):
-			# Boss pattern selection
-			var randomBossNumber: int = (randi() % 2)
-			index = bossPatterns[randomBossNumber]
+	if finishedPatterns < bossThreshold:
+		# Create a normal pattern or an empowering pattern, higher prob. to easy patterns
+		var typeSelect = customMethods.getWeightedRNG([90, 10])
+		if typeSelect == 0:
+			var difficultySelect = customMethods.getWeightedRNG([100, 0])
+			if difficultySelect == 0:
+				selectedPattern = easyPatterns[randi() % easyPatterns.size()]
+			else:
+				selectedPattern = diffPatterns[randi() % diffPatterns.size()]
 		else:
-			# Empowering pattern selection
-			index = empoweringPattern
+			selectedPattern = empoweringPattern
+
+	elif finishedPatterns == bossThreshold:
+		# Create the first boss and only the first boss
+		isBoss = true
+		selectedPattern = bossPatterns[0]
+
+	elif finishedPatterns % bossThreshold == 0:
+		# Create a normal pattern, a boss or an empowering pattern
+		var typeSelect = customMethods.getWeightedRNG([63, 27, 10])
+		if typeSelect == 0:
+			var difficultySelect = customMethods.getWeightedRNG([50, 50])
+			if difficultySelect == 0:
+				selectedPattern = easyPatterns[randi() % easyPatterns.size()]
+			else:
+				selectedPattern = diffPatterns[randi() % diffPatterns.size()]
+		elif typeSelect == 1:
+			# Boss selection
+			isBoss = true
+			selectedPattern = bossPatterns[randi() % bossPatterns.size()]
+		else:
+			selectedPattern = empoweringPattern
+
 	else:
-		# Excluding the boss range value from the entire equation by extending the enemy range
-		if randomRangeNumber < (enemyRange + bossRange):
-			# Enemy pattern selection
-			var randomEnemyNumber: int = (randi() % selectionRange)
-			index = enemyPatterns[randomEnemyNumber]
+		# Create a normal pattern or an empowering pattern, equal prob. to easy patterns
+		var typeSelect = customMethods.getWeightedRNG([85, 15])
+		if typeSelect == 0:
+			var difficultySelect = customMethods.getWeightedRNG([50, 50])
+			if difficultySelect == 0:
+				selectedPattern = easyPatterns[randi() % easyPatterns.size()]
+			else:
+				selectedPattern = diffPatterns[randi() % diffPatterns.size()]
 		else:
-			# Empowering pattern selection
-			index = empoweringPattern
+			selectedPattern = empoweringPattern
 	
-	startPattern(index)
+	startPattern(selectedPattern, isBoss)
 
 # This method starts a pattern, used for debugging and separating the creation from the pattern selection
-func startPattern(patternIndex):
-	currentPattern = patternIndex
+func startPattern(patternRes, isBoss: bool):
+	currentPattern = patternRes
 
 	# Setting the counters/pointers
 	currentEnemy = 0
 	completedEnemies = 0
 	fullEnemies = currentPattern.enemyList.size()
 
-	# Starting by creating an enemy
-	createEnemy()
+	# Starting by creating an enemy, or a boss
+	currentBoss = isBoss
+	
+	if fullEnemies != 0:
+		createEnemy()
 
 # This method creates an enemy, called in the start of a pattern, and when a timer is off
 func createEnemy():
 	if !running:
 		return
+	
+	# Boss flourish goes here (Music change, warning message..etc)
+	if currentBoss:
+		pass
+	
 	# Variables to utilize for creating enemies
 	var currentEnemyRef = currentPattern.enemyList[currentEnemy]
 	var currentEnemyAtPlayer: bool = currentEnemyRef.createAtPlayer
@@ -103,7 +128,10 @@ func createEnemy():
 	var enemy = enemyReferences[currentEnemyType].instance()
 	if currentEnemyAtPlayer:
 		var player = get_node("/root/Level/Player")
-		enemy.position = Vector2(688,player.position.y)
+		if player:
+			enemy.position = Vector2(688, player.position.y)
+		else:
+			enemy.position = Vector2(688, 168)
 	else:
 		enemy.position = currentEnemyPos
 	enemy.introProperties = currentIntroProps
@@ -131,6 +159,9 @@ func enemyPassed():
 		patternTimer.start()
 		# Adding up to the finished patterns counter to increase the range
 		finishedPatterns += 1
+		# If this was a boss pattern, stop music, change state
+		if currentBoss:
+			currentBoss = false
 
 # Turning the debug menu on and off
 func _process(_delta):
@@ -146,7 +177,13 @@ func debugSpawnerControl():
 
 # Plays a chosen pattern
 func debugPatternPlay():
+	# Temporarily stopped
 	var patternIndex: int = $CanvasLayer/DebugInterface/ColorRect/SelectPattern/PatternIndex.get_selected_id()
+	var enemyPatterns: Array = []
+	enemyPatterns.append_array(easyPatterns)
+	enemyPatterns.append_array(diffPatterns)
+	enemyPatterns.append_array(bossPatterns)
+	enemyPatterns.append(empoweringPattern)
 	stopSpawner()
 	running = true
-	startPattern(enemyPatterns[patternIndex])
+	startPattern(enemyPatterns[patternIndex], patternIndex == 3)

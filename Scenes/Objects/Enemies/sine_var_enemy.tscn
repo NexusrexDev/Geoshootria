@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Objects/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Objects/Enemies/Projectiles/normal_slow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Enemies/sineEnemy.gd" type="Script" id=3]
+
+[node name="sinevarEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+health = 3
+forwardMotion = 150.0
+verticalSpeed = 70
+sineIncrement = 2
+isVariant = true
+
+[node name="projectileCreator" parent="." index="4"]
+projectileReferences = [ ExtResource( 2 ) ]

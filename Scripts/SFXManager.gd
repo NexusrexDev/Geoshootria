@@ -4,10 +4,9 @@ extends Node
 var playersNum = 8
 var bus = "SFX"
 
-var currentPitch = 1
-
 var available = []  # The available players.
 var queue = []  # The queue of sounds to play.
+var pitches = [] # The queue of pitches to set
 
 func _ready():
     # Setting pause mode to process for the pause menu
@@ -27,12 +26,13 @@ func _on_stream_finished(stream):
 
 func playSound(sound_path, pitch:float = 1):
     queue.append(sound_path)
-    currentPitch = pitch
+    pitches.append(pitch)
 
 func _process(_delta):
 	# Play a queued sound if any players are available.
     if not queue.empty() and not available.empty():
         available[0].stream = load(queue.pop_front())
-        available[0].pitch_scale = currentPitch
+        available[0].pitch_scale = pitches[0]
         available[0].play()
         available.pop_front()
+        pitches.pop_front()

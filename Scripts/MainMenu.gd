@@ -11,6 +11,7 @@ onready var fullscreenCheck = $Settings/MarginContainer/VBoxContainer/Fullscreen
 var settingsFile = "user://settings.save"
 
 func _ready():
+	randomize()
 	# Grabbing focus on start, allowing keyboard control
 	playButton.grab_focus()
 	configureSettings()

@@ -13,6 +13,7 @@ export(intro) var introType
 export var health: int
 export(Resource) var introProperties
 export(Resource) var actionProperties
+export var isBoss: bool
 var score: int
 onready var invisTimer = $iframeTimer
 onready var tween = $Tween
@@ -26,12 +27,17 @@ signal completed()
 func _ready():
 	# Connecting the score update signal to the HUD/Game Manager
 	var HUD = get_node("/root/Level/HUD")
-	connect("death", HUD, "scoreUpdate")
+	if HUD != null:
+		connect("death", HUD, "scoreUpdate")
 	# Connecting the death and safe passing/destruction to the spawner
 	var Spawner = get_node("/root/Level/Spawner")
-	connect("completed", Spawner, "enemyPassed")
+	if Spawner != null:
+		connect("completed", Spawner, "enemyPassed")
 	# Calculating the score based on the initial health value
-	score = health * 5
+	if isBoss:
+		score = health * 10
+	else:
+		score = health * 5
 	# Intro code
 	match(introType):
 		intro.tween:

@@ -4,15 +4,21 @@ extends Resource
 
 enum enemies {
 	normal,
+	normal_var,
+	ground_turret,
+	ranger,
 	sinewave,
-	run_and_gun,
-	charger,
-	dasher,
-	normal_aim,
-	zigzag,
+	sinewave_var,
+	dash,
+	dash_var,
+	homing,
+	homing_var,
 	bomb,
-	boss1,
-	boss2
+	spray,
+	mega_spray,
+	mini_wizard,
+	wizard,
+	basic_boss
 }
 
 # Variables

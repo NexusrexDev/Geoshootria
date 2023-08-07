@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=9 format=2]
+[gd_resource type="Resource" load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
@@ -8,15 +8,15 @@ resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 164 )
-timeBreak = 0.3
+enemyPosition = Vector2( 688, 48 )
+timeBreak = 0.0
 
 [sub_resource type="Resource" id=2]
 resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 100 )
+enemyPosition = Vector2( 688, 88 )
 timeBreak = 0.0
 
 [sub_resource type="Resource" id=3]
@@ -24,15 +24,15 @@ resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 228 )
-timeBreak = 0.3
+enemyPosition = Vector2( 688, 128 )
+timeBreak = 1.0
 
 [sub_resource type="Resource" id=4]
 resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 40 )
+enemyPosition = Vector2( 688, 280 )
 timeBreak = 0.0
 
 [sub_resource type="Resource" id=5]
@@ -40,7 +40,7 @@ resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 164 )
+enemyPosition = Vector2( 688, 240 )
 timeBreak = 0.0
 
 [sub_resource type="Resource" id=6]
@@ -48,10 +48,33 @@ resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 288 )
+enemyPosition = Vector2( 688, 200 )
+timeBreak = 1.0
+
+[sub_resource type="Resource" id=7]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 164 )
+timeBreak = 0.0
+
+[sub_resource type="Resource" id=8]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 124 )
+timeBreak = 0.0
+
+[sub_resource type="Resource" id=9]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 204 )
 timeBreak = 0.0
 
 [resource]
-resource_name = "empowering"
 script = ExtResource( 1 )
-enemyList = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ]
+enemyList = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ]

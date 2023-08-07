@@ -4,4 +4,4 @@
 
 [node name="Projectile" groups=["enemy"] instance=ExtResource( 1 )]
 modulate = Color( 0.952941, 0.341176, 0.341176, 1 )
-speed = 420
+speed = 240

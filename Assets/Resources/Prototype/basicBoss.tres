@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/CustomResources/introResource.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=2]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -112, 0 )
+
+[sub_resource type="Resource" id=1]
+resource_name = "Basic Boss"
+script = ExtResource( 2 )
+enemyType = 15
+createAtPlayer = false
+enemyPosition = Vector2( 688, 184 )
+introProperties = SubResource( 2 )
+timeBreak = 0.0
+
+[resource]
+script = ExtResource( 1 )
+enemyList = [ SubResource( 1 ) ]

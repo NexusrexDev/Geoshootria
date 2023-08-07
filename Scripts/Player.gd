@@ -3,9 +3,9 @@ extends KinematicBody2D
 
 # Variables
 var health : int = 3
-export var speed = 200
+export var speed = 250
 var motion : Vector2 = Vector2.ZERO
-var canControl : bool
+export var canControl : bool = false
 var lerpValue : float = .35
 onready var projectileCreator = $projectileCreator
 onready var shootTimer = $shootTimer
@@ -14,12 +14,9 @@ onready var invisTimer = $iframeTimer
 signal healthChange(value)
 signal death()
 
-# Packed scenes
-export(PackedScene) var debugEnemy
-export(Vector2) var debugVector
-
 func _ready():
-	canControl = false
+	pass
+	#canControl = false
 
 func _process(_delta):
 	if canControl:

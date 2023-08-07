@@ -1,23 +1,28 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Spawner.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Objects/Enemies/dasherEnemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Objects/Enemies/sineEnemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Objects/Enemies/normalEnemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Objects/Enemies/zigzagEnemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Objects/Enemies/chargerEnemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Objects/Enemies/bombEnemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Objects/Enemies/aimEnemy.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Objects/Enemies/rungunEnemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Objects/Enemies/normal_enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Objects/Enemies/sine_var_enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/Enemies/mega_spray_enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/Enemies/normal_var_enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/Enemies/bomb_enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/Enemies/Teleporters/miniwiz_teleporter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Objects/Enemies/ranger_enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Objects/Enemies/dasher_var_enemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Objects/Interfaces/Gameplay/Debug/SpawnerDebug.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Objects/Enemies/Teleporters/wiz_teleporter.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Objects/Enemies/groundturret_enemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Objects/Enemies/spray_enemy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Objects/Enemies/homing_var_enemy.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Objects/Enemies/homing_enemy.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Objects/Enemies/dasher_enemy.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Objects/Enemies/sine_enemy.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Objects/Enemies/Bosses/basicBoss.tscn" type="PackedScene" id=18]
 
 [node name="Spawner" type="Node"]
 pause_mode = 1
 script = ExtResource( 1 )
-enemyRange = 65
-bossRange = 15
-selectionMinMax = [ 1, 7 ]
-enemyReferences = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 7 ), null, null ]
+enemyReferences = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 17 ), ExtResource( 3 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 18 ) ]
 
 [node name="patternTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -31,12 +36,5 @@ one_shot = true
 [node name="DebugInterface" parent="CanvasLayer" instance=ExtResource( 10 )]
 visible = false
 
-[node name="PatternIndex" parent="CanvasLayer/DebugInterface/ColorRect/SelectPattern" index="0"]
-items = [ "0", null, false, 0, null, "1", null, false, 1, null, "2", null, false, 2, null, "3", null, false, 3, null, "4", null, false, 4, null, "5", null, false, 5, null, "6", null, false, 6, null, "7", null, false, 7, null, "8", null, false, 8, null ]
-
 [connection signal="timeout" from="patternTimer" to="." method="patternPicker"]
 [connection signal="timeout" from="enemyTimer" to="." method="createEnemy"]
-[connection signal="pressed" from="CanvasLayer/DebugInterface/ColorRect/PlayStop/StopResume" to="." method="debugSpawnerControl"]
-[connection signal="pressed" from="CanvasLayer/DebugInterface/ColorRect/SelectPattern/PatternPlay" to="." method="debugPatternPlay"]
-
-[editable path="CanvasLayer/DebugInterface"]
