@@ -7,7 +7,7 @@
 [node name="dashervarEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 introType = 2
-health = 3
+health = 2
 anticipateTime = 0.2
 forwardMotion = 320.0
 isVariant = true

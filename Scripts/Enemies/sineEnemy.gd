@@ -4,7 +4,7 @@ extends baseEnemy
 # Variables
 export var forwardMotion: float
 export var verticalSpeed: int
-export var sineIncrement: int
+export var sineIncrement: float
 export var isVariant: bool
 onready var projCreator = $projectileCreator
 var sineDirection: int

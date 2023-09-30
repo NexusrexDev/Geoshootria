@@ -21,7 +21,7 @@ func startAction():
 		currentAngle += (incrValue * sprayDir)
 		yield(get_tree().create_timer(0.05, false), "timeout")
 	
-	yield(get_tree().create_timer(0.1, false), "timeout")
+	yield(get_tree().create_timer(0.2, false), "timeout")
 	currentAngle -= ((incrValue + incrValue/2) * sprayDir)
 	for _i in range(shotCount - 1):
 		projCreator.angleShoot(0, currentAngle)

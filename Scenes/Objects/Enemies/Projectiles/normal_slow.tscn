@@ -4,3 +4,4 @@
 
 [node name="enemyProjectile" instance=ExtResource( 1 )]
 scale = Vector2( 1.25, 1.25 )
+speed = 280

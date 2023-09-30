@@ -15,3 +15,7 @@ func _process(delta):
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+func _on_Area_entered(area:Area2D):
+	if area.is_in_group("projLimit") and self.is_in_group("playerProj"):
+		queue_free()

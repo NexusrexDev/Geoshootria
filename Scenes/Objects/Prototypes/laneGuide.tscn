@@ -1,0 +1,155 @@
+[gd_scene format=2]
+
+[node name="Node" type="Node2D"]
+z_index = 10
+
+[node name="BorderT" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 8, 0, 8 )
+
+[node name="LaneN2" type="Polygon2D" parent="."]
+position = Vector2( 0, 8 )
+color = Color( 0.490196, 0.462745, 0.901961, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 56, 0, 56 )
+
+[node name="LaneN1" type="Polygon2D" parent="."]
+position = Vector2( 0, 64 )
+color = Color( 0.490196, 0.462745, 0.901961, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 56, 0, 56 )
+
+[node name="Lane0" type="Polygon2D" parent="."]
+position = Vector2( 0, 120 )
+color = Color( 0.490196, 0.462745, 0.901961, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 56, 0, 56 )
+
+[node name="LaneP1" type="Polygon2D" parent="."]
+position = Vector2( 0, 176 )
+color = Color( 0.490196, 0.462745, 0.901961, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 56, 0, 56 )
+
+[node name="LaneP2" type="Polygon2D" parent="."]
+position = Vector2( 0, 232 )
+color = Color( 0.490196, 0.462745, 0.901961, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 56, 0, 56 )
+
+[node name="BorderB" type="Polygon2D" parent="."]
+position = Vector2( 0, 288 )
+color = Color( 1, 1, 1, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 8, 0, 8 )
+
+[node name="Ground" type="Polygon2D" parent="."]
+position = Vector2( 0, 296 )
+color = Color( 0.776471, 0.0352941, 0.176471, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 64, 0, 64 )
+
+[node name="Node" type="Node2D" parent="."]
+
+[node name="B1" type="Polygon2D" parent="Node"]
+position = Vector2( 0, 8 )
+z_index = 1
+color = Color( 0.133333, 0.113725, 0.447059, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 1, 0, 1 )
+
+[node name="B2" type="Polygon2D" parent="Node"]
+position = Vector2( 0, 64 )
+z_index = 1
+color = Color( 0.133333, 0.113725, 0.447059, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 1, 0, 1 )
+
+[node name="B3" type="Polygon2D" parent="Node"]
+position = Vector2( 0, 120 )
+z_index = 1
+color = Color( 0.133333, 0.113725, 0.447059, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 1, 0, 1 )
+
+[node name="B4" type="Polygon2D" parent="Node"]
+position = Vector2( 0, 176 )
+z_index = 1
+color = Color( 0.133333, 0.113725, 0.447059, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 1, 0, 1 )
+
+[node name="B5" type="Polygon2D" parent="Node"]
+position = Vector2( 0, 232 )
+z_index = 1
+color = Color( 0.133333, 0.113725, 0.447059, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 1, 0, 1 )
+
+[node name="B6" type="Polygon2D" parent="Node"]
+position = Vector2( 0, 63 )
+z_index = 1
+color = Color( 0.133333, 0.113725, 0.447059, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 1, 0, 1 )
+
+[node name="B7" type="Polygon2D" parent="Node"]
+position = Vector2( 0, 119 )
+z_index = 1
+color = Color( 0.133333, 0.113725, 0.447059, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 1, 0, 1 )
+
+[node name="B8" type="Polygon2D" parent="Node"]
+position = Vector2( 0, 175 )
+z_index = 1
+color = Color( 0.133333, 0.113725, 0.447059, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 1, 0, 1 )
+
+[node name="B9" type="Polygon2D" parent="Node"]
+position = Vector2( 0, 231 )
+z_index = 1
+color = Color( 0.133333, 0.113725, 0.447059, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 1, 0, 1 )
+
+[node name="B10" type="Polygon2D" parent="Node"]
+position = Vector2( 0, 287 )
+z_index = 1
+color = Color( 0.133333, 0.113725, 0.447059, 0.627451 )
+polygon = PoolVector2Array( 0, 0, 640, 0, 640, 1, 0, 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 616.0
+margin_top = 29.0
+margin_right = 632.0
+margin_bottom = 43.0
+text = "36"
+valign = 1
+
+[node name="Label2" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 616.0
+margin_top = 85.0
+margin_right = 632.0
+margin_bottom = 99.0
+text = "92"
+valign = 1
+
+[node name="Label3" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 616.0
+margin_top = 141.0
+margin_right = 632.0
+margin_bottom = 155.0
+text = "148"
+valign = 1
+
+[node name="Label4" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 616.0
+margin_top = 197.0
+margin_right = 632.0
+margin_bottom = 211.0
+text = "204"
+valign = 1
+
+[node name="Label5" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 616.0
+margin_top = 253.0
+margin_right = 632.0
+margin_bottom = 267.0
+text = "260"
+valign = 1

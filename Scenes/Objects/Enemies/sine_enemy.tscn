@@ -5,8 +5,8 @@
 
 [node name="sineEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-health = 3
+health = 2
 forwardMotion = 150.0
 verticalSpeed = 70
-sineIncrement = 2
+sineIncrement = 2.7
 isVariant = false

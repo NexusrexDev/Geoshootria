@@ -12,7 +12,7 @@ func _ready():
 	yield(get_tree().create_timer(spawnTime, false), "timeout")
 
 	var enemy = enemyReference.instance()
-	enemy.position = Vector2(global_position.x, global_position.y + 16)
+	enemy.position = Vector2(global_position.x, global_position.y)
 	enemy.introProperties = introProperties
 	enemy.actionProperties = actionProperties
 	get_parent().call_deferred("add_child", enemy)

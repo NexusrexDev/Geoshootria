@@ -14,11 +14,11 @@ func startAction():
 	else:
 		projCreator.angleShoot(0, 180)
 
-	yield(get_tree().create_timer(1, false), "timeout")
+	yield(get_tree().create_timer(1.5, false), "timeout")
 	
 	if disappearAnim != null:
 		var anim = disappearAnim.instance()
-		anim.position = Vector2(global_position.x, global_position.y - 16)
+		anim.position = Vector2(global_position.x, global_position.y)
 		get_parent().call_deferred("add_child", anim)
 
 	emit_signal("completed")

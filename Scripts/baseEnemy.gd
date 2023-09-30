@@ -82,15 +82,15 @@ func _process(delta):
 
 
 func damage(area):
-	if invisTimer.is_stopped():
-		health -= 1
-		area.queue_free()
-		invisTimer.start()
-		if health <= 0:
-			#Should include death effects and death signal to the spawner
-			emit_signal("death", score)
-			emit_signal("completed")
-			death()
+	#if invisTimer.is_stopped():
+	health -= 1
+	area.queue_free()
+	#invisTimer.start()
+	if health <= 0:
+		#Should include death effects and death signal to the spawner
+		emit_signal("death", score)
+		emit_signal("completed")
+		death()
 
 func death():
 	# This function will be overriden, but pls don't forget queue_free

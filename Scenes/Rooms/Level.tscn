@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Prototype/Sprites/groundPlaceholder.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/Resources/Prototype/easyPattern_1.tres" type="Resource" id=11]
 [ext_resource path="res://Assets/Resources/Prototype/easyPattern_2.tres" type="Resource" id=12]
 [ext_resource path="res://Assets/Resources/Prototype/basicBoss.tres" type="Resource" id=13]
+[ext_resource path="res://Scripts/Prototyping/showLane.gd" type="Script" id=14]
 [ext_resource path="res://Assets/Prototype/Audio/gamefirst.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Assets/Animations/GameOver.tres" type="Animation" id=20]
 
@@ -30,7 +31,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 0.5, -2, 1 ),
 "update": 0,
-"values": [ Vector2( -64, 164 ), Vector2( 80, 164 ), Vector2( 64, 164 ) ]
+"values": [ Vector2( -64, 148 ), Vector2( 80, 148 ), Vector2( 64, 148 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Player")
@@ -74,6 +75,7 @@ extents = Vector2( 352, 16 )
 extents = Vector2( 16, 196 )
 
 [node name="Level" type="Node2D"]
+script = ExtResource( 14 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Intro"
@@ -81,7 +83,7 @@ anims/GameOver = ExtResource( 20 )
 anims/Intro = SubResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -64, 164 )
+position = Vector2( -64, 148 )
 
 [node name="CollisionLimits" type="StaticBody2D" parent="."]
 
@@ -167,6 +169,14 @@ modulate = Color( 0.121569, 0.384314, 0.454902, 1 )
 position = Vector2( -48, 164 )
 shape = SubResource( 4 )
 
+[node name="ProjLimit" type="Area2D" parent="." groups=["projLimit"]]
+position = Vector2( 704, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjLimit"]
+modulate = Color( 0.121569, 0.384314, 0.454902, 1 )
+position = Vector2( -48, 164 )
+shape = SubResource( 4 )
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 19 )
@@ -178,7 +188,7 @@ easyPatterns = [ ExtResource( 11 ), ExtResource( 12 ) ]
 diffPatterns = [ ExtResource( 10 ) ]
 bossPatterns = [ ExtResource( 13 ) ]
 empoweringPattern = ExtResource( 9 )
-bossThreshold = 3
+bossThreshold = 2
 
 [connection signal="death" from="Player" to="HUD" method="gameOver"]
 [connection signal="healthChange" from="Player" to="HUD" method="healthUpdate"]

@@ -1,7 +1,406 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=58 format=2]
 
 [ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/CustomResources/directionResource.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/CustomResources/introResource.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+timeBreak = 0.42
+
+[sub_resource type="Resource" id=2]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 36 )
+timeBreak = 0.42
+
+[sub_resource type="Resource" id=3]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 92 )
+timeBreak = 0.72
+
+[sub_resource type="Resource" id=4]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+timeBreak = 0.42
+
+[sub_resource type="Resource" id=5]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 260 )
+timeBreak = 0.42
+
+[sub_resource type="Resource" id=6]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 204 )
+timeBreak = 1.42
+
+[sub_resource type="Resource" id=7]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=8]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 4
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+actionProperties = SubResource( 7 )
+timeBreak = 0.24
+
+[sub_resource type="Resource" id=9]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=10]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 4
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+actionProperties = SubResource( 9 )
+timeBreak = 0.24
+
+[sub_resource type="Resource" id=11]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=12]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 4
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+actionProperties = SubResource( 11 )
+timeBreak = 0.92
+
+[sub_resource type="Resource" id=13]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=14]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 4
+createAtPlayer = false
+enemyPosition = Vector2( 688, 256 )
+actionProperties = SubResource( 13 )
+timeBreak = 0.24
+
+[sub_resource type="Resource" id=15]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=16]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 4
+createAtPlayer = false
+enemyPosition = Vector2( 688, 256 )
+actionProperties = SubResource( 15 )
+timeBreak = 0.24
+
+[sub_resource type="Resource" id=17]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=18]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 4
+createAtPlayer = false
+enemyPosition = Vector2( 688, 256 )
+actionProperties = SubResource( 17 )
+timeBreak = 0.92
+
+[sub_resource type="Resource" id=19]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=20]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 4
+createAtPlayer = false
+enemyPosition = Vector2( 688, 40 )
+actionProperties = SubResource( 19 )
+timeBreak = 0.24
+
+[sub_resource type="Resource" id=21]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=22]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 4
+createAtPlayer = false
+enemyPosition = Vector2( 688, 40 )
+actionProperties = SubResource( 21 )
+timeBreak = 0.24
+
+[sub_resource type="Resource" id=23]
+resource_name = "Direction"
+script = ExtResource( 3 )
+dir = 1
+
+[sub_resource type="Resource" id=24]
+resource_name = "Sinewave"
+script = ExtResource( 2 )
+enemyType = 4
+createAtPlayer = false
+enemyPosition = Vector2( 688, 40 )
+actionProperties = SubResource( 23 )
+timeBreak = 2.22
+
+[sub_resource type="Resource" id=25]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+timeBreak = 0.42
+
+[sub_resource type="Resource" id=26]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 36 )
+timeBreak = 0.82
+
+[sub_resource type="Resource" id=27]
+resource_name = "Homing"
+script = ExtResource( 2 )
+enemyType = 8
+createAtPlayer = false
+enemyPosition = Vector2( 688, 204 )
+timeBreak = 0.72
+
+[sub_resource type="Resource" id=28]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+timeBreak = 0.42
+
+[sub_resource type="Resource" id=29]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 260 )
+timeBreak = 0.82
+
+[sub_resource type="Resource" id=30]
+resource_name = "Homing"
+script = ExtResource( 2 )
+enemyType = 8
+createAtPlayer = false
+enemyPosition = Vector2( 688, 92 )
+timeBreak = 1.84
+
+[sub_resource type="Resource" id=31]
+resource_name = "Intro position"
+script = ExtResource( 4 )
+gotoPos = Vector2( -96, 0 )
+
+[sub_resource type="Resource" id=32]
+resource_name = "Ranger"
+script = ExtResource( 2 )
+enemyType = 3
+createAtPlayer = false
+enemyPosition = Vector2( 688, 36 )
+introProperties = SubResource( 31 )
+timeBreak = 0.82
+
+[sub_resource type="Resource" id=33]
+resource_name = "Intro position"
+script = ExtResource( 4 )
+gotoPos = Vector2( -96, 0 )
+
+[sub_resource type="Resource" id=34]
+resource_name = "Ranger"
+script = ExtResource( 2 )
+enemyType = 3
+createAtPlayer = false
+enemyPosition = Vector2( 688, 260 )
+introProperties = SubResource( 33 )
+timeBreak = 0.82
+
+[sub_resource type="Resource" id=35]
+resource_name = "Intro position"
+script = ExtResource( 4 )
+gotoPos = Vector2( -96, 0 )
+
+[sub_resource type="Resource" id=36]
+resource_name = "Ranger"
+script = ExtResource( 2 )
+enemyType = 3
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+introProperties = SubResource( 35 )
+timeBreak = 0.22
+
+[sub_resource type="Resource" id=37]
+resource_name = "Intro position"
+script = ExtResource( 4 )
+gotoPos = Vector2( -96, 0 )
+
+[sub_resource type="Resource" id=38]
+resource_name = "Ranger"
+script = ExtResource( 2 )
+enemyType = 3
+createAtPlayer = false
+enemyPosition = Vector2( 688, 92 )
+introProperties = SubResource( 37 )
+timeBreak = 0.22
+
+[sub_resource type="Resource" id=39]
+resource_name = "Intro position"
+script = ExtResource( 4 )
+gotoPos = Vector2( -96, 0 )
+
+[sub_resource type="Resource" id=40]
+resource_name = "Ranger"
+script = ExtResource( 2 )
+enemyType = 3
+createAtPlayer = false
+enemyPosition = Vector2( 688, 204 )
+introProperties = SubResource( 39 )
+timeBreak = 2.02
+
+[sub_resource type="Resource" id=41]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 36 )
+timeBreak = 0.22
+
+[sub_resource type="Resource" id=42]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 36 )
+timeBreak = 0.42
+
+[sub_resource type="Resource" id=43]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 204 )
+timeBreak = 0.22
+
+[sub_resource type="Resource" id=44]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 204 )
+timeBreak = 0.42
+
+[sub_resource type="Resource" id=45]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 92 )
+timeBreak = 0.22
+
+[sub_resource type="Resource" id=46]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 92 )
+timeBreak = 0.42
+
+[sub_resource type="Resource" id=47]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 260 )
+timeBreak = 0.22
+
+[sub_resource type="Resource" id=48]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 260 )
+timeBreak = 1.62
+
+[sub_resource type="Resource" id=49]
+resource_name = "Homing"
+script = ExtResource( 2 )
+enemyType = 8
+createAtPlayer = false
+enemyPosition = Vector2( 688, 260 )
+timeBreak = 0.22
+
+[sub_resource type="Resource" id=50]
+resource_name = "Homing"
+script = ExtResource( 2 )
+enemyType = 8
+createAtPlayer = false
+enemyPosition = Vector2( 688, 204 )
+timeBreak = 0.22
+
+[sub_resource type="Resource" id=51]
+resource_name = "Homing"
+script = ExtResource( 2 )
+enemyType = 8
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+timeBreak = 0.22
+
+[sub_resource type="Resource" id=52]
+resource_name = "Homing"
+script = ExtResource( 2 )
+enemyType = 8
+createAtPlayer = false
+enemyPosition = Vector2( 688, 52 )
+timeBreak = 0.22
+
+[sub_resource type="Resource" id=53]
+resource_name = "Homing"
+script = ExtResource( 2 )
+enemyType = 8
+createAtPlayer = false
+enemyPosition = Vector2( 688, 36 )
+timeBreak = 0.0
 
 [resource]
 script = ExtResource( 1 )
-enemyList = [  ]
+enemyList = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 8 ), SubResource( 10 ), SubResource( 12 ), SubResource( 14 ), SubResource( 16 ), SubResource( 18 ), SubResource( 20 ), SubResource( 22 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 32 ), SubResource( 34 ), SubResource( 36 ), SubResource( 38 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ) ]

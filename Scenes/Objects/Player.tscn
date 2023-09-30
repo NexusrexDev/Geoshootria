@@ -10,20 +10,19 @@
 extents = Vector2( 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 16 )
+extents = Vector2( 15, 15 )
 
 [node name="Player" type="KinematicBody2D"]
 z_index = 10
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -16 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 16 )
 texture = ExtResource( 1 )
-centered = false
-offset = Vector2( -16, -32 )
+offset = Vector2( 0, -16 )
 
 [node name="iframeTimer" type="Timer" parent="."]
 wait_time = 1.25
@@ -36,11 +35,10 @@ one_shot = true
 [node name="DamageBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
-position = Vector2( 0, -16 )
 shape = SubResource( 2 )
 
 [node name="projectileCreator" type="Position2D" parent="."]
-position = Vector2( 4, -16 )
+position = Vector2( 4, 0 )
 script = ExtResource( 4 )
 projectileReferences = [ ExtResource( 3 ) ]
 audioReferences = [ ExtResource( 5 ) ]

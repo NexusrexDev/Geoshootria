@@ -22,7 +22,7 @@ func startAction():
 
 func _process(_delta):
 	motion = Vector2(0, moveDir * moveSpeed)
-	if position.y <= 80:
+	if position.y <= 40:
 		moveDir = lerp(moveDir, 1, 0.25)
-	if position.y >= 280:
+	if position.y >= 256:
 		moveDir = lerp(moveDir, -1, 0.25)

@@ -14,7 +14,7 @@ resource_name = "Basic Boss"
 script = ExtResource( 2 )
 enemyType = 15
 createAtPlayer = false
-enemyPosition = Vector2( 688, 184 )
+enemyPosition = Vector2( 688, 148 )
 introProperties = SubResource( 2 )
 timeBreak = 0.0
 

@@ -17,7 +17,7 @@ func startAction():
 	
 	# Shooting, in variant mode
 	if isVariant:
-		yield(get_tree().create_timer(1, false), "timeout")
+		yield(get_tree().create_timer(0.75, false), "timeout")
 		var player = get_node("/root/Level/Player")
 		if player:
 			projCreator.targetShoot(0, player)

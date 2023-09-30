@@ -8,23 +8,23 @@ resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 48 )
-timeBreak = 0.0
+enemyPosition = Vector2( 688, 36 )
+timeBreak = 0.2
 
 [sub_resource type="Resource" id=2]
 resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 88 )
-timeBreak = 0.0
+enemyPosition = Vector2( 688, 92 )
+timeBreak = 0.2
 
 [sub_resource type="Resource" id=3]
 resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 128 )
+enemyPosition = Vector2( 688, 148 )
 timeBreak = 1.0
 
 [sub_resource type="Resource" id=4]
@@ -32,23 +32,23 @@ resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 280 )
-timeBreak = 0.0
+enemyPosition = Vector2( 688, 260 )
+timeBreak = 0.2
 
 [sub_resource type="Resource" id=5]
 resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 240 )
-timeBreak = 0.0
+enemyPosition = Vector2( 688, 204 )
+timeBreak = 0.2
 
 [sub_resource type="Resource" id=6]
 resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 200 )
+enemyPosition = Vector2( 688, 148 )
 timeBreak = 1.0
 
 [sub_resource type="Resource" id=7]
@@ -56,15 +56,15 @@ resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 164 )
-timeBreak = 0.0
+enemyPosition = Vector2( 688, 148 )
+timeBreak = 0.2
 
 [sub_resource type="Resource" id=8]
 resource_name = "Normal"
 script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 688, 124 )
+enemyPosition = Vector2( 688, 92 )
 timeBreak = 0.0
 
 [sub_resource type="Resource" id=9]

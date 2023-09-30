@@ -13,7 +13,7 @@ func angleShoot(projectile: int, angle: float = 0, count: float = 1, offset: Vec
 	var incrementValue: float = arc / (count + 1)
 
 	# Instantiating the projectile
-	var level = get_tree().root.get_child(0)
+	var level = get_tree().root.get_child(1)
 
 	for i in range(count):
 		var proj = projectileReferences[projectile].instance()
@@ -31,7 +31,7 @@ func radialShoot(projectile: int, angle: float = 0, count: float = 1, offset: Ve
 	var incrementValue: float = 360 / count
 	
 	# Instantiating the projectile
-	var level = get_tree().root.get_child(0)
+	var level = get_tree().root.get_child(1)
 
 	for i in range(count):
 		var proj = projectileReferences[projectile].instance()
@@ -56,7 +56,7 @@ func targetShoot(projectile: int, object: Node, count: float = 1, offset: Vector
 	var incrementValue: float = arc / (count + 1)
 
 	# Instantiating the projectile
-	var level = get_tree().root.get_child(0)
+	var level = get_tree().root.get_child(1)
 
 	for i in range(count):
 		var proj = projectileReferences[projectile].instance()

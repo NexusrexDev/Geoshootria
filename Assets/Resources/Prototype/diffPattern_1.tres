@@ -1,7 +1,160 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/CustomResources/introResource.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/CustomResources/sprayResource.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 36 )
+timeBreak = 0.96
+
+[sub_resource type="Resource" id=2]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -96, 0 )
+
+[sub_resource type="Resource" id=3]
+resource_name = "Ranger"
+script = ExtResource( 2 )
+enemyType = 3
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+introProperties = SubResource( 2 )
+timeBreak = 0.48
+
+[sub_resource type="Resource" id=4]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 204 )
+timeBreak = 1.4
+
+[sub_resource type="Resource" id=5]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 260 )
+timeBreak = 0.96
+
+[sub_resource type="Resource" id=6]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -96, 0 )
+
+[sub_resource type="Resource" id=7]
+resource_name = "Ranger"
+script = ExtResource( 2 )
+enemyType = 3
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+introProperties = SubResource( 6 )
+timeBreak = 0.48
+
+[sub_resource type="Resource" id=8]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 688, 92 )
+timeBreak = 1.68
+
+[sub_resource type="Resource" id=9]
+resource_name = "Mini Wizard"
+script = ExtResource( 2 )
+enemyType = 13
+createAtPlayer = false
+enemyPosition = Vector2( 608, 36 )
+timeBreak = 0.96
+
+[sub_resource type="Resource" id=10]
+resource_name = "Mini Wizard"
+script = ExtResource( 2 )
+enemyType = 13
+createAtPlayer = false
+enemyPosition = Vector2( 608, 148 )
+timeBreak = 0.96
+
+[sub_resource type="Resource" id=11]
+resource_name = "Mini Wizard"
+script = ExtResource( 2 )
+enemyType = 13
+createAtPlayer = false
+enemyPosition = Vector2( 608, 260 )
+timeBreak = 1.68
+
+[sub_resource type="Resource" id=12]
+resource_name = "Spray properties"
+script = ExtResource( 4 )
+angle = 195.0
+count = 3
+dir = 1
+
+[sub_resource type="Resource" id=13]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -112, 0 )
+
+[sub_resource type="Resource" id=14]
+resource_name = "Spray"
+script = ExtResource( 2 )
+enemyType = 11
+createAtPlayer = false
+enemyPosition = Vector2( 688, 36 )
+introProperties = SubResource( 13 )
+actionProperties = SubResource( 12 )
+timeBreak = 1.0
+
+[sub_resource type="Resource" id=15]
+resource_name = "Spray properties"
+script = ExtResource( 4 )
+angle = 165.0
+count = 3
+dir = -1
+
+[sub_resource type="Resource" id=16]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -112, 0 )
+
+[sub_resource type="Resource" id=17]
+resource_name = "Spray"
+script = ExtResource( 2 )
+enemyType = 11
+createAtPlayer = false
+enemyPosition = Vector2( 688, 260 )
+introProperties = SubResource( 16 )
+actionProperties = SubResource( 15 )
+timeBreak = 1.0
+
+[sub_resource type="Resource" id=18]
+resource_name = "Spray properties"
+script = ExtResource( 4 )
+angle = 180.0
+count = 3
+dir = 1
+
+[sub_resource type="Resource" id=19]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -112, 0 )
+
+[sub_resource type="Resource" id=20]
+resource_name = "Spray"
+script = ExtResource( 2 )
+enemyType = 11
+createAtPlayer = false
+enemyPosition = Vector2( 688, 148 )
+introProperties = SubResource( 19 )
+actionProperties = SubResource( 18 )
+timeBreak = 0.0
 
 [resource]
 script = ExtResource( 1 )
-enemyList = [  ]
+enemyList = [ SubResource( 1 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 14 ), SubResource( 17 ), SubResource( 20 ) ]
