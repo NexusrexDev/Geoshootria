@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Prototype/Sprites/nineslicetest.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Prototype/Audio/mainfirst.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Scripts/Interfaces/buttonChange.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Interfaces/buttonChange.gd" type="Script" id=5]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource( 1 )
@@ -30,6 +32,7 @@ focus_neighbour_top = NodePath("../Exit")
 focus_neighbour_bottom = NodePath("../Settings")
 mouse_filter = 2
 text = "Play"
+script = ExtResource( 5 )
 
 [node name="Settings" type="Button" parent="Main"]
 margin_top = 24.0
@@ -39,6 +42,7 @@ focus_neighbour_top = NodePath("../Play")
 focus_neighbour_bottom = NodePath("../Exit")
 mouse_filter = 2
 text = "Settings"
+script = ExtResource( 4 )
 
 [node name="Exit" type="Button" parent="Main"]
 margin_top = 48.0
@@ -48,6 +52,7 @@ focus_neighbour_top = NodePath("../Settings")
 focus_neighbour_bottom = NodePath("../Play")
 mouse_filter = 2
 text = "Exit"
+script = ExtResource( 5 )
 
 [node name="Settings" type="Control" parent="."]
 visible = false
@@ -174,6 +179,7 @@ margin_right = 236.0
 margin_bottom = 126.0
 mouse_filter = 2
 text = "Back"
+script = ExtResource( 5 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
