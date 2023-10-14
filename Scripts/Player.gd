@@ -20,7 +20,7 @@ func _ready():
 
 func _process(_delta):
 	if canControl:
-		if Input.is_action_pressed("ui_accept"):
+		if Input.is_action_pressed("gp_shoot"):
 			shooting()
 
 func _physics_process(delta):
