@@ -1,6 +1,4 @@
-[gd_resource type="Animation" load_steps=2 format=2]
-
-[ext_resource path="res://Assets/Prototype/Audio/gameovertheme.ogg" type="AudioStream" id=1]
+[gd_resource type="Animation" format=2]
 
 [resource]
 resource_name = "GameOver"
@@ -78,27 +76,17 @@ tracks/5/keys = {
 "method": "grab_focus"
 } ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("Music:playing")
+tracks/6/type = "method"
+tracks/6/path = NodePath("AnimationPlayer")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Music:stream")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0.1 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 1 ) ]
+"values": [ {
+"args": [  ],
+"method": "gameoverMusic"
+} ]
 }

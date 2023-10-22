@@ -4,9 +4,10 @@ extends Node2D
 var obj
 
 func _ready():
-	obj = load("res://Scenes/Objects/Prototypes/laneGuide.tscn").instance()
-	obj.visible = false
-	add_child(obj)
+	if Engine.editor_hint:
+		obj = load("res://Scenes/Objects/Prototypes/laneGuide.tscn").instance()
+		obj.visible = false
+		add_child(obj)
 
 func _process(_delta):
 	if Engine.editor_hint:

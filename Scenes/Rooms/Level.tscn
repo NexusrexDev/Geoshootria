@@ -14,7 +14,7 @@
 [ext_resource path="res://Assets/Resources/Prototype/easyPattern_2.tres" type="Resource" id=12]
 [ext_resource path="res://Assets/Resources/Prototype/basicBoss.tres" type="Resource" id=13]
 [ext_resource path="res://Scripts/Prototyping/showLane.gd" type="Script" id=14]
-[ext_resource path="res://Assets/Prototype/Audio/gamefirst.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Scripts/audioReferences.gd" type="Script" id=15]
 [ext_resource path="res://Assets/Animations/GameOver.tres" type="Animation" id=20]
 
 [sub_resource type="Animation" id=5]
@@ -61,6 +61,20 @@ tracks/2/keys = {
 "method": "startSpawner"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "mainMusic"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 320, 32 )
@@ -81,6 +95,7 @@ script = ExtResource( 14 )
 autoplay = "Intro"
 anims/GameOver = ExtResource( 20 )
 anims/Intro = SubResource( 5 )
+script = ExtResource( 15 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -64, 148 )
@@ -176,12 +191,6 @@ position = Vector2( 704, 0 )
 modulate = Color( 0.121569, 0.384314, 0.454902, 1 )
 position = Vector2( -48, 164 )
 shape = SubResource( 4 )
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-stream = ExtResource( 19 )
-autoplay = true
-bus = "Music"
 
 [node name="Spawner" parent="." instance=ExtResource( 7 )]
 easyPatterns = [ ExtResource( 11 ), ExtResource( 12 ) ]
