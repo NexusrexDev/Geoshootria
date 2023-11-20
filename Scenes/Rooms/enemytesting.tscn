@@ -3,12 +3,10 @@
 [ext_resource path="res://Scripts/Prototyping/enemytesting.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Prototype/Sprites/projectilePlaceholder.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Objects/Enemies/Teleporters/miniwiz_teleporter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/enemyProjectile.tscn" type="PackedScene" id=4]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
-enemyScene = ExtResource( 4 )
-spawnPosition = Vector2( 540, 170 )
 
 [node name="ProjectilePlaceholder" type="Sprite" parent="."]
 position = Vector2( 320, 328 )
@@ -18,3 +16,7 @@ texture = ExtResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 64, 168 )
 canControl = true
+
+[node name="Projectile" parent="." instance=ExtResource( 4 )]
+position = Vector2( 304, 152 )
+speed = 0

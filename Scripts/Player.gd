@@ -7,16 +7,20 @@ export var speed = 250
 var motion : Vector2 = Vector2.ZERO
 export var canControl : bool = false
 var lerpValue : float = 20
+var grazeValue : int = 5
 onready var projectileCreator = $projectileCreator
 onready var shootTimer = $shootTimer
 onready var invisTimer = $iframeTimer
 
 signal healthChange(value)
+signal graze(score)
 signal death()
 
 func _ready():
-	pass
-	#canControl = false
+	# Connecting the score update signal to the HUD/Game Manager
+	var HUD = get_node("/root/Level/HUD")
+	if HUD != null:
+		connect("graze", HUD, "scoreUpdate")
 
 func _process(_delta):
 	if canControl:
@@ -51,6 +55,10 @@ func damage():
 func enableControl():
 	canControl = true
 
-func _on_DamageBox_area_entered(area):
+func _on_DamageBox_area_entered(area:Area2D):
 	if area.is_in_group("enemy"):
 		damage()
+
+func _on_GrazeBox_area_entered(area:Area2D):
+	if area.is_in_group("enemy"):
+		emit_signal("graze", grazeValue)
