@@ -82,8 +82,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SFXManager="*res://Scripts/SFXManager.gd"
-MusicManager="*res://Scripts/MusicManager.gd"
+AudioManager="*res://Scripts/AudioManager.gd"
 
 [debug]
 

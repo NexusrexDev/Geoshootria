@@ -23,10 +23,11 @@ enum enemies {
 
 # Variables
 export(enemies) var enemyType setget setEnemyType
-export(bool) var createAtPlayer
+export(bool) var createAtPlayer = false
 export(Vector2) var enemyPosition
 export(Resource) var introProperties
 export(Resource) var actionProperties
+export(bool) var chunkEnd = false
 export(float, 0, 60) var timeBreak
 
 tool

@@ -4,10 +4,6 @@ extends Node
 ### Variables
 # Pattern variables
 export(Array, Resource) var easyPatterns
-export(Array, Resource) var diffPatterns
-export(Array, Resource) var bossPatterns
-export(Resource) var empoweringPattern
-export(int) var bossThreshold
 # Enemy arrays
 export(Array, PackedScene) var enemyReferences
 # Inner spawner variables
@@ -17,8 +13,9 @@ var currentPattern
 var fullEnemies: int
 var currentEnemy: int
 var completedEnemies: int
-var selectionRange: int
 var currentBoss: bool = false
+var hasChunk: bool = false 
+var chunkCount: int #Chunk ends when the completed enemies are equal to this
 # References
 onready var patternTimer = $patternTimer
 onready var enemyTimer = $enemyTimer
@@ -41,53 +38,10 @@ func stopSpawner():
 
 # This method starts the spawner by selecting a pattern
 func patternPicker():
-	var selectedPattern
+	var selectedPattern = easyPatterns[0]
 	var isBoss = false
 
-	if finishedPatterns < bossThreshold:
-		# Create a normal pattern or an empowering pattern, higher prob. to easy patterns
-		var typeSelect = customMethods.getWeightedRNG([90, 10])
-		if typeSelect == 0:
-			var difficultySelect = customMethods.getWeightedRNG([100, 0])
-			if difficultySelect == 0:
-				selectedPattern = easyPatterns[randi() % easyPatterns.size()]
-			else:
-				selectedPattern = diffPatterns[randi() % diffPatterns.size()]
-		else:
-			selectedPattern = empoweringPattern
-
-	elif finishedPatterns == bossThreshold:
-		# Create the first boss and only the first boss
-		isBoss = true
-		selectedPattern = bossPatterns[0]
-
-	elif finishedPatterns % bossThreshold == 0:
-		# Create a normal pattern, a boss or an empowering pattern
-		var typeSelect = customMethods.getWeightedRNG([63, 27, 10])
-		if typeSelect == 0:
-			var difficultySelect = customMethods.getWeightedRNG([50, 50])
-			if difficultySelect == 0:
-				selectedPattern = easyPatterns[randi() % easyPatterns.size()]
-			else:
-				selectedPattern = diffPatterns[randi() % diffPatterns.size()]
-		elif typeSelect == 1:
-			# Boss selection
-			isBoss = true
-			selectedPattern = bossPatterns[randi() % bossPatterns.size()]
-		else:
-			selectedPattern = empoweringPattern
-
-	else:
-		# Create a normal pattern or an empowering pattern, equal prob. to easy patterns
-		var typeSelect = customMethods.getWeightedRNG([85, 15])
-		if typeSelect == 0:
-			var difficultySelect = customMethods.getWeightedRNG([50, 50])
-			if difficultySelect == 0:
-				selectedPattern = easyPatterns[randi() % easyPatterns.size()]
-			else:
-				selectedPattern = diffPatterns[randi() % diffPatterns.size()]
-		else:
-			selectedPattern = empoweringPattern
+	# Pattern selection logic (based on the current level) goes here
 	
 	startPattern(selectedPattern, isBoss)
 
@@ -123,6 +77,8 @@ func createEnemy():
 	var currentIntroProps = currentEnemyRef.introProperties
 	var currentActionProps = currentEnemyRef.actionProperties
 	var currentTimeBreak = currentEnemyRef.timeBreak
+	hasChunk = currentEnemyRef.chunkEnd
+	chunkCount = currentEnemy
 	
 	# Instantiating the enemy
 	var enemy = enemyReferences[currentEnemyType].instance()
@@ -145,7 +101,8 @@ func createEnemy():
 			createEnemy()
 		else:
 			enemyTimer.wait_time = currentTimeBreak
-			enemyTimer.start()
+			if !hasChunk:
+				enemyTimer.start()
 
 # This method is called once an enemy is destroyed/passed safely (using a signal)
 func enemyPassed():
@@ -162,6 +119,10 @@ func enemyPassed():
 		# If this was a boss pattern, stop music, change state
 		if currentBoss:
 			currentBoss = false
+		return
+
+	if hasChunk && completedEnemies == chunkCount + 1:
+		enemyTimer.start()
 
 # Turning the debug menu on and off
 func _process(_delta):
@@ -181,9 +142,6 @@ func debugPatternPlay():
 	var patternIndex: int = $CanvasLayer/DebugInterface/ColorRect/SelectPattern/PatternIndex.get_selected_id()
 	var enemyPatterns: Array = []
 	enemyPatterns.append_array(easyPatterns)
-	enemyPatterns.append_array(diffPatterns)
-	enemyPatterns.append_array(bossPatterns)
-	enemyPatterns.append(empoweringPattern)
 	stopSpawner()
 	running = true
 	startPattern(enemyPatterns[patternIndex], patternIndex == 3)

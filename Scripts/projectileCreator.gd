@@ -13,7 +13,7 @@ func angleShoot(projectile: int, angle: float = 0, count: float = 1, offset: Vec
 	var incrementValue: float = arc / (count + 1)
 
 	# Instantiating the projectile
-	var level = get_tree().root.get_child(2)
+	var level = get_tree().root.get_child(1)
 
 	for i in range(count):
 		var proj = projectileReferences[projectile].instance()
@@ -23,7 +23,7 @@ func angleShoot(projectile: int, angle: float = 0, count: float = 1, offset: Vec
 
 	# Playing on shooting
 	if audioReferences.size() > 0:
-		SFXManager.playSound(audioReferences[projectile].resource_path)
+		AudioManager.playSound(audioReferences[projectile].resource_path)
 
 func radialShoot(projectile: int, angle: float = 0, count: float = 1, offset: Vector2 = Vector2.ZERO):
 	# Circular blasts start from *angle* degree, dividing the circle evenly
@@ -31,7 +31,7 @@ func radialShoot(projectile: int, angle: float = 0, count: float = 1, offset: Ve
 	var incrementValue: float = 360 / count
 	
 	# Instantiating the projectile
-	var level = get_tree().root.get_child(2)
+	var level = get_tree().root.get_child(1)
 
 	for i in range(count):
 		var proj = projectileReferences[projectile].instance()
@@ -41,7 +41,7 @@ func radialShoot(projectile: int, angle: float = 0, count: float = 1, offset: Ve
 
 	# Playing on shooting
 	if audioReferences.size() > 0:
-		SFXManager.playSound(audioReferences[projectile].resource_path)
+		AudioManager.playSound(audioReferences[projectile].resource_path)
 
 func targetShoot(projectile: int, object: Node, count: float = 1, offset: Vector2 = Vector2.ZERO):
 	# Find angle between the projectileCreator and the object
@@ -56,7 +56,7 @@ func targetShoot(projectile: int, object: Node, count: float = 1, offset: Vector
 	var incrementValue: float = arc / (count + 1)
 
 	# Instantiating the projectile
-	var level = get_tree().root.get_child(2)
+	var level = get_tree().root.get_child(1)
 
 	for i in range(count):
 		var proj = projectileReferences[projectile].instance()
@@ -66,4 +66,4 @@ func targetShoot(projectile: int, object: Node, count: float = 1, offset: Vector
 
 	# Playing on shooting
 	if audioReferences.size() > 0:
-		SFXManager.playSound(audioReferences[projectile].resource_path)
+		AudioManager.playSound(audioReferences[projectile].resource_path)

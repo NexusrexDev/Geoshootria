@@ -11,6 +11,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 148 )
+chunkEnd = false
 timeBreak = 0.42
 
 [sub_resource type="Resource" id=2]
@@ -19,6 +20,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 36 )
+chunkEnd = false
 timeBreak = 0.42
 
 [sub_resource type="Resource" id=3]
@@ -27,6 +29,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 92 )
+chunkEnd = false
 timeBreak = 0.72
 
 [sub_resource type="Resource" id=4]
@@ -35,6 +38,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 148 )
+chunkEnd = false
 timeBreak = 0.42
 
 [sub_resource type="Resource" id=5]
@@ -43,6 +47,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 260 )
+chunkEnd = false
 timeBreak = 0.42
 
 [sub_resource type="Resource" id=6]
@@ -51,6 +56,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 204 )
+chunkEnd = true
 timeBreak = 1.42
 
 [sub_resource type="Resource" id=7]
@@ -65,6 +71,7 @@ enemyType = 4
 createAtPlayer = false
 enemyPosition = Vector2( 688, 148 )
 actionProperties = SubResource( 7 )
+chunkEnd = false
 timeBreak = 0.24
 
 [sub_resource type="Resource" id=9]
@@ -79,6 +86,7 @@ enemyType = 4
 createAtPlayer = false
 enemyPosition = Vector2( 688, 148 )
 actionProperties = SubResource( 9 )
+chunkEnd = false
 timeBreak = 0.24
 
 [sub_resource type="Resource" id=11]
@@ -93,6 +101,7 @@ enemyType = 4
 createAtPlayer = false
 enemyPosition = Vector2( 688, 148 )
 actionProperties = SubResource( 11 )
+chunkEnd = false
 timeBreak = 0.92
 
 [sub_resource type="Resource" id=13]
@@ -107,6 +116,7 @@ enemyType = 4
 createAtPlayer = false
 enemyPosition = Vector2( 688, 256 )
 actionProperties = SubResource( 13 )
+chunkEnd = false
 timeBreak = 0.24
 
 [sub_resource type="Resource" id=15]
@@ -121,6 +131,7 @@ enemyType = 4
 createAtPlayer = false
 enemyPosition = Vector2( 688, 256 )
 actionProperties = SubResource( 15 )
+chunkEnd = false
 timeBreak = 0.24
 
 [sub_resource type="Resource" id=17]
@@ -135,6 +146,7 @@ enemyType = 4
 createAtPlayer = false
 enemyPosition = Vector2( 688, 256 )
 actionProperties = SubResource( 17 )
+chunkEnd = false
 timeBreak = 0.92
 
 [sub_resource type="Resource" id=19]
@@ -149,6 +161,7 @@ enemyType = 4
 createAtPlayer = false
 enemyPosition = Vector2( 688, 40 )
 actionProperties = SubResource( 19 )
+chunkEnd = false
 timeBreak = 0.24
 
 [sub_resource type="Resource" id=21]
@@ -163,6 +176,7 @@ enemyType = 4
 createAtPlayer = false
 enemyPosition = Vector2( 688, 40 )
 actionProperties = SubResource( 21 )
+chunkEnd = false
 timeBreak = 0.24
 
 [sub_resource type="Resource" id=23]
@@ -177,6 +191,7 @@ enemyType = 4
 createAtPlayer = false
 enemyPosition = Vector2( 688, 40 )
 actionProperties = SubResource( 23 )
+chunkEnd = false
 timeBreak = 2.22
 
 [sub_resource type="Resource" id=25]
@@ -185,6 +200,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 148 )
+chunkEnd = false
 timeBreak = 0.42
 
 [sub_resource type="Resource" id=26]
@@ -193,6 +209,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 36 )
+chunkEnd = false
 timeBreak = 0.82
 
 [sub_resource type="Resource" id=27]
@@ -201,6 +218,7 @@ script = ExtResource( 2 )
 enemyType = 8
 createAtPlayer = false
 enemyPosition = Vector2( 688, 204 )
+chunkEnd = false
 timeBreak = 0.72
 
 [sub_resource type="Resource" id=28]
@@ -209,6 +227,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 148 )
+chunkEnd = false
 timeBreak = 0.42
 
 [sub_resource type="Resource" id=29]
@@ -217,6 +236,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 260 )
+chunkEnd = false
 timeBreak = 0.82
 
 [sub_resource type="Resource" id=30]
@@ -225,6 +245,7 @@ script = ExtResource( 2 )
 enemyType = 8
 createAtPlayer = false
 enemyPosition = Vector2( 688, 92 )
+chunkEnd = false
 timeBreak = 1.84
 
 [sub_resource type="Resource" id=31]
@@ -239,6 +260,7 @@ enemyType = 3
 createAtPlayer = false
 enemyPosition = Vector2( 688, 36 )
 introProperties = SubResource( 31 )
+chunkEnd = false
 timeBreak = 0.82
 
 [sub_resource type="Resource" id=33]
@@ -253,6 +275,7 @@ enemyType = 3
 createAtPlayer = false
 enemyPosition = Vector2( 688, 260 )
 introProperties = SubResource( 33 )
+chunkEnd = false
 timeBreak = 0.82
 
 [sub_resource type="Resource" id=35]
@@ -267,6 +290,7 @@ enemyType = 3
 createAtPlayer = false
 enemyPosition = Vector2( 688, 148 )
 introProperties = SubResource( 35 )
+chunkEnd = false
 timeBreak = 0.22
 
 [sub_resource type="Resource" id=37]
@@ -281,6 +305,7 @@ enemyType = 3
 createAtPlayer = false
 enemyPosition = Vector2( 688, 92 )
 introProperties = SubResource( 37 )
+chunkEnd = false
 timeBreak = 0.22
 
 [sub_resource type="Resource" id=39]
@@ -295,6 +320,7 @@ enemyType = 3
 createAtPlayer = false
 enemyPosition = Vector2( 688, 204 )
 introProperties = SubResource( 39 )
+chunkEnd = false
 timeBreak = 2.02
 
 [sub_resource type="Resource" id=41]
@@ -303,6 +329,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 36 )
+chunkEnd = false
 timeBreak = 0.22
 
 [sub_resource type="Resource" id=42]
@@ -311,6 +338,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 36 )
+chunkEnd = false
 timeBreak = 0.42
 
 [sub_resource type="Resource" id=43]
@@ -319,6 +347,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 204 )
+chunkEnd = false
 timeBreak = 0.22
 
 [sub_resource type="Resource" id=44]
@@ -327,6 +356,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 204 )
+chunkEnd = false
 timeBreak = 0.42
 
 [sub_resource type="Resource" id=45]
@@ -335,6 +365,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 92 )
+chunkEnd = false
 timeBreak = 0.22
 
 [sub_resource type="Resource" id=46]
@@ -343,6 +374,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 92 )
+chunkEnd = false
 timeBreak = 0.42
 
 [sub_resource type="Resource" id=47]
@@ -351,6 +383,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 260 )
+chunkEnd = false
 timeBreak = 0.22
 
 [sub_resource type="Resource" id=48]
@@ -359,6 +392,7 @@ script = ExtResource( 2 )
 enemyType = 0
 createAtPlayer = false
 enemyPosition = Vector2( 688, 260 )
+chunkEnd = false
 timeBreak = 1.62
 
 [sub_resource type="Resource" id=49]
@@ -367,6 +401,7 @@ script = ExtResource( 2 )
 enemyType = 8
 createAtPlayer = false
 enemyPosition = Vector2( 688, 260 )
+chunkEnd = false
 timeBreak = 0.22
 
 [sub_resource type="Resource" id=50]
@@ -375,6 +410,7 @@ script = ExtResource( 2 )
 enemyType = 8
 createAtPlayer = false
 enemyPosition = Vector2( 688, 204 )
+chunkEnd = false
 timeBreak = 0.22
 
 [sub_resource type="Resource" id=51]
@@ -383,6 +419,7 @@ script = ExtResource( 2 )
 enemyType = 8
 createAtPlayer = false
 enemyPosition = Vector2( 688, 148 )
+chunkEnd = false
 timeBreak = 0.22
 
 [sub_resource type="Resource" id=52]
@@ -391,6 +428,7 @@ script = ExtResource( 2 )
 enemyType = 8
 createAtPlayer = false
 enemyPosition = Vector2( 688, 52 )
+chunkEnd = false
 timeBreak = 0.22
 
 [sub_resource type="Resource" id=53]
@@ -399,6 +437,7 @@ script = ExtResource( 2 )
 enemyType = 8
 createAtPlayer = false
 enemyPosition = Vector2( 688, 36 )
+chunkEnd = false
 timeBreak = 0.0
 
 [resource]
