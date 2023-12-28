@@ -26,6 +26,8 @@ func _process(_delta):
 	if canControl:
 		if Input.is_action_pressed("gp_shoot"):
 			shooting()
+		elif Input.is_action_just_released("gp_shoot"):
+			shootTimer.stop()
 
 func _physics_process(delta):
 	# Movement
