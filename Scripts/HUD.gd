@@ -42,19 +42,8 @@ func refreshHealth():
 
 func refreshScore():
 	# Updates the score-related labels
-	scoreLabel.text = "Score: " + formatConv(score)
-	hscoreLabel.text = "Highscore: " + formatConv(highscore)
-
-func formatConv(number):
-	# Turns a number into a six digit string
-	var numberString = ""
-	number = str(number)
-	var zeroes = 6 - number.length()
-	if zeroes > 0:
-		for i in zeroes:
-			numberString += "0"
-	numberString += number
-	return numberString
+	scoreLabel.text = "Score: " + ("%06d" % score)
+	hscoreLabel.text = "Highscore: " + ("%06d" % highscore)
 
 func healthUpdate(value):
 	# Connected to a signal, when the player's health is updated
