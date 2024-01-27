@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/treebackPlaceholder.png-008e7a9c857eb696eea4a0fe5108664a.stex"
+path="res://.import/leafParticles.png-cf3171f9fec27daff87605e6c53b32dc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Prototype/Sprites/treebackPlaceholder.png"
-dest_files=[ "res://.import/treebackPlaceholder.png-008e7a9c857eb696eea4a0fe5108664a.stex" ]
+source_file="res://Assets/Sprites/Background/leafParticles.png"
+dest_files=[ "res://.import/leafParticles.png-cf3171f9fec27daff87605e6c53b32dc.stex" ]
 
 [params]
 
