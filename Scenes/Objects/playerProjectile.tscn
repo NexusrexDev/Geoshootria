@@ -6,7 +6,7 @@
 extents = Vector2( 8, 8 )
 
 [node name="Projectile" groups=["playerProj"] instance=ExtResource( 1 )]
-speed = 1200
+speed = 960
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
