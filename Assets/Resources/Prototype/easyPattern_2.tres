@@ -16,8 +16,8 @@ enemyType = 6
 createAtPlayer = false
 enemyPosition = Vector2( 688, 36 )
 introProperties = SubResource( 6 )
-timeBreak = 0.68
 chunkEnd = false
+timeBreak = 0.68
 
 [sub_resource type="Resource" id=7]
 resource_name = "Intro position"
@@ -31,8 +31,8 @@ enemyType = 6
 createAtPlayer = false
 enemyPosition = Vector2( 688, 148 )
 introProperties = SubResource( 7 )
-timeBreak = 0.68
 chunkEnd = false
+timeBreak = 0.68
 
 [sub_resource type="Resource" id=8]
 resource_name = "Intro position"
@@ -46,8 +46,8 @@ enemyType = 6
 createAtPlayer = false
 enemyPosition = Vector2( 688, 260 )
 introProperties = SubResource( 8 )
-timeBreak = 1.4
 chunkEnd = false
+timeBreak = 1.4
 
 [sub_resource type="Resource" id=9]
 resource_name = "Intro position"
@@ -61,8 +61,8 @@ enemyType = 6
 createAtPlayer = false
 enemyPosition = Vector2( 688, 92 )
 introProperties = SubResource( 9 )
-timeBreak = 0.44
 chunkEnd = false
+timeBreak = 0.44
 
 [sub_resource type="Resource" id=10]
 resource_name = "Intro position"
@@ -76,8 +76,8 @@ enemyType = 6
 createAtPlayer = false
 enemyPosition = Vector2( 688, 204 )
 introProperties = SubResource( 10 )
-timeBreak = 1.24
 chunkEnd = false
+timeBreak = 1.24
 
 [sub_resource type="Resource" id=11]
 resource_name = "Homing"
@@ -85,8 +85,8 @@ script = ExtResource( 2 )
 enemyType = 8
 createAtPlayer = false
 enemyPosition = Vector2( 688, 92 )
-timeBreak = 0.48
 chunkEnd = false
+timeBreak = 0.48
 
 [sub_resource type="Resource" id=12]
 resource_name = "Intro position"
@@ -100,8 +100,8 @@ enemyType = 6
 createAtPlayer = true
 enemyPosition = Vector2( 688, 36 )
 introProperties = SubResource( 12 )
-timeBreak = 0.72
 chunkEnd = false
+timeBreak = 0.72
 
 [sub_resource type="Resource" id=14]
 resource_name = "Homing"
@@ -109,8 +109,8 @@ script = ExtResource( 2 )
 enemyType = 8
 createAtPlayer = false
 enemyPosition = Vector2( 688, 204 )
-timeBreak = 0.48
 chunkEnd = false
+timeBreak = 0.48
 
 [sub_resource type="Resource" id=15]
 resource_name = "Intro position"
@@ -124,8 +124,8 @@ enemyType = 6
 createAtPlayer = true
 enemyPosition = Vector2( 688, 0 )
 introProperties = SubResource( 15 )
-timeBreak = 1.24
 chunkEnd = false
+timeBreak = 1.24
 
 [resource]
 script = ExtResource( 1 )
