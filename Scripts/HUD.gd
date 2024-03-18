@@ -5,13 +5,13 @@ extends CanvasLayer
 var health : int = 3
 var score : int = 0
 var highscore : int = 0
-var highscoreBroken = false
-var highscoreFile = "user://highscore.save"
+var highscoreBroken : bool = false
+var highscoreFile : String = "user://highscore.save"
 
-onready var healthLabel = $Game/HealthLabel
-onready var scoreLabel = $Game/ScoreLabel
-onready var hscoreLabel = $Game/HighscoreLabel
-onready var pauseNode = $Pause
+onready var healthBar : TextureRect = $Game/HealthBar
+onready var scoreLabel : Label = $Game/ScoreLabel
+onready var hscoreLabel : Label = $Game/HighscoreLabel
+onready var pauseNode : Control = $Pause
 
 func _ready():
 	readHighscore()
@@ -38,12 +38,12 @@ func readHighscore():
 
 func refreshHealth():
 	# Updates the health-related nodes, expect changing when using a new UI
-	healthLabel.text = "Health: " + str(health)
+	healthBar.texture.region = Rect2(49 * (3 - health), 0, 49, 12)
 
 func refreshScore():
 	# Updates the score-related labels
-	scoreLabel.text = "Score: " + ("%06d" % score)
-	hscoreLabel.text = "Highscore: " + ("%06d" % highscore)
+	scoreLabel.text = "Score: " + str("%06d" % score)
+	hscoreLabel.text = "Highscore: " + str("%06d" % highscore)
 
 func healthUpdate(value):
 	# Connected to a signal, when the player's health is updated
