@@ -3,17 +3,41 @@ extends baseEnemy
 
 # Variables
 export var forwardMotion: float
-export var isVariant: bool
-onready var projCreator = $projectileCreator
+export var canShoot: bool
+onready var projCreator: projectileCreator = $projectileCreator
+#Sinewave properties
+var sineX: float = 0
+var sineIncrement: float = 2.7
+var verticalSpeed: float = 70
+var sineDirection: int = -1
 
 func startAction():
-	motion = Vector2(-forwardMotion, 0)
+	if introType == intro.none:
+		motion = Vector2(-forwardMotion, 0)
+		return
+
+	motion = Vector2(-64, 0)
+
+	yield(get_tree().create_timer(1, false),"timeout")
 
 	# Shooting, in variant mode
-	if isVariant:
-		yield(get_tree().create_timer(2, false),"timeout")
+	if canShoot:
 		var player = get_node("/root/Level/Player")
 		if player:
 			projCreator.targetShoot(0, player)
 		else:
 			projCreator.angleShoot(0, 180)
+
+	startOutro()
+
+func startOutro():
+	var outroVector: Vector2 = Vector2(-forwardMotion, 0)
+	if outroProperties != null:
+		outroVector = outroProperties.direction * forwardMotion
+	yield(get_tree().create_tween().tween_property(self, "motion", outroVector, 0.3), "finished")
+
+func _process(delta):
+	if actionProperties != null && actionProperties.sinewave:
+		sineX += delta * sineIncrement
+		var verticalMotion = cos(sineX) * verticalSpeed * (-sineDirection)
+		motion.y = verticalMotion

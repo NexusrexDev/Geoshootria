@@ -79,9 +79,6 @@ func _ready():
 		_:
 			# Immediately start the enemy's action phase, no tweens
 			startAction()
-
-	if outroProperties != null:
-		startOutro()
 		
 
 func _process(delta):

@@ -2,12 +2,8 @@
 class_name actionResource
 extends Resource
 
-enum action {
-    SINEWAVE,
-    SHOOTING
-}
-
-export(Array, action) var actions
+export(bool) var sinewave = false
+export(bool) var canShoot = false
 
 tool
 func _init() -> void:
