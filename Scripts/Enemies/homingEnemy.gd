@@ -11,7 +11,11 @@ func startAction():
 	var player = get_node("/root/Level/Player")
 	var homingAngle: float = Vector2(player.position.x - global_position.x,
 		- ((player.position.y) - global_position.y) ).angle()
+
 	motion = Vector2(cos(homingAngle) * forwardMotion, -sin(homingAngle) * forwardMotion)
+	
+	rotation_degrees = rad2deg(-homingAngle)
+	
 
 	# Shooting, in variant mode
 	if isVariant:

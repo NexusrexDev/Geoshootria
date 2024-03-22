@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scenes/Objects/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/projectileCreator.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Enemies/homingEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Characters/HomingEnemy.png" type="Texture" id=3]
 
-[node name="homingEnemy" instance=ExtResource( 1 )]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 13, 13 )
+
+[node name="homingEnemy" type="Area2D" groups=["enemy"]]
+rotation = 3.14159
+z_index = 5
 script = ExtResource( 2 )
 health = 1
 forwardMotion = 300.0
-isVariant = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 16 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -16 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="projectileCreator" type="Position2D" parent="."]
+script = ExtResource( 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_Enemy_area_entered"]
+[connection signal="tween_all_completed" from="Tween" to="." method="startAction"]
