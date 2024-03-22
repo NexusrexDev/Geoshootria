@@ -74,8 +74,9 @@ func createEnemy():
 	var currentEnemyAtPlayer: bool = currentEnemyRef.createAtPlayer
 	var currentEnemyType: int = currentEnemyRef.enemyType
 	var currentEnemyPos: Vector2 = currentEnemyRef.enemyPosition
-	var currentIntroProps = currentEnemyRef.introProperties
-	var currentActionProps = currentEnemyRef.actionProperties
+	var currentIntroProps: Resource = currentEnemyRef.introProperties
+	var currentActionProps: Resource = currentEnemyRef.actionProperties
+	var currentOutroProps: Resource = currentEnemyRef.outroProperties
 	var currentTimeBreak = currentEnemyRef.timeBreak
 	hasChunk = currentEnemyRef.chunkEnd
 	chunkCount = currentEnemy
@@ -92,6 +93,7 @@ func createEnemy():
 		enemy.position = currentEnemyPos
 	enemy.introProperties = currentIntroProps
 	enemy.actionProperties = currentActionProps
+	enemy.outroProperties = currentOutroProps
 	get_parent().call_deferred("add_child", enemy)
 	
 	# Incrementing the currentEnemy variable and setting the timer

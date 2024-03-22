@@ -13,10 +13,10 @@ export(intro) var introType
 export var health: int
 export(Resource) var introProperties
 export(Resource) var actionProperties
+export(Resource) var outroProperties
 export var isBoss: bool
 var score: int
-onready var invisTimer = $iframeTimer
-onready var tween = $Tween
+onready var tween: Tween = $Tween
 var motion: Vector2
 var temp_motion: Vector2
 
@@ -38,6 +38,11 @@ func _ready():
 		score = health * 10
 	else:
 		score = health * 5
+
+	# Forcing the introType to change if a resource is set
+	if introProperties != null:
+		introType = intro.tween
+
 	# Intro code
 	match(introType):
 		intro.tween:
@@ -45,10 +50,10 @@ func _ready():
 			var introEndPos: Vector2 = Vector2(position.x + introProperties.gotoPos.x,
 				position.y + introProperties.gotoPos.y)
 			# Calculating the time to spend for the tween
-			var tweenTime: float = global_position.distance_to(introEndPos) / 232
+			var tweenTime: float = global_position.distance_to(introEndPos) / 190
 			# Start tweening!
 			tween.interpolate_property(self, "position", position, introEndPos, 
-					tweenTime, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+					tweenTime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			tween.start()
 		
 		intro.foreground:
@@ -74,6 +79,9 @@ func _ready():
 		_:
 			# Immediately start the enemy's action phase, no tweens
 			startAction()
+
+	if outroProperties != null:
+		startOutro()
 		
 
 func _process(delta):
@@ -82,10 +90,8 @@ func _process(delta):
 
 
 func damage(area):
-	#if invisTimer.is_stopped():
 	health -= 1
 	area.queue_free()
-	#invisTimer.start()
 	if health <= 0:
 		#Should include death effects and death signal to the spawner
 		emit_signal("death", score)
@@ -105,13 +111,11 @@ func _on_Enemy_area_entered(area):
 		queue_free()
 
 
-func invisOver():
-	pass
-	#motion = temp_motion
-
-
 func startAction():
 	# You *MUST* include the super function for reenabling the shots
 	if $CollisionShape2D.disabled:
 		$CollisionShape2D.disabled = false
 		z_index = 5
+
+func startOutro():
+	pass
