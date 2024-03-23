@@ -1,5 +1,13 @@
 # Spawner.gd
+class_name Spawner
 extends Node
+
+enum enemies {
+	normal,
+	shoot,
+	homing,
+	laser
+}
 
 ### Variables
 # Pattern variables

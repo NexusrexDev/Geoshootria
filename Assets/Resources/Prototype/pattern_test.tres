@@ -1,14 +1,21 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/CustomResources/introResource.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=2]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
 
 [sub_resource type="Resource" id=1]
-resource_name = "Normal"
+resource_name = "Laser"
 script = ExtResource( 2 )
-enemyType = 0
+enemyType = 3
 createAtPlayer = false
 enemyPosition = Vector2( 344, 90 )
+introProperties = SubResource( 2 )
 chunkEnd = false
 timeBreak = 0.3
 
