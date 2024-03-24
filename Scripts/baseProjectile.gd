@@ -8,7 +8,7 @@ var motion = Vector2.ZERO
 
 func _ready():
 	var c_angle = (angle*PI) / 180
-	motion = Vector2(cos(c_angle),-sin(c_angle))
+	motion = Vector2(cos(c_angle),sin(c_angle))
 
 func _process(delta):
 	position += motion * speed * delta

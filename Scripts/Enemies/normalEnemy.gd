@@ -24,7 +24,7 @@ func startAction():
 	if canShoot:
 		var player = get_node("/root/Level/Player")
 		if player:
-			projCreator.targetShoot(0, player)
+			projCreator.angleShoot(0, rad2deg(get_angle_to(player.position)))
 		else:
 			projCreator.angleShoot(0, 180)
 
