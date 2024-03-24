@@ -6,7 +6,9 @@ enum enemies {
 	normal,
 	shoot,
 	homing,
-	laser
+	laser,
+	split,
+	spray
 }
 
 ### Variables

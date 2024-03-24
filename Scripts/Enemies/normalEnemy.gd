@@ -28,6 +28,8 @@ func startAction():
 		else:
 			projCreator.angleShoot(0, 180)
 
+	yield(get_tree().create_timer(0.2, false),"timeout")
+
 	startOutro()
 
 func startOutro():
