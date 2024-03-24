@@ -1,14 +1,14 @@
 # MainMenu.gd
-extends Node2D
+extends Control
 
 # Variables
 onready var playButton = $Main/Play
 onready var settingsPanel = $Settings
-onready var masterVolSlider = $Settings/MarginContainer/VBoxContainer/MasterVol/HSlider
-onready var musicVolSlider = $Settings/MarginContainer/VBoxContainer/MusicVol/HSlider
-onready var sfxVolSlider = $Settings/MarginContainer/VBoxContainer/SFXVol/HSlider
-onready var scrSizeSlider = $Settings/MarginContainer/VBoxContainer/ScrSize/HSlider
-onready var fullscreenCheck = $Settings/MarginContainer/VBoxContainer/Fullscreen/CheckBox
+onready var masterVolSlider = $Settings/Back/VBoxContainer/MasterVol/HSlider
+onready var musicVolSlider = $Settings/Back/VBoxContainer/MusicVol/HSlider
+onready var sfxVolSlider = $Settings/Back/VBoxContainer/SFXVol/HSlider
+onready var scrSizeSlider = $Settings/Back/VBoxContainer/ScrSize/HSlider
+onready var fullscreenCheck = $Settings/Back/VBoxContainer/Fullscreen/CheckBox
 var settingsFile = "user://settings.save"
 var screenSize = 1
 
