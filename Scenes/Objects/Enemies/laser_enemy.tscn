@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Objects/Enemies/Projectiles/normal_fast.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/projectileCreator.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Enemies/laserEnemy.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sprites/Characters/LaserEnemy.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Effects/SmallPart.png" type="Texture" id=5]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0.239943, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="laserEnemy" type="Area2D" groups=["enemy"]]
+z_index = 5
+script = ExtResource( 3 )
+introType = 1
+health = 3
+forwardMotion = 190.0
+
+[node name="ChargeParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.0
+texture = ExtResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 32.0
+spread = 0.0
+gravity = Vector2( 0, 0 )
+radial_accel = -45.0
+radial_accel_random = 0.26
+scale_amount_curve = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 16 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -16 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="projectileCreator" type="Position2D" parent="."]
+position = Vector2( -4, 1 )
+script = ExtResource( 2 )
+projectileReferences = [ ExtResource( 1 ) ]
+
+[connection signal="area_entered" from="." to="." method="_on_Enemy_area_entered"]
+[connection signal="tween_all_completed" from="Tween" to="." method="startAction"]

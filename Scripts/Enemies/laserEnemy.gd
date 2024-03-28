@@ -1,29 +1,23 @@
-# sprayEnemy.gd
 extends baseEnemy
 
 # Variables
-export var incrValue: float = 15
 export var forwardMotion: float
 onready var projCreator: projectileCreator = $projectileCreator
+onready var chargeParticles: CPUParticles2D = $ChargeParticles
 
 func startAction():
 	yield(get_tree().create_timer(0.5, false),"timeout")
 
-	var player: Node = get_node("/root/Level/Player")
-	var angle: float = 180 - incrValue
-	var direction: int = 1
+	#Play charging animation
+	chargeParticles.emitting = true
+	yield(get_tree().create_timer(chargeParticles.lifetime, false),"timeout")
 
-	if player:
-		if player.position.y > position.y:
-			direction = -1
-		angle = rad2deg(get_angle_to(player.position)) - (incrValue * direction)
-	
-	for _i in range(3):
-		projCreator.angleShoot(0, angle)
+	#Constant shooting
+	var shootBullets: int = 20
+	while shootBullets:
+		projCreator.angleShoot(0, 180)
 		yield(get_tree().create_timer(0.1, false),"timeout")
-		angle += (incrValue * direction)
-
-	yield(get_tree().create_timer(0.2, false),"timeout")
+		shootBullets -= 1
 
 	startOutro()
 

@@ -1,17 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Spawner.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Objects/Enemies/normal_enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/Enemies/laser_enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Objects/Enemies/split_enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Objects/Enemies/normal_var_enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/Enemies/spray_enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Objects/Interfaces/Gameplay/Debug/SpawnerDebug.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Objects/Enemies/homing_enemy.tscn" type="PackedScene" id=15]
 
 [node name="Spawner" type="Node"]
 pause_mode = 1
 script = ExtResource( 1 )
-enemyReferences = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 15 ), ExtResource( 3 ), ExtResource( 4 ), null ]
+enemyReferences = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 15 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ) ]
 
 [node name="patternTimer" type="Timer" parent="."]
 wait_time = 0.5

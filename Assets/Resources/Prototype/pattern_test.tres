@@ -10,9 +10,9 @@ script = ExtResource( 3 )
 gotoPos = Vector2( -64, 0 )
 
 [sub_resource type="Resource" id=1]
-resource_name = "Shoot"
+resource_name = "Normal"
 script = ExtResource( 2 )
-enemyType = 4
+enemyType = 5
 createAtPlayer = false
 enemyPosition = Vector2( 344, 90 )
 introProperties = SubResource( 2 )
