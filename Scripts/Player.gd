@@ -1,9 +1,11 @@
 # Player.gd
 extends KinematicBody2D
 
-# Variables
+# Variable
 var health : int = 3
-export var speed = 250
+export var speed : int = 240
+export var focusSpeed : int = 120
+var isFocus : bool = false
 var motion : Vector2 = Vector2.ZERO
 export var canControl : bool = false
 var lerpValue : float = 20
@@ -29,16 +31,18 @@ func _process(_delta):
 		elif Input.is_action_just_released("gp_shoot"):
 			shootTimer.stop()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Movement
 	if canControl:
-		var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-		var y_input = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-		var input = Vector2(x_input, y_input).normalized()
+		var x_input : float = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		var y_input : float = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		var input : Vector2 = Vector2(x_input, y_input).normalized()
+		isFocus = Input.get_action_strength("gp_focus")
 
-		motion = motion.linear_interpolate(input, delta * lerpValue)
+		motion = input
 	
-	move_and_slide(motion * speed)
+	var focusValue = (int(isFocus) * focusSpeed)
+	move_and_slide(motion * (speed - focusValue))
 
 func shooting():
 	if shootTimer.is_stopped():

@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Objects/Visuals/GameBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Resources/Prototype/pattern_test.tres" type="Resource" id=3]
 [ext_resource path="res://Scenes/Objects/Spawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Objects/Interfaces/Gameplay/HUD.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Resources/Prototype/easyPattern_1.tres" type="Resource" id=11]
-[ext_resource path="res://Assets/Resources/Prototype/easyPattern_2.tres" type="Resource" id=12]
 [ext_resource path="res://Scripts/Prototyping/showLane.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/audioReferences.gd" type="Script" id=15]
 [ext_resource path="res://Assets/Animations/GameOver.tres" type="Animation" id=20]
@@ -19,7 +18,7 @@ tracks/0/path = NodePath("Player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 0.5, -2, 1 ),
@@ -31,7 +30,7 @@ tracks/1/path = NodePath("Player")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 1.05 ),
 "transitions": PoolRealArray( 1 ),
@@ -70,13 +69,13 @@ tracks/3/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 320, 32 )
+extents = Vector2( 160, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 180 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 352, 16 )
+extents = Vector2( 160, 16 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 16, 196 )
@@ -91,31 +90,32 @@ anims/Intro = SubResource( 5 )
 script = ExtResource( 15 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -64, 148 )
+position = Vector2( 32, 90 )
+canControl = true
 
 [node name="CollisionLimits" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionLimits"]
-position = Vector2( 320, 328 )
+position = Vector2( 160, 196 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionLimits"]
-position = Vector2( -16, 180 )
+position = Vector2( -16, 96 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="CollisionLimits"]
-position = Vector2( 656, 180 )
+position = Vector2( 336, 90 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="CollisionLimits"]
-position = Vector2( 320, -16 )
+position = Vector2( 160, 16 )
 shape = SubResource( 3 )
 
 [node name="EnemyLimit" type="Area2D" parent="." groups=["enemyLimit"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyLimit"]
 modulate = Color( 0.121569, 0.384314, 0.454902, 1 )
-position = Vector2( -48, 164 )
+position = Vector2( -48, 112 )
 shape = SubResource( 4 )
 
 [node name="ProjLimit" type="Area2D" parent="." groups=["projLimit"]]
@@ -123,7 +123,7 @@ position = Vector2( 704, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProjLimit"]
 modulate = Color( 0.121569, 0.384314, 0.454902, 1 )
-position = Vector2( -48, 164 )
+position = Vector2( -336, 104 )
 shape = SubResource( 4 )
 
 [node name="HUD" parent="." instance=ExtResource( 8 )]
@@ -134,7 +134,12 @@ color = Color( 0.270588, 0.243137, 0.243137, 0 )
 [node name="GameBackground" parent="." instance=ExtResource( 2 )]
 
 [node name="Spawner" parent="." instance=ExtResource( 7 )]
-easyPatterns = [ ExtResource( 11 ), ExtResource( 12 ) ]
+easyPatterns = [ ExtResource( 3 ) ]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+zoom = Vector2( 0.5, 0.5 )
 
 [connection signal="death" from="Player" to="HUD" method="gameOver"]
 [connection signal="healthChange" from="Player" to="HUD" method="healthUpdate"]
