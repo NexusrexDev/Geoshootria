@@ -17,14 +17,30 @@ export(Resource) var outroProperties
 export var isBoss: bool
 var score: int
 onready var tween: Tween = $Tween
+onready var spriteAnchor: Position2D = $SpriteAnchor
 var motion: Vector2
 var temp_motion: Vector2
+var flashTimer: Timer
 
 signal death(score)
 signal completed()
 
 
 func _ready():
+	flashTimer = Timer.new()
+	add_child(flashTimer)
+	signalPrep()
+
+	# Calculating the score based on the initial health value
+	if isBoss:
+		score = health * 10
+	else:
+		score = health * 5
+
+	startIntro()
+
+
+func signalPrep():
 	# Connecting the score update signal to the HUD/Game Manager
 	var HUD = get_node("/root/Level/HUD")
 	if HUD != null:
@@ -33,12 +49,11 @@ func _ready():
 	var Spawner = get_node("/root/Level/Spawner")
 	if Spawner != null:
 		connect("completed", Spawner, "enemyPassed")
-	# Calculating the score based on the initial health value
-	if isBoss:
-		score = health * 10
-	else:
-		score = health * 5
+	# Connecting the flash timer to the reset function
+	flashTimer.connect("timeout", self, "resetFlash")
 
+
+func startIntro():
 	# Forcing the introType to change if a resource is set
 	if introProperties != null:
 		introType = intro.tween
@@ -79,15 +94,21 @@ func _ready():
 		_:
 			# Immediately start the enemy's action phase, no tweens
 			startAction()
-		
+
 
 func _process(delta):
 	# Basic movement, use the inherited scripts to apply motion
 	position += motion * delta
 
+	# Resetting the anchor to it's original size
+	spriteAnchor.scale = spriteAnchor.scale.linear_interpolate(Vector2(1,1), delta * 4)
+
 
 func damage(area):
 	health -= 1
+	spriteAnchor.scale = Vector2(1.25, 0.75)
+	spriteAnchor.modulate = Color(10,10,10,10)
+	flashTimer.start(0.1)
 	area.queue_free()
 	if health <= 0:
 		#Should include death effects and death signal to the spawner
@@ -95,9 +116,14 @@ func damage(area):
 		emit_signal("completed")
 		death()
 
+
 func death():
 	# This function will be overriden, but pls don't forget queue_free
 	queue_free()
+
+func resetFlash():
+	spriteAnchor.modulate = Color(1,1,1,1)
+
 
 func _on_Enemy_area_entered(area):
 	if area.is_in_group("playerProj"):
@@ -113,6 +139,7 @@ func startAction():
 	if $CollisionShape2D.disabled:
 		$CollisionShape2D.disabled = false
 		z_index = 5
+
 
 func startOutro():
 	pass

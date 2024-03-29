@@ -13,7 +13,7 @@ _data = [ Vector2( 0.239943, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 
 extents = Vector2( 16, 16 )
 
 [node name="laserEnemy" type="Area2D" groups=["enemy"]]
-z_index = 5
+z_index = -1
 script = ExtResource( 3 )
 introType = 1
 health = 3
@@ -41,6 +41,8 @@ shape = SubResource( 1 )
 position = Vector2( 0, 16 )
 texture = ExtResource( 4 )
 offset = Vector2( 0, -16 )
+
+[node name="SpriteAnchor" type="Position2D" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
 

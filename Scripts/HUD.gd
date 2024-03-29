@@ -1,5 +1,5 @@
 # HUD.gd
-extends CanvasLayer
+extends MarginContainer
 
 # Variables
 var health : int = 3

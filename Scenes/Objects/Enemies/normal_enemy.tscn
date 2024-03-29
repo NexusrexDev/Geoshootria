@@ -10,7 +10,7 @@
 resource_name = "New Anim"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:rotation_degrees")
+tracks/0/path = NodePath("SpriteAnchor/Sprite2:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -23,7 +23,7 @@ tracks/0/keys = {
 }
 
 [node name="normalEnemy" type="Area2D" groups=["enemy"]]
-z_index = 5
+z_index = -1
 script = ExtResource( 2 )
 health = 4
 forwardMotion = 190.0
@@ -31,11 +31,13 @@ forwardMotion = 190.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="SpriteAnchor" type="Position2D" parent="."]
+
+[node name="Sprite2" type="Sprite" parent="SpriteAnchor"]
 texture = ExtResource( 3 )
 vframes = 2
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="SpriteAnchor"]
 position = Vector2( 0, 16 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -16 )

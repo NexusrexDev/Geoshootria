@@ -7,6 +7,7 @@
 extents = Vector2( 8, 6 )
 
 [node name="Projectile" groups=["playerProj"] instance=ExtResource( 1 )]
+z_index = -1
 speed = 960
 
 [node name="Sprite" parent="." index="0"]

@@ -9,7 +9,7 @@
 extents = Vector2( 16, 16 )
 
 [node name="sprayEnemy" type="Area2D" groups=["enemy"]]
-z_index = 5
+z_index = -1
 script = ExtResource( 4 )
 introType = 1
 health = 3
@@ -18,7 +18,9 @@ forwardMotion = 190.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="SpriteAnchor" type="Position2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="SpriteAnchor"]
 position = Vector2( 0, 16 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -16 )

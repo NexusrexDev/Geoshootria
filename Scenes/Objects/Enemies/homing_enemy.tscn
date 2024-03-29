@@ -9,7 +9,7 @@ extents = Vector2( 13, 13 )
 
 [node name="homingEnemy" type="Area2D" groups=["enemy"]]
 rotation = 3.14159
-z_index = 5
+z_index = -1
 script = ExtResource( 2 )
 health = 1
 forwardMotion = 300.0
@@ -17,7 +17,9 @@ forwardMotion = 300.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="SpriteAnchor" type="Position2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="SpriteAnchor"]
 position = Vector2( 0, 16 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -16 )
