@@ -12,6 +12,7 @@ func startAction():
 	if player:
 		angle = rad2deg(get_angle_to(player.position))
 		
+	setBounce(1, angle)
 	projCreator.angleShoot(0, angle, 3)
 
 	yield(get_tree().create_timer(0.2, false),"timeout")

@@ -21,12 +21,17 @@ onready var spriteAnchor: Position2D = $SpriteAnchor
 var motion: Vector2
 var temp_motion: Vector2
 var flashTimer: Timer
+var shakeVal: float = 0
+var bounceVal: float = 0
+var bounceDir: float = 0
+export(PackedScene) var deathExplosion: PackedScene = preload("res://Scenes/Objects/Visuals/Particles/ExplosionParticle.tscn")
 
 signal death(score)
 signal completed()
 
 
 func _ready():
+	z_index = -2
 	flashTimer = Timer.new()
 	add_child(flashTimer)
 	signalPrep()
@@ -103,12 +108,33 @@ func _process(delta):
 	# Resetting the anchor to it's original size
 	spriteAnchor.scale = spriteAnchor.scale.linear_interpolate(Vector2(1,1), delta * 4)
 
+	# Shaking effect
+	if shakeVal:
+		shakeVal = max(0, shakeVal - delta * 0.8)
+		shake()
+
+	# Bouncing effect
+	if bounceVal:
+		spriteAnchor.position = Vector2(cos(bounceDir), sin(bounceDir)) * bounceVal * 8
+		bounceVal = max(0, bounceVal - (delta * 2.5))
+
+func setBounce(value: float, angle: float):
+	bounceVal = value
+	bounceDir = deg2rad(angle + 180)
+
+func shake():
+	# Randomly shaking the enemy
+	var shakeX = rand_range(-shakeVal, shakeVal) * 8
+	var shakeY = rand_range(-shakeVal, shakeVal) * 8
+	spriteAnchor.position = Vector2(shakeX, shakeY)
+
 
 func damage(area):
 	health -= 1
 	spriteAnchor.scale = Vector2(1.25, 0.75)
 	spriteAnchor.modulate = Color(10,10,10,10)
 	flashTimer.start(0.1)
+	shakeVal = 0.25
 	area.queue_free()
 	if health <= 0:
 		#Should include death effects and death signal to the spawner
@@ -118,8 +144,12 @@ func damage(area):
 
 
 func death():
-	# This function will be overriden, but pls don't forget queue_free
+	var level: Node = get_tree().root.get_child(1)
+	var explosion: CPUParticles2D = deathExplosion.instance()
+	explosion.position = global_position
+	level.call_deferred("add_child", explosion)
 	queue_free()
+
 
 func resetFlash():
 	spriteAnchor.modulate = Color(1,1,1,1)

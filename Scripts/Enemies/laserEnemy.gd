@@ -16,6 +16,7 @@ func startAction():
 	var shootBullets: int = 20
 	while shootBullets:
 		projCreator.angleShoot(0, 180)
+		setBounce(0.8, 180)
 		yield(get_tree().create_timer(0.1, false),"timeout")
 		shootBullets -= 1
 

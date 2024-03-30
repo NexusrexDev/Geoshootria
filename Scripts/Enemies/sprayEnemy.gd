@@ -20,6 +20,7 @@ func startAction():
 	
 	for _i in range(3):
 		projCreator.angleShoot(0, angle)
+		setBounce(1, angle)
 		yield(get_tree().create_timer(0.1, false),"timeout")
 		angle += (incrValue * direction)
 

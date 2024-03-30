@@ -22,11 +22,14 @@ func startAction():
 
 	# Shooting, in variant mode
 	if canShoot:
-		var player = get_node("/root/Level/Player")
+		var player: Node = get_node("/root/Level/Player")
+		var angle: float = 180
 		if player:
-			projCreator.angleShoot(0, rad2deg(get_angle_to(player.position)))
-		else:
-			projCreator.angleShoot(0, 180)
+			angle = rad2deg(get_angle_to(player.position))
+		
+		setBounce(1, angle)
+		projCreator.angleShoot(0, angle)
+
 
 	yield(get_tree().create_timer(0.2, false),"timeout")
 
