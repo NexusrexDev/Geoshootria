@@ -29,7 +29,8 @@ func radialShoot(projectile: int, angle: float = 0, count: float = 1, offset: Ve
 	var incrementValue: float = 360 / count
 	
 	# Instantiating the projectile
-	var level: Node = get_tree().root.get_child(1)
+	var root = get_tree().root
+	var level = root.get_child(root.get_child_count() - 1)
 
 	for i in range(count):
 		var proj = projectileReferences[projectile].instance()

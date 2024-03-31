@@ -20,7 +20,9 @@ signal death()
 
 func _ready():
 	# Connecting the score update signal to the HUD/Game Manager
-	var HUD = get_node("/root/Level/HUD")
+	var root = get_tree().root
+	var currentScene = root.get_child(root.get_child_count() - 1)
+	var HUD = currentScene.get_node("HUD")
 	if HUD != null:
 		connect("graze", HUD, "scoreUpdate")
 

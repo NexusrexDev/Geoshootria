@@ -26,11 +26,16 @@ var bounceVal: float = 0
 var bounceDir: float = 0
 export(PackedScene) var deathExplosion: PackedScene = preload("res://Scenes/Objects/Visuals/Particles/ExplosionParticle.tscn")
 
+var currentScene: Node
+
 signal death(score)
 signal completed()
 
 
 func _ready():
+	var root = get_tree().root
+	currentScene = root.get_child(root.get_child_count() - 1)
+
 	z_index = -2
 	flashTimer = Timer.new()
 	add_child(flashTimer)
@@ -47,11 +52,11 @@ func _ready():
 
 func signalPrep():
 	# Connecting the score update signal to the HUD/Game Manager
-	var HUD = get_node("/root/Level/HUD")
+	var HUD = currentScene.get_node("HUD")
 	if HUD != null:
 		connect("death", HUD, "scoreUpdate")
 	# Connecting the death and safe passing/destruction to the spawner
-	var Spawner = get_node("/root/Level/Spawner")
+	var Spawner = currentScene.get_node("Spawner")
 	if Spawner != null:
 		connect("completed", Spawner, "enemyPassed")
 	# Connecting the flash timer to the reset function
@@ -144,10 +149,9 @@ func damage(area):
 
 
 func death():
-	var level: Node = get_tree().root.get_child(1)
 	var explosion: CPUParticles2D = deathExplosion.instance()
 	explosion.position = global_position
-	level.call_deferred("add_child", explosion)
+	currentScene.call_deferred("add_child", explosion)
 	queue_free()
 
 

@@ -8,12 +8,17 @@ var highscore : int = 0
 var highscoreBroken : bool = false
 var highscoreFile : String = "user://highscore.save"
 
+var currentScene: Node
+
 onready var healthBar : TextureRect = $Game/HealthBar
 onready var scoreLabel : Label = $Game/ScoreLabel
 onready var hscoreLabel : Label = $Game/HighscoreLabel
 onready var pauseNode : Control = $Pause
 
 func _ready():
+	var root = get_tree().root
+	currentScene = root.get_child(root.get_child_count() - 1)
+
 	readHighscore()
 	refreshScore()
 	refreshHealth()
@@ -79,11 +84,11 @@ func gameOver():
 	gmovr_scoreLabel.text = str(score)
 
 	# Stopping the spawner
-	var spawner = get_node("/root/Level/Spawner")
+	var spawner = currentScene.get_node("Spawner")
 	spawner.stopSpawner()
 
 	# Playing the game over animation
-	var animPlayer = get_node("/root/Level/AnimationPlayer")
+	var animPlayer = currentScene.get_node("AnimationPlayer")
 	animPlayer.play("GameOver")
 
 
