@@ -15,7 +15,6 @@ onready var shootTimer = $shootTimer
 onready var invisTimer = $iframeTimer
 
 signal healthChange(value)
-signal graze(score)
 signal death()
 
 func _ready():
@@ -24,7 +23,8 @@ func _ready():
 	var currentScene = root.get_child(root.get_child_count() - 1)
 	var HUD = currentScene.get_node("HUD")
 	if HUD != null:
-		connect("graze", HUD, "scoreUpdate")
+		connect("healthChange", HUD, "healthUpdate")
+		connect("death", HUD, "gameOver")
 
 func _process(_delta):
 	if canControl:
@@ -53,11 +53,13 @@ func shooting():
 
 func damage():
 	if invisTimer.is_stopped():
+		GameManager.damageCount = true
 		health -= 1
 		emit_signal("healthChange", health)
 		invisTimer.start()
 		if health <= 0:
 			emit_signal("death")
+			GameManager.deathCount = true
 			queue_free()
 
 func enableControl():
@@ -69,4 +71,4 @@ func _on_DamageBox_area_entered(area:Area2D):
 
 func _on_GrazeBox_area_entered(area:Area2D):
 	if area.is_in_group("enemy"):
-		emit_signal("graze", grazeValue)
+		GameManager.addScore(grazeValue)

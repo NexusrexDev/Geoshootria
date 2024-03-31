@@ -28,7 +28,6 @@ export(PackedScene) var deathExplosion: PackedScene = preload("res://Scenes/Obje
 
 var currentScene: Node
 
-signal death(score)
 signal completed()
 
 
@@ -51,10 +50,6 @@ func _ready():
 
 
 func signalPrep():
-	# Connecting the score update signal to the HUD/Game Manager
-	var HUD = currentScene.get_node("HUD")
-	if HUD != null:
-		connect("death", HUD, "scoreUpdate")
 	# Connecting the death and safe passing/destruction to the spawner
 	var Spawner = currentScene.get_node("Spawner")
 	if Spawner != null:
@@ -143,7 +138,7 @@ func damage(area):
 	area.queue_free()
 	if health <= 0:
 		#Should include death effects and death signal to the spawner
-		emit_signal("death", score)
+		GameManager.addScore(score)
 		emit_signal("completed")
 		death()
 

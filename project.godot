@@ -85,6 +85,7 @@ config/icon="res://icon.png"
 
 AudioManager="*res://Scripts/Autoloads/AudioManager.gd"
 SettingsManager="*res://Scripts/Autoloads/SettingsManager.gd"
+GameManager="*res://Scripts/Autoloads/GameManager.gd"
 
 [debug]
 

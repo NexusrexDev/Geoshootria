@@ -10,7 +10,7 @@ script = ExtResource( 3 )
 gotoPos = Vector2( -64, 0 )
 
 [sub_resource type="Resource" id=1]
-resource_name = "Spray"
+resource_name = "Shoot"
 script = ExtResource( 2 )
 enemyType = 1
 createAtPlayer = false

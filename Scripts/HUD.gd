@@ -2,11 +2,7 @@
 extends MarginContainer
 
 # Variables
-var health : int = 3
-var score : int = 0
-var highscore : int = 0
-var highscoreBroken : bool = false
-var highscoreFile : String = "user://highscore.save"
+
 
 var currentScene: Node
 
@@ -19,9 +15,10 @@ func _ready():
 	var root = get_tree().root
 	currentScene = root.get_child(root.get_child_count() - 1)
 
-	readHighscore()
+	GameManager.connect("scoreChanged", self, "refreshScore")
+
 	refreshScore()
-	refreshHealth()
+	healthUpdate(3)
 
 func _process(_delta):
 	# Pausing
@@ -34,35 +31,17 @@ func _process(_delta):
 		else:
 			AudioServer.remove_bus_effect(1, 0)
 
-func readHighscore():
-	var file = File.new()
-	if file.file_exists(highscoreFile):
-		file.open(highscoreFile, File.READ)
-		highscore = file.get_var()
-		file.close()
-
-func refreshHealth():
-	# Updates the health-related nodes, expect changing when using a new UI
-	healthBar.texture.region = Rect2(49 * (3 - health), 0, 49, 12)
 
 func refreshScore():
 	# Updates the score-related labels
-	scoreLabel.text = "Score: " + str("%06d" % score)
-	hscoreLabel.text = "Highscore: " + str("%06d" % highscore)
+	scoreLabel.text = "Score: " + str("%06d" % GameManager.currentScore)
+	hscoreLabel.text = "Highscore: " + str("%06d" % GameManager.highScore)
+
 
 func healthUpdate(value):
 	# Connected to a signal, when the player's health is updated
-	health = value
-	refreshHealth()
+	healthBar.texture.region = Rect2(49 * (3 - value), 0, 49, 12)
 
-func scoreUpdate(value):
-	# Connected to a signal, when an enemy is dead
-	score += value
-	# Update the highscore if the current score is higher
-	if score > highscore:
-		highscore = score
-		highscoreBroken = true
-	refreshScore()
 
 func gameOver():
 	var gmovr_scoreLabel = $GameOver/Menu/ScoreLabel
@@ -71,17 +50,14 @@ func gameOver():
 	set_process(false)
 
 	# In case of a new highscore, it's saved to the file and the label is adjusted
-	if highscoreBroken:
-		var file = File.new()
-		file.open(highscoreFile, File.WRITE)
-		file.store_var(highscore)
-		file.close()
+	if GameManager.highscoreBroken:
+		GameManager.updateHighScore()
 		gmovr_highscoreLabel.text = "New Highscore!"
 	else:
-		gmovr_highscoreLabel.text = "Highscore: " + str(highscore)
+		gmovr_highscoreLabel.text = "Highscore: " + str(GameManager.highScore)
 	
 	# Setting the score label in advance
-	gmovr_scoreLabel.text = str(score)
+	gmovr_scoreLabel.text = str(GameManager.currentScore)
 
 	# Stopping the spawner
 	var spawner = currentScene.get_node("Spawner")
@@ -93,7 +69,8 @@ func gameOver():
 
 
 func mainPressed():
+	GameManager.resetGame()
 	get_tree().change_scene("res://Scenes/Rooms/MainMenu.tscn")
 
 func replayPressed():
-	get_tree().change_scene("res://Scenes/Rooms/Level.tscn")
+	get_tree().change_scene(currentScene.get_filename())

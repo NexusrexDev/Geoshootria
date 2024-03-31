@@ -127,7 +127,4 @@ easyPatterns = [ ExtResource( 3 ) ]
 
 [node name="Camera2D" parent="." instance=ExtResource( 4 )]
 
-[connection signal="death" from="Player" to="HUD" method="gameOver"]
-[connection signal="healthChange" from="Player" to="HUD" method="healthUpdate"]
-
 [editable path="HUD"]
