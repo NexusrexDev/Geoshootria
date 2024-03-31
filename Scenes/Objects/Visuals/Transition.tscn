@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/FadeTransition.gd" type="Script" id=1]
+
+[node name="Transition" type="ColorRect"]
+visible = false
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0.145098, 0.168627, 0.227451, 1 )
+script = ExtResource( 1 )

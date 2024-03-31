@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "ColorRect",
+"class": "FadeTransition",
+"language": "GDScript",
+"path": "res://Scripts/FadeTransition.gd"
+}, {
 "base": "Node",
 "class": "Spawner",
 "language": "GDScript",
@@ -55,6 +60,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/projectileCreator.gd"
 } ]
 _global_script_class_icons={
+"FadeTransition": "",
 "Spawner": "",
 "actionResource": "",
 "baseEnemy": "",
@@ -68,16 +74,17 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Shootemupthing"
-run/main_scene="res://Scenes/Rooms/MainMenu.tscn"
+config/name="Geoshootria"
+run/main_scene="res://Scenes/Rooms/Intro.tscn"
 boot_splash/show_image=false
 boot_splash/use_filter=false
-boot_splash/bg_color=Color( 0.145098, 0.168627, 0.227451, 1 )
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
-AudioManager="*res://Scripts/AudioManager.gd"
+AudioManager="*res://Scripts/Autoloads/AudioManager.gd"
+SettingsManager="*res://Scripts/Autoloads/SettingsManager.gd"
 
 [debug]
 
@@ -89,7 +96,7 @@ window/size/width=640
 window/size/height=360
 window/size/resizable=false
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
