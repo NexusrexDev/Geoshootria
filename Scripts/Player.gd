@@ -10,6 +10,7 @@ var motion : Vector2 = Vector2.ZERO
 export var canControl : bool = false
 var lerpValue : float = 20
 var grazeValue : int = 5
+var isGrazing: bool = false
 onready var projectileCreator = $projectileCreator
 onready var shootTimer = $shootTimer
 onready var invisTimer = $iframeTimer
@@ -54,6 +55,7 @@ func shooting():
 func damage():
 	if invisTimer.is_stopped():
 		GameManager.damageCount = true
+		isGrazing = false
 		health -= 1
 		emit_signal("healthChange", health)
 		invisTimer.start()
@@ -71,4 +73,8 @@ func _on_DamageBox_area_entered(area:Area2D):
 
 func _on_GrazeBox_area_entered(area:Area2D):
 	if area.is_in_group("enemy"):
-		GameManager.addScore(grazeValue)
+		isGrazing = true
+		yield(get_tree().create_timer(0.1), "timeout")
+		if isGrazing:
+			GameManager.addScore(grazeValue)
+			isGrazing = false
