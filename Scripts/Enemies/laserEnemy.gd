@@ -6,18 +6,18 @@ onready var projCreator: projectileCreator = $projectileCreator
 onready var chargeParticles: CPUParticles2D = $ChargeParticles
 
 func startAction():
-	yield(get_tree().create_timer(0.5, false),"timeout")
+	yieldTimer.start(0.5);yield(yieldTimer,"timeout")
 
 	#Play charging animation
 	chargeParticles.emitting = true
-	yield(get_tree().create_timer(chargeParticles.lifetime, false),"timeout")
+	yieldTimer.start(chargeParticles.lifetime);yield(yieldTimer,"timeout")
 
 	#Constant shooting
 	var shootBullets: int = 20
 	while shootBullets:
 		projCreator.angleShoot(0, 180)
 		setBounce(0.8, 180)
-		yield(get_tree().create_timer(0.1, false),"timeout")
+		yieldTimer.start(0.1);yield(yieldTimer,"timeout")
 		shootBullets -= 1
 
 	startOutro()

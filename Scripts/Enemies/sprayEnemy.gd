@@ -7,7 +7,7 @@ export var forwardMotion: float
 onready var projCreator: projectileCreator = $projectileCreator
 
 func startAction():
-	yield(get_tree().create_timer(0.5, false),"timeout")
+	yieldTimer.start(0.5);yield(yieldTimer,"timeout")
 
 	var root = get_tree().root
 	var currentScene = root.get_child(root.get_child_count() - 1)
@@ -23,11 +23,10 @@ func startAction():
 	for _i in range(3):
 		projCreator.angleShoot(0, angle)
 		setBounce(1, angle)
-		yield(get_tree().create_timer(0.1, false),"timeout")
+		yieldTimer.start(0.1);yield(yieldTimer,"timeout")
 		angle += (incrValue * direction)
 
-	yield(get_tree().create_timer(0.2, false),"timeout")
-
+	yieldTimer.start(0.2);yield(yieldTimer,"timeout")
 	startOutro()
 
 func startOutro():

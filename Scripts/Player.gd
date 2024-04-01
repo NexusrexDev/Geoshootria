@@ -14,6 +14,7 @@ var isGrazing: bool = false
 onready var projectileCreator = $projectileCreator
 onready var shootTimer = $shootTimer
 onready var invisTimer = $iframeTimer
+onready var yieldTimer = $yieldTimer
 
 signal healthChange(value)
 signal death()
@@ -55,7 +56,6 @@ func shooting():
 func damage():
 	if invisTimer.is_stopped():
 		GameManager.damageCount = true
-		isGrazing = false
 		health -= 1
 		emit_signal("healthChange", health)
 		invisTimer.start()
@@ -70,11 +70,12 @@ func enableControl():
 func _on_DamageBox_area_entered(area:Area2D):
 	if area.is_in_group("enemy"):
 		damage()
+		isGrazing = false
 
 func _on_GrazeBox_area_entered(area:Area2D):
 	if area.is_in_group("enemy"):
 		isGrazing = true
-		yield(get_tree().create_timer(0.1), "timeout")
+		yieldTimer.start(0.1);yield(yieldTimer,"timeout")
 		if isGrazing:
 			GameManager.addScore(grazeValue)
 			isGrazing = false

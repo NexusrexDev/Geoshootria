@@ -25,6 +25,7 @@ var shakeVal: float = 0
 var bounceVal: float = 0
 var bounceDir: float = 0
 export(PackedScene) var deathExplosion: PackedScene = preload("res://Scenes/Objects/Visuals/Particles/ExplosionParticle.tscn")
+var yieldTimer: Timer
 
 var currentScene: Node
 
@@ -37,7 +38,9 @@ func _ready():
 
 	z_index = -2
 	flashTimer = Timer.new()
+	yieldTimer = Timer.new()
 	add_child(flashTimer)
+	add_child(yieldTimer)
 	signalPrep()
 
 	# Calculating the score based on the initial health value
@@ -118,9 +121,11 @@ func _process(delta):
 		spriteAnchor.position = Vector2(cos(bounceDir), sin(bounceDir)) * bounceVal * 8
 		bounceVal = max(0, bounceVal - (delta * 2.5))
 
+
 func setBounce(value: float, angle: float):
 	bounceVal = value
 	bounceDir = deg2rad(angle + 180)
+
 
 func shake():
 	# Randomly shaking the enemy

@@ -18,7 +18,7 @@ func startAction():
 
 	motion = Vector2(-64, 0)
 
-	yield(get_tree().create_timer(1, false),"timeout")
+	yieldTimer.start(1);yield(yieldTimer,"timeout")
 
 	# Shooting, in variant mode
 	if canShoot:
@@ -33,7 +33,7 @@ func startAction():
 		projCreator.angleShoot(0, angle)
 
 
-	yield(get_tree().create_timer(0.2, false),"timeout")
+	yieldTimer.start(0.2);yield(yieldTimer,"timeout")
 
 	startOutro()
 
