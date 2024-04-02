@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Objects/Visuals/GameBackground.tscn" type="PackedScene" id=2]
@@ -54,6 +54,61 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "Warning"
+length = 2.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("HUD/Warning:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HUD/Warning/Text:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5, 0.6, 0.7, 1.1, 1.2, 1.3, 1.7, 1.8, 1.9, 2.3, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player:canControl")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "warningSound"
+} ]
+}
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 160, 16 )
 
@@ -73,9 +128,16 @@ script = ExtResource( 14 )
 autoplay = "Intro"
 anims/GameOver = ExtResource( 20 )
 anims/Intro = SubResource( 5 )
+anims/Warning = SubResource( 6 )
 script = ExtResource( 15 )
 
 [node name="HUD" parent="." instance=ExtResource( 8 )]
+
+[node name="Warning" parent="HUD" index="1"]
+visible = true
+
+[node name="Text" parent="HUD/Warning" index="0"]
+modulate = Color( 1, 1, 1, 7.94728e-07 )
 
 [node name="Menu" parent="HUD/GameOver" index="2"]
 margin_left = 160.0
@@ -83,9 +145,16 @@ margin_top = -180.0
 margin_right = 160.0
 margin_bottom = -180.0
 
+[node name="Replay" parent="HUD/GameOver/Menu/VBoxContainer" index="0"]
+margin_left = 68.0
+margin_right = 155.0
+
+[node name="MenuReturn" parent="HUD/GameOver/Menu/VBoxContainer" index="1"]
+margin_left = 159.0
+margin_right = 244.0
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 32, 90 )
-canControl = true
 
 [node name="CollisionLimits" type="StaticBody2D" parent="."]
 

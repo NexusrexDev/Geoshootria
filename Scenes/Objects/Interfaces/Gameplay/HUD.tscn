@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/FPSLabel.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Sprites/UI/healthbar.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/Background/BackShade.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/Background/menuback.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/UI/Warning.png" type="Texture" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -71,6 +72,22 @@ theme = ExtResource( 3 )
 text = "Highscore: 000000"
 align = 2
 autowrap = true
+
+[node name="Warning" type="Control" parent="."]
+visible = false
+margin_right = 320.0
+margin_bottom = 180.0
+
+[node name="Text" type="TextureRect" parent="Warning"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -14.0
+margin_right = 64.0
+margin_bottom = 14.0
+texture = ExtResource( 8 )
 
 [node name="Pause" type="Control" parent="."]
 visible = false
