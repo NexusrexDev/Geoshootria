@@ -16,7 +16,7 @@ func _ready():
 	playButton.grab_focus()
 	configureSettings()
 	# Playing the main menu music
-	AudioManager.playMusic("res://Assets/Prototype/Audio/mainfirst.mp3")
+	AudioManager.playMusic("res://Assets/Audio/Music/MainMenu.ogg")
 
 func configureSettings():
 	getMaxScreenSize()

@@ -1,0 +1,226 @@
+[gd_resource type="Resource" load_steps=33 format=2]
+
+[ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/CustomResources/introResource.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/CustomResources/actionResource.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=4]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=1]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 65 )
+introProperties = SubResource( 4 )
+chunkEnd = true
+timeBreak = 0.2
+
+[sub_resource type="Resource" id=5]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=2]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 148 )
+introProperties = SubResource( 5 )
+chunkEnd = true
+timeBreak = 0.2
+
+[sub_resource type="Resource" id=6]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=3]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 106 )
+introProperties = SubResource( 6 )
+chunkEnd = false
+timeBreak = 0.1
+
+[sub_resource type="Resource" id=7]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=8]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 82 )
+introProperties = SubResource( 7 )
+chunkEnd = false
+timeBreak = 0.05
+
+[sub_resource type="Resource" id=9]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=10]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 130 )
+introProperties = SubResource( 9 )
+chunkEnd = true
+timeBreak = 0.25
+
+[sub_resource type="Resource" id=14]
+resource_name = "Action properties"
+script = ExtResource( 4 )
+sinewave = true
+canShoot = false
+
+[sub_resource type="Resource" id=11]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 140 )
+actionProperties = SubResource( 14 )
+chunkEnd = false
+timeBreak = 0.15
+
+[sub_resource type="Resource" id=15]
+resource_name = "Action properties"
+script = ExtResource( 4 )
+sinewave = true
+canShoot = false
+
+[sub_resource type="Resource" id=12]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 140 )
+actionProperties = SubResource( 15 )
+chunkEnd = false
+timeBreak = 0.15
+
+[sub_resource type="Resource" id=16]
+resource_name = "Action properties"
+script = ExtResource( 4 )
+sinewave = true
+canShoot = false
+
+[sub_resource type="Resource" id=13]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 140 )
+actionProperties = SubResource( 16 )
+chunkEnd = false
+timeBreak = 0.35
+
+[sub_resource type="Resource" id=17]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=18]
+resource_name = "Shoot"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 344, 65 )
+introProperties = SubResource( 17 )
+chunkEnd = true
+timeBreak = 0.35
+
+[sub_resource type="Resource" id=19]
+resource_name = "Action properties"
+script = ExtResource( 4 )
+sinewave = true
+canShoot = false
+
+[sub_resource type="Resource" id=20]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 73 )
+actionProperties = SubResource( 19 )
+chunkEnd = false
+timeBreak = 0.15
+
+[sub_resource type="Resource" id=21]
+resource_name = "Action properties"
+script = ExtResource( 4 )
+sinewave = true
+canShoot = false
+
+[sub_resource type="Resource" id=22]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 73 )
+actionProperties = SubResource( 21 )
+chunkEnd = false
+timeBreak = 0.15
+
+[sub_resource type="Resource" id=23]
+resource_name = "Action properties"
+script = ExtResource( 4 )
+sinewave = true
+canShoot = false
+
+[sub_resource type="Resource" id=24]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 73 )
+actionProperties = SubResource( 23 )
+chunkEnd = false
+timeBreak = 0.35
+
+[sub_resource type="Resource" id=25]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=26]
+resource_name = "Shoot"
+script = ExtResource( 2 )
+enemyType = 1
+createAtPlayer = false
+enemyPosition = Vector2( 344, 148 )
+introProperties = SubResource( 25 )
+chunkEnd = true
+timeBreak = 0.35
+
+[sub_resource type="Resource" id=27]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=28]
+resource_name = "Split"
+script = ExtResource( 2 )
+enemyType = 4
+createAtPlayer = false
+enemyPosition = Vector2( 344, 106 )
+introProperties = SubResource( 27 )
+chunkEnd = true
+timeBreak = 0.0
+
+[resource]
+script = ExtResource( 1 )
+enemyList = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 8 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 18 ), SubResource( 20 ), SubResource( 22 ), SubResource( 24 ), SubResource( 26 ), SubResource( 28 ) ]

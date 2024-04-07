@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
@@ -10,15 +10,45 @@ script = ExtResource( 3 )
 gotoPos = Vector2( -64, 0 )
 
 [sub_resource type="Resource" id=1]
-resource_name = "Shoot"
+resource_name = "Normal"
 script = ExtResource( 2 )
-enemyType = 1
+enemyType = 0
 createAtPlayer = false
-enemyPosition = Vector2( 344, 90 )
+enemyPosition = Vector2( 344, 106 )
 introProperties = SubResource( 2 )
 chunkEnd = false
 timeBreak = 0.3
 
+[sub_resource type="Resource" id=3]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=4]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 82 )
+introProperties = SubResource( 3 )
+chunkEnd = false
+timeBreak = 0.3
+
+[sub_resource type="Resource" id=5]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=6]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 130 )
+introProperties = SubResource( 5 )
+chunkEnd = false
+timeBreak = 0.0
+
 [resource]
 script = ExtResource( 1 )
-enemyList = [ SubResource( 1 ) ]
+enemyList = [ SubResource( 1 ), SubResource( 4 ), SubResource( 6 ) ]

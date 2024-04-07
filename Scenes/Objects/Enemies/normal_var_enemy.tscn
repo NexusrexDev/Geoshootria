@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/projectileCreator.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Enemies/normalEnemy.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Objects/Enemies/Projectiles/normal_slow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/Enemies/Projectiles/smallFastProjectile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Sprites/Characters/HoverShoot.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]

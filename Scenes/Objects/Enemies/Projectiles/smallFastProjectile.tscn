@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/baseProjectile.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Projectiles/enemySmall.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Effects/MidPart.png" type="Texture" id=3]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0.114474, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.751316, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 6 )
+
+[node name="enemyProjectile" type="Area2D" groups=["enemy"]]
+pause_mode = 1
+scale = Vector2( 1.25, 1.25 )
+z_index = -1
+script = ExtResource( 1 )
+speed = 240
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+lifetime = 0.4
+local_coords = false
+texture = ExtResource( 3 )
+gravity = Vector2( 0, 0 )
+scale_amount_random = 0.11
+scale_amount_curve = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -2.38419e-07, 0 )
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+visible = false
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

@@ -13,7 +13,7 @@ enum enemies {
 
 ### Variables
 # Pattern variables
-export(Array, Resource) var easyPatterns
+export(Array, Resource) var Patterns
 # Enemy arrays
 export(Array, PackedScene) var enemyReferences
 # Inner spawner variables
@@ -48,24 +48,22 @@ func stopSpawner():
 
 # This method starts the spawner by selecting a pattern
 func patternPicker():
-	var selectedPattern = easyPatterns[0]
-	var isBoss = false
-
-	# Pattern selection logic (based on the current level) goes here
+	if finishedPatterns == Patterns.size():
+		# Creating boss goes here
+		return
 	
-	startPattern(selectedPattern, isBoss)
+	var selectedPattern = Patterns[finishedPatterns]
+
+	startPattern(selectedPattern)
 
 # This method starts a pattern, used for debugging and separating the creation from the pattern selection
-func startPattern(patternRes, isBoss: bool):
+func startPattern(patternRes):
 	currentPattern = patternRes
 
 	# Setting the counters/pointers
 	currentEnemy = 0
 	completedEnemies = 0
 	fullEnemies = currentPattern.enemyList.size()
-
-	# Starting by creating an enemy, or a boss
-	currentBoss = isBoss
 	
 	if fullEnemies != 0:
 		createEnemy()
@@ -139,7 +137,8 @@ func enemyPassed():
 # Turning the debug menu on and off
 func _process(_delta):
 	if Input.is_action_just_released("ui_customspawn"):
-		debugInterface.visible = !debugInterface.visible
+		if OS.is_debug_build():
+			debugInterface.visible = !debugInterface.visible
 
 # Starts/Stops the regular spawning behavior
 func debugSpawnerControl():
@@ -153,7 +152,7 @@ func debugPatternPlay():
 	# Temporarily stopped
 	var patternIndex: int = $CanvasLayer/DebugInterface/ColorRect/SelectPattern/PatternIndex.get_selected_id()
 	var enemyPatterns: Array = []
-	enemyPatterns.append_array(easyPatterns)
+	enemyPatterns.append_array(Patterns)
 	stopSpawner()
 	running = true
-	startPattern(enemyPatterns[patternIndex], patternIndex == 3)
+	startPattern(enemyPatterns[patternIndex])
