@@ -1,0 +1,147 @@
+[gd_resource type="Resource" load_steps=21 format=2]
+
+[ext_resource path="res://Scripts/CustomResources/Spawner/patternResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CustomResources/Spawner/enemyResource.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/CustomResources/introResource.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/CustomResources/actionResource.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=2]
+resource_name = "Spray"
+script = ExtResource( 2 )
+enemyType = 5
+createAtPlayer = false
+enemyPosition = Vector2( 344, 65 )
+introProperties = SubResource( 1 )
+chunkEnd = false
+timeBreak = 0.25
+
+[sub_resource type="Resource" id=3]
+resource_name = "Spray"
+script = ExtResource( 2 )
+enemyType = 5
+createAtPlayer = false
+enemyPosition = Vector2( 344, 148 )
+introProperties = SubResource( 1 )
+chunkEnd = true
+timeBreak = 0.25
+
+[sub_resource type="Resource" id=4]
+resource_name = "Laser"
+script = ExtResource( 2 )
+enemyType = 3
+createAtPlayer = false
+enemyPosition = Vector2( 344, 106 )
+introProperties = SubResource( 1 )
+chunkEnd = true
+timeBreak = 0.25
+
+[sub_resource type="Resource" id=5]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=6]
+resource_name = "Spray"
+script = ExtResource( 2 )
+enemyType = 5
+createAtPlayer = false
+enemyPosition = Vector2( 344, 65 )
+introProperties = SubResource( 5 )
+chunkEnd = false
+timeBreak = 0.25
+
+[sub_resource type="Resource" id=7]
+resource_name = "Action properties"
+script = ExtResource( 4 )
+sinewave = true
+canShoot = false
+
+[sub_resource type="Resource" id=8]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 140 )
+actionProperties = SubResource( 7 )
+chunkEnd = false
+timeBreak = 0.1
+
+[sub_resource type="Resource" id=9]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 140 )
+actionProperties = SubResource( 7 )
+chunkEnd = false
+timeBreak = 0.1
+
+[sub_resource type="Resource" id=10]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 140 )
+actionProperties = SubResource( 7 )
+chunkEnd = false
+timeBreak = 0.1
+
+[sub_resource type="Resource" id=11]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 140 )
+actionProperties = SubResource( 7 )
+chunkEnd = true
+timeBreak = 0.25
+
+[sub_resource type="Resource" id=12]
+resource_name = "Intro position"
+script = ExtResource( 3 )
+gotoPos = Vector2( -64, 0 )
+
+[sub_resource type="Resource" id=13]
+resource_name = "Spray"
+script = ExtResource( 2 )
+enemyType = 5
+createAtPlayer = false
+enemyPosition = Vector2( 344, 148 )
+introProperties = SubResource( 12 )
+chunkEnd = false
+timeBreak = 0.25
+
+[sub_resource type="Resource" id=14]
+resource_name = "Action properties"
+script = ExtResource( 4 )
+sinewave = true
+canShoot = false
+
+[sub_resource type="Resource" id=15]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 73 )
+actionProperties = SubResource( 14 )
+chunkEnd = false
+timeBreak = 0.1
+
+[sub_resource type="Resource" id=16]
+resource_name = "Normal"
+script = ExtResource( 2 )
+enemyType = 0
+createAtPlayer = false
+enemyPosition = Vector2( 344, 73 )
+actionProperties = SubResource( 14 )
+chunkEnd = true
+timeBreak = 0.25
+
+[resource]
+script = ExtResource( 1 )
+enemyList = [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 6 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 13 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 16 ) ]

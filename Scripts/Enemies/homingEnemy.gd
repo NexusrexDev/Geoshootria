@@ -3,7 +3,6 @@ extends baseEnemy
 
 # Variables
 export var forwardMotion: float
-onready var projCreator = $projectileCreator
 
 func startAction():
 	# Finding the player and moving towards the object

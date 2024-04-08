@@ -20,6 +20,7 @@ func startAction():
 		yieldTimer.start(0.1);yield(yieldTimer,"timeout")
 		shootBullets -= 1
 
+	yieldTimer.start(0.5);yield(yieldTimer,"timeout")
 	startOutro()
 
 func startOutro():
