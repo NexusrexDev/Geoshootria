@@ -10,4 +10,4 @@ func warningSound():
 
 
 func gameoverMusic():
-	AudioManager.playMusic("res://Assets/Prototype/Audio/gameovertheme.ogg",1)
+	AudioManager.playMusic("res://Assets/Audio/Music/loseJingle.wav")

@@ -136,8 +136,6 @@ stretch_mode = 2
 [node name="Menu" type="NinePatchRect" parent="GameOver"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 16.0
-margin_bottom = 16.0
 theme = ExtResource( 3 )
 texture = ExtResource( 7 )
 patch_margin_left = 8
@@ -148,42 +146,31 @@ patch_margin_bottom = 8
 [node name="TitleLabel" type="Label" parent="GameOver/Menu"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -35.0
-margin_right = 35.0
-margin_bottom = 14.0
+margin_left = -160.0
+margin_top = 4.0
+margin_right = 160.0
+margin_bottom = 12.0
 text = "Game over"
-
-[node name="ScoreTitle" type="Label" parent="GameOver/Menu"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -20.0
-margin_top = 24.0
-margin_right = 20.0
-margin_bottom = 14.0
-grow_horizontal = 2
-text = "Score:"
 align = 1
 
-[node name="ScoreLabel" type="Label" parent="GameOver/Menu"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -20.0
-margin_top = 63.0
-margin_right = 20.0
-margin_bottom = 77.0
-grow_horizontal = 2
-text = "0"
-align = 1
-
-[node name="HighscoreLabel" type="Label" parent="GameOver/Menu"]
-anchor_left = 0.5
+[node name="ScoresContainer" type="VBoxContainer" parent="GameOver/Menu"]
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -49.0
-margin_top = 12.0
-margin_right = 49.0
-margin_bottom = 26.0
+margin_top = -14.0
+margin_bottom = 14.0
+
+[node name="ScoreLabel" type="Label" parent="GameOver/Menu/ScoresContainer"]
+margin_right = 320.0
+margin_bottom = 12.0
+grow_horizontal = 2
+text = "Score: 000000"
+align = 1
+
+[node name="HighscoreLabel" type="Label" parent="GameOver/Menu/ScoresContainer"]
+margin_top = 16.0
+margin_right = 320.0
+margin_bottom = 28.0
 grow_horizontal = 2
 text = "New highscore!"
 align = 1
@@ -192,24 +179,22 @@ align = 1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = -48.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_top = -30.0
+margin_bottom = -12.0
 alignment = 1
 
 [node name="Replay" type="Button" parent="GameOver/Menu/VBoxContainer"]
 margin_left = 76.0
-margin_right = 163.0
-margin_bottom = 44.0
+margin_right = 155.0
+margin_bottom = 18.0
 mouse_filter = 2
-text = "Play again"
+text = "Continue"
 flat = true
 
 [node name="MenuReturn" type="Button" parent="GameOver/Menu/VBoxContainer"]
-margin_left = 167.0
-margin_right = 252.0
-margin_bottom = 44.0
+margin_left = 159.0
+margin_right = 244.0
+margin_bottom = 18.0
 mouse_filter = 2
 text = "Main Menu"
 flat = true

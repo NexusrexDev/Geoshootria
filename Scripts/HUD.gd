@@ -44,8 +44,8 @@ func healthUpdate(value):
 
 
 func gameOver():
-	var gmovr_scoreLabel = $GameOver/Menu/ScoreLabel
-	var gmovr_highscoreLabel = $GameOver/Menu/HighscoreLabel
+	var gmovr_scoreLabel = $GameOver/Menu/ScoresContainer/ScoreLabel
+	var gmovr_highscoreLabel = $GameOver/Menu/ScoresContainer/HighscoreLabel
 	# Disabling the pause menu
 	set_process(false)
 
@@ -54,10 +54,10 @@ func gameOver():
 		GameManager.updateHighScore()
 		gmovr_highscoreLabel.text = "New Highscore!"
 	else:
-		gmovr_highscoreLabel.text = "Highscore: " + str(GameManager.highScore)
+		gmovr_highscoreLabel.text = "Highscore: " + str("%06d" % GameManager.highScore)
 	
 	# Setting the score label in advance
-	gmovr_scoreLabel.text = str(GameManager.currentScore)
+	gmovr_scoreLabel.text = "Score: " + str("%06d" % GameManager.currentScore)
 
 	# Stopping the spawner
 	var spawner = currentScene.get_node("Spawner")
@@ -73,4 +73,9 @@ func mainPressed():
 	get_tree().change_scene("res://Scenes/Rooms/MainMenu.tscn")
 
 func replayPressed():
-	get_tree().change_scene(currentScene.get_filename())
+	$GameOver/Menu/VBoxContainer/Replay.release_focus()
+	GameManager.resetScore()
+	var transition: FadeTransition = load("res://Scenes/Objects/Visuals/Transition.tscn").instance()
+	transition.fade_mode = FadeTransition.fadeType.FADE_OUT
+	transition.targetScene = GameManager.levelPaths[GameManager.currentLevel]
+	add_child(transition)

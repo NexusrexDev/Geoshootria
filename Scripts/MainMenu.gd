@@ -33,7 +33,7 @@ func playPressed():
 	playButton.release_focus()
 	var transition: FadeTransition = load("res://Scenes/Objects/Visuals/Transition.tscn").instance()
 	transition.fade_mode = FadeTransition.fadeType.FADE_OUT
-	transition.targetScene = "res://Scenes/Rooms/Level.tscn"
+	transition.targetScene = "res://Scenes/Rooms/Level1.tscn"
 	add_child(transition)
 
 func settingsPressed():
