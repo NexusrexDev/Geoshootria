@@ -34,7 +34,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.1, 1.4 ),
+"times": PoolRealArray( 0.2, 1.1, 1.4 ),
 "transitions": PoolRealArray( 0.5, -2, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -180 ), Vector2( 0, -180 ), Vector2( 0, 0 ) ]
@@ -60,9 +60,12 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "stopMusic"
+}, {
 "args": [  ],
 "method": "gameoverMusic"
 } ]

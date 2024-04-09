@@ -13,6 +13,7 @@ var levelPaths: PoolStringArray = ["res://Scenes/Rooms/Level1.tscn", "res://Scen
 
 # Signals
 signal scoreChanged()
+signal cameraShake(value)
 
 # Functions
 func _ready():
@@ -49,3 +50,14 @@ func updateHighScore():
     file.open(highscoreFile, File.WRITE)
     file.store_var(highScore)
     file.close()
+
+
+# Visual helpers
+func freezeFrame(timeScale: float, duration: float):
+    Engine.time_scale = timeScale
+    yield(get_tree().create_timer(duration * timeScale), "timeout")
+    Engine.time_scale = 1.0
+
+
+func shakeCamera(value: float):
+    emit_signal("cameraShake", value)
