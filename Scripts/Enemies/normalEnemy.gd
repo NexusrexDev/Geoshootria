@@ -4,7 +4,7 @@ extends baseEnemy
 # Variables
 export var forwardMotion: float
 export var canShoot: bool
-onready var projCreator: projectileCreator = $projectileCreator
+
 #Sinewave properties
 var sineX: float = 0
 var sineIncrement: float = 2.7
@@ -30,7 +30,7 @@ func startAction():
 			angle = rad2deg(get_angle_to(player.position))
 		
 		setBounce(1, angle)
-		projCreator.angleShoot(0, angle)
+		$projectileCreator.angleShoot(0, angle)
 
 
 	yieldTimer.start(0.2);yield(yieldTimer,"timeout")

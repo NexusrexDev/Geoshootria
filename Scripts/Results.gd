@@ -13,7 +13,7 @@ func ShowValues():
 		if method == "ShowDeath" and GameManager.currentLevel == 0:
 			continue
 		self.call(method)
-		yield(get_tree().create_timer(0.6), "timeout")
+		yield(get_tree().create_timer(1), "timeout")
 	
 	$Continue.grab_focus()
 
@@ -34,7 +34,7 @@ func ShowDamage():
 	if !GameManager.damageCount:
 		$Values/DamageBox/DamageTally.text = "001000"
 		GameManager.addScore(1000)
-		#Sound effect goes here
+		AudioManager.playSound("res://Assets/Audio/SFX/UI/Bonus.wav")
 	$Values/DamageBox.visible = true
 
 
@@ -42,7 +42,7 @@ func ShowDeath():
 	if !GameManager.deathCount:
 		$Values/DeathBox/DeathTally.text = "003000"
 		GameManager.addScore(3000)
-		#Sound effect goes here
+		AudioManager.playSound("res://Assets/Audio/SFX/UI/Bonus.wav")
 	$Values/DeathBox.visible = true
 
 
@@ -52,6 +52,8 @@ func ShowTotal():
 
 
 func continuePressed():
+	AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
+	$Continue.release_focus()
 	var transition: FadeTransition = load("res://Scenes/Objects/Visuals/Transition.tscn").instance()
 	transition.fade_mode = FadeTransition.fadeType.FADE_OUT
 	match GameManager.currentLevel:

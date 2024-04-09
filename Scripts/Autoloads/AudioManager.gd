@@ -1,6 +1,6 @@
 extends Node
 
-var playersNum : int = 8
+var playersNum : int = 16
 var bus : String = "SFX"
 
 var musicPlayer: AudioStreamPlayer

@@ -69,10 +69,16 @@ func gameOver():
 
 
 func mainPressed():
+	AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
+	$GameOver/Menu/VBoxContainer/MenuReturn.release_focus()
 	GameManager.resetGame()
-	get_tree().change_scene("res://Scenes/Rooms/MainMenu.tscn")
+	var transition: FadeTransition = load("res://Scenes/Objects/Visuals/Transition.tscn").instance()
+	transition.fade_mode = FadeTransition.fadeType.FADE_OUT
+	transition.targetScene = "res://Scenes/Rooms/MainMenu.tscn"
+	add_child(transition)
 
 func replayPressed():
+	AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	$GameOver/Menu/VBoxContainer/Replay.release_focus()
 	GameManager.resetScore()
 	var transition: FadeTransition = load("res://Scenes/Objects/Visuals/Transition.tscn").instance()

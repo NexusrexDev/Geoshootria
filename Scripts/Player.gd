@@ -56,10 +56,12 @@ func shooting():
 func damage():
 	if invisTimer.is_stopped():
 		GameManager.damageCount = true
+		AudioManager.playSound("res://Assets/Audio/SFX/Player/playerHit.wav")
 		health -= 1
 		emit_signal("healthChange", health)
 		invisTimer.start()
 		if health <= 0:
+			AudioManager.playSound("res://Assets/Audio/SFX/Player/playerDeath.wav")
 			emit_signal("death")
 			GameManager.deathCount = true
 			queue_free()
@@ -78,4 +80,5 @@ func _on_GrazeBox_area_entered(area:Area2D):
 		yieldTimer.start(0.1);yield(yieldTimer,"timeout")
 		if isGrazing:
 			GameManager.addScore(grazeValue)
+			AudioManager.playSound("res://Assets/Audio/SFX/Player/playerGraze.wav")
 			isGrazing = false

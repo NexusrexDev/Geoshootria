@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/warningSound.wav-e105e7a5407e31ea83d4ef2b448f7149.sample"
+path="res://.import/enemyHit.wav-43e38062d79fbf9b3e23cdc68f83860f.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/warningSound.wav"
-dest_files=[ "res://.import/warningSound.wav-e105e7a5407e31ea83d4ef2b448f7149.sample" ]
+source_file="res://Assets/Audio/SFX/Enemy/enemyHit.wav"
+dest_files=[ "res://.import/enemyHit.wav-43e38062d79fbf9b3e23cdc68f83860f.sample" ]
 
 [params]
 

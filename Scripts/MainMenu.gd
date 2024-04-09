@@ -30,6 +30,7 @@ func getMaxScreenSize():
 	scrSizeSlider.max_value = int(OS.get_screen_size().x / 640)
 
 func playPressed():
+	AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	playButton.release_focus()
 	var transition: FadeTransition = load("res://Scenes/Objects/Visuals/Transition.tscn").instance()
 	transition.fade_mode = FadeTransition.fadeType.FADE_OUT
@@ -38,30 +39,43 @@ func playPressed():
 
 func settingsPressed():
 	# Triggering the settings menu to show up and passing focus to the first slider
+	AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	settingsPanel.visible = true
 	masterVolSlider.grab_focus()
 
 func masterVolChanged(value:float):
+	if masterVolSlider.has_focus():
+		AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	SettingsManager.setVolume(value, 0)
 
 func musicVolChanged(value:float):
+	if musicVolSlider.has_focus():
+		AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	SettingsManager.setVolume(value, 1)
 
 func sfxVolChanged(value:float):
+	if sfxVolSlider.has_focus():
+		AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	SettingsManager.setVolume(value, 2)
 
 func screenSizeChanged(value:int):
+	if scrSizeSlider.has_focus():
+		AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	SettingsManager.setScreenSize(value)
 
 func fullscreenToggled(button_pressed:bool):
+	if fullscreenCheck.has_focus():
+		AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	SettingsManager.setFullscreen(button_pressed)
 
 func backPressed():
 	# Hiding the settings menu and passing focus to the play button again, saving all data to file
+	AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	settingsPanel.visible = false
 	SettingsManager.saveSettingsFile()
 	playButton.grab_focus()
 
 func exitPressed():
 	# Shutting the game down
+	AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	get_tree().quit()

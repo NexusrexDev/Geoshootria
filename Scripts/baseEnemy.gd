@@ -146,12 +146,15 @@ func damage(area):
 		GameManager.addScore(score)
 		emit_signal("completed")
 		death()
+	else:
+		AudioManager.playSound("Assets/Audio/SFX/Enemy/enemyHit.wav", rand_range(0.85, 1.15))
 
 
 func death():
 	var explosion: CPUParticles2D = deathExplosion.instance()
 	explosion.position = global_position
 	currentScene.call_deferred("add_child", explosion)
+	AudioManager.playSound("Assets/Audio/SFX/Enemy/enemyDeath.wav")
 	queue_free()
 
 

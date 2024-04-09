@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/projectileCreator.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Enemies/normalEnemy.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Objects/Enemies/Projectiles/smallFastProjectile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Sprites/Characters/HoverShoot.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Audio/SFX/Enemy/enemyShot.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 12 )
@@ -31,6 +32,7 @@ offset = Vector2( 0, -16 )
 [node name="projectileCreator" type="Position2D" parent="."]
 script = ExtResource( 1 )
 projectileReferences = [ ExtResource( 3 ) ]
+audioReferences = [ ExtResource( 5 ) ]
 
 [connection signal="area_entered" from="." to="." method="_on_Enemy_area_entered"]
 [connection signal="tween_all_completed" from="Tween" to="." method="startAction"]
