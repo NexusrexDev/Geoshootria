@@ -2,7 +2,7 @@ extends AnimationPlayer
 
 # This holds methods to call when playing music for the gameplay/gameover situations
 func mainMusic():
-	AudioManager.playMusic("res://Assets/Prototype/Audio/gamefirst.ogg")
+	AudioManager.playMusic("res://Assets/Audio/Music/stageTheme.ogg")
 
 
 func warningSound():
