@@ -22,6 +22,7 @@ func _ready():
 func resetScore():
     currentScore = 0
     highscoreBroken = false
+    damageCount = false
 
 func resetGame():
     currentScore = 0

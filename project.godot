@@ -84,7 +84,7 @@ config/name="Geoshootria"
 run/main_scene="res://Scenes/Rooms/Intro.tscn"
 boot_splash/show_image=false
 boot_splash/use_filter=false
-boot_splash/bg_color=Color( 0, 0, 0, 1 )
+boot_splash/bg_color=Color( 0.145098, 0.168627, 0.227451, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -205,7 +205,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
