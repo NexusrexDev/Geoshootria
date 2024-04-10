@@ -10,6 +10,7 @@ func startAction():
 
 	#Play charging animation
 	chargeParticles.emitting = true
+	AudioManager.playSound("res://Assets/Audio/SFX/Enemy/enemyCharge.wav")
 	yieldTimer.start(chargeParticles.lifetime);yield(yieldTimer,"timeout")
 
 	#Constant shooting

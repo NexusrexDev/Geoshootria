@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/projectileCreator.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Enemies/Bosses/hexaBoss.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Characters/BossHexagon.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Objects/Enemies/Projectiles/smallFastProjectile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Audio/SFX/Enemy/enemyShot.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sprites/Characters/HoverShoot.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="hexaBoss" type="Area2D" groups=["enemy"]]
+z_index = -1
+script = ExtResource( 2 )
+introType = 2
+health = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Emitter1" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+
+[node name="projectileCreator2" type="Position2D" parent="Emitter1"]
+position = Vector2( -4, 0 )
+script = ExtResource( 1 )
+projectileReferences = [ ExtResource( 4 ) ]
+audioReferences = [ ExtResource( 5 ) ]
+
+[node name="Emitter2" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+
+[node name="projectileCreator2" type="Position2D" parent="Emitter2"]
+position = Vector2( -4, 0 )
+script = ExtResource( 1 )
+projectileReferences = [ ExtResource( 4 ) ]
+audioReferences = [ ExtResource( 5 ) ]
+
+[node name="SpriteAnchor" type="Position2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="SpriteAnchor"]
+position = Vector2( 0, 16 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -16 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="projectileCreator" type="Position2D" parent="."]
+position = Vector2( -8, 0 )
+script = ExtResource( 1 )
+projectileReferences = [ ExtResource( 4 ) ]
+audioReferences = [ ExtResource( 5 ) ]
+
+[node name="bossTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_Enemy_area_entered"]
+[connection signal="tween_all_completed" from="Tween" to="." method="startAction"]

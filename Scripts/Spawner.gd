@@ -8,12 +8,15 @@ enum enemies {
 	homing,
 	laser,
 	split,
-	spray
+	spray,
+	boss1,
+	boss2
 }
 
 ### Variables
 # Pattern variables
 export(Array, Resource) var Patterns
+export(Resource) var bossPattern
 # Enemy arrays
 export(Array, PackedScene) var enemyReferences
 # Inner spawner variables
@@ -48,11 +51,14 @@ func stopSpawner():
 
 # This method starts the spawner by selecting a pattern
 func patternPicker():
+	var selectedPattern: Resource
 	if finishedPatterns == Patterns.size():
-		# Creating boss goes here
-		return
-	
-	var selectedPattern = Patterns[finishedPatterns]
+		get_node("../AnimationPlayer").play("Warning")
+		yield(get_tree().create_timer(2, false), "timeout")
+		currentBoss = true
+		selectedPattern = bossPattern
+	else:
+		selectedPattern = Patterns[finishedPatterns]
 
 	startPattern(selectedPattern)
 
@@ -123,12 +129,17 @@ func enemyPassed():
 	
 	# Check if all enemies are done, then restart by calling the reset timer
 	if currentEnemy == completedEnemies && currentEnemy == fullEnemies:
+		if currentBoss:
+			get_tree().call_group("enemy", "queue_free")
+			yield(get_tree().create_timer(1, false), "timeout")
+			var transition: FadeTransition = load("res://Scenes/Objects/Visuals/Transition.tscn").instance()
+			transition.fade_mode = FadeTransition.fadeType.FADE_OUT
+			transition.targetScene = "res://Scenes/Rooms/Results.tscn"
+			get_parent().call_deferred("add_child", transition)
+		
 		patternTimer.start()
 		# Adding up to the finished patterns counter to increase the range
 		finishedPatterns += 1
-		# If this was a boss pattern, stop music, change state
-		if currentBoss:
-			currentBoss = false
 		return
 
 	if hasChunk && completedEnemies == chunkCount + 1:
@@ -153,6 +164,7 @@ func debugPatternPlay():
 	var patternIndex: int = $CanvasLayer/DebugInterface/ColorRect/SelectPattern/PatternIndex.get_selected_id()
 	var enemyPatterns: Array = []
 	enemyPatterns.append_array(Patterns)
+	enemyPatterns.append(bossPattern)
 	stopSpawner()
 	running = true
 	startPattern(enemyPatterns[patternIndex])

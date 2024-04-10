@@ -5,13 +5,17 @@ extends Position2D
 # Variables
 export(Array, PackedScene) var projectileReferences
 export(Array, AudioStreamSample) var audioReferences
+var level
+
+func _ready():
+	var root = get_tree().root
+	level = root.get_child(root.get_child_count() - 1)
 
 func angleShoot(projectile: int, angle: float = 0, count: int = 1, arc: float = 45, offset: Vector2 = Vector2.ZERO) -> void:
 	var creationAngle: float = angle - (arc/2)
 	var incrementValue: float = arc / (count + 1)
 
 	# Instantiating the projectile
-	var level: Node = get_tree().root.get_child(1)
 
 	for i in range(count):
 		var proj = projectileReferences[projectile].instance()
@@ -29,8 +33,6 @@ func radialShoot(projectile: int, angle: float = 0, count: float = 1, offset: Ve
 	var incrementValue: float = 360 / count
 	
 	# Instantiating the projectile
-	var root = get_tree().root
-	var level = root.get_child(root.get_child_count() - 1)
 
 	for i in range(count):
 		var proj = projectileReferences[projectile].instance()

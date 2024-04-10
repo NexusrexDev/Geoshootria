@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/FPSLabel.gd" type="Script" id=2]
@@ -8,10 +8,19 @@
 [ext_resource path="res://Assets/Sprites/Background/BackShade.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/Background/menuback.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Sprites/UI/Warning.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/UI/bosshealth.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 49, 12 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 288, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 8, 288, 8 )
 
 [node name="HUD" type="MarginContainer"]
 pause_mode = 2
@@ -88,6 +97,21 @@ margin_top = -14.0
 margin_right = 64.0
 margin_bottom = 14.0
 texture = ExtResource( 8 )
+
+[node name="BossHP" type="Control" parent="."]
+visible = false
+margin_right = 320.0
+margin_bottom = 180.0
+
+[node name="TextureProgress" type="TextureProgress" parent="BossHP"]
+margin_left = 16.0
+margin_top = 34.0
+margin_right = 304.0
+margin_bottom = 42.0
+max_value = 50.0
+value = 50.0
+texture_under = SubResource( 2 )
+texture_progress = SubResource( 3 )
 
 [node name="Pause" type="Control" parent="."]
 visible = false

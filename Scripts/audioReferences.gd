@@ -10,7 +10,7 @@ func stopMusic():
 
 
 func warningSound():
-	AudioManager.playSound("res://Assets/Audio/SFX/warningSound.wav")
+	AudioManager.playSound("res://Assets/Audio/SFX/UI/warningSound.wav")
 
 
 func gameoverMusic():

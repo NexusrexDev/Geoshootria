@@ -63,7 +63,7 @@ func signalPrep():
 
 func startIntro():
 	# Forcing the introType to change if a resource is set
-	if introProperties != null:
+	if introProperties != null and introType == intro.none:
 		introType = intro.tween
 
 	# Intro code
@@ -82,19 +82,17 @@ func startIntro():
 		intro.foreground:
 			# Disabling the collision for the intro and setting the enemy in front
 			$CollisionShape2D.disabled = true
-			z_index = 11
 			# Getting the initial position from the resource
 			var introEndPos: Vector2 = Vector2(position.x + introProperties.gotoPos.x,
 				position.y + introProperties.gotoPos.y)
 			# Calculating the time to spend for the tween
-			var tweenTime: float = global_position.distance_to(introEndPos) / 232
+			var tweenTime: float = global_position.distance_to(introEndPos) / 128
 			# Setting the sprite to be double the size
-			var sprite = $Sprite
-			sprite.scale = Vector2(4,4)
+			spriteAnchor.scale = Vector2(4,4)
 			# Start tweening, but include the sprite as well!
 			tween.interpolate_property(self, "position", position, introEndPos, 
 					tweenTime, Tween.TRANS_BACK, Tween.EASE_OUT)
-			tween.interpolate_property(sprite, "scale", sprite.scale, Vector2(1,1), 
+			tween.interpolate_property(spriteAnchor, "scale", spriteAnchor.scale, Vector2(1,1), 
 					tweenTime, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 			tween.start()
 			
@@ -154,7 +152,6 @@ func death():
 	var explosion: CPUParticles2D = deathExplosion.instance()
 	explosion.position = global_position
 	currentScene.call_deferred("add_child", explosion)
-	AudioManager.playSound("Assets/Audio/SFX/Enemy/enemyDeath.wav")
 	queue_free()
 
 
@@ -175,7 +172,7 @@ func startAction():
 	# You *MUST* include the super function for reenabling the shots
 	if $CollisionShape2D.disabled:
 		$CollisionShape2D.disabled = false
-		z_index = 5
+		z_index = -1
 
 
 func startOutro():

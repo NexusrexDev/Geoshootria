@@ -22,8 +22,6 @@ func startAction():
 
 	# Shooting, in variant mode
 	if canShoot:
-		var root = get_tree().root
-		var currentScene = root.get_child(root.get_child_count() - 1)
 		var player = currentScene.get_node("Player")
 		var angle: float = 180
 		if player:

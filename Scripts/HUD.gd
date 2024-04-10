@@ -10,6 +10,7 @@ onready var healthBar : TextureRect = $Game/HealthBar
 onready var scoreLabel : Label = $Game/ScoreLabel
 onready var hscoreLabel : Label = $Game/HighscoreLabel
 onready var pauseNode : Control = $Pause
+onready var bossHP: TextureProgress = $BossHP/TextureProgress
 
 func _ready():
 	var root = get_tree().root
@@ -43,6 +44,10 @@ func healthUpdate(value):
 	healthBar.texture.region = Rect2(49 * (3 - value), 0, 49, 12)
 
 
+func bossUpdate(value):
+	# Connected to a signal, when the boss's health is updated
+	bossHP.value = value
+
 func gameOver():
 	var gmovr_scoreLabel = $GameOver/Menu/ScoresContainer/ScoreLabel
 	var gmovr_highscoreLabel = $GameOver/Menu/ScoresContainer/HighscoreLabel
@@ -66,6 +71,8 @@ func gameOver():
 	# Playing the game over animation
 	var animPlayer = currentScene.get_node("AnimationPlayer")
 	animPlayer.play("GameOver")
+	yield(animPlayer, "animation_finished")
+	get_tree().call_group("enemy", "queue_free")
 
 
 func mainPressed():

@@ -44,7 +44,8 @@ func _process(delta):
 			shootTimer.stop()
 		
 		sprite.frame = 1 if isFocus else 0
-
+	else:
+		motion = Vector2.ZERO
 	spriteAnchor.scale = spriteAnchor.scale.linear_interpolate(Vector2(1,1), delta * 4)
 
 func _physics_process(_delta):
