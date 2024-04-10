@@ -108,8 +108,7 @@ margin_left = 16.0
 margin_top = 34.0
 margin_right = 304.0
 margin_bottom = 42.0
-max_value = 50.0
-value = 50.0
+value = 100.0
 texture_under = SubResource( 2 )
 texture_progress = SubResource( 3 )
 

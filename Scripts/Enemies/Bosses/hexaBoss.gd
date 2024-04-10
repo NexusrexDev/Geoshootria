@@ -20,10 +20,12 @@ func startAction():
 	bossActions()
 
 func bossActions():
-	if health >= 25:
+	if health >= 75:
 		phaseOne()
-	else:
+	elif health >= 50:
 		phaseTwo()
+	else:
+		phaseThree()
 	
 func _process(delta):
 	if emitterOut:
@@ -31,8 +33,16 @@ func _process(delta):
 		emitterAngle += 48 * delta
 	emitter2.position = Vector2(emitter1.position.x, emitter1.position.y) * -1
 
-
 func phaseOne():
+	var positions = [-42, 84, -42]
+	for i in range(3):
+		yield(simpleShoot(), "completed")
+		targetPosition = Vector2(position.x, position.y + positions[i])
+		yield(get_tree().create_tween().tween_property(self, "position", targetPosition, 0.5), "finished")
+	yieldTimer.start(0.4);yield(yieldTimer,"timeout")
+	bossActions()
+
+func phaseTwo():
 	var positions = [-42, 84, -42]
 	for i in range(3):
 		yield(aimShoot(), "completed")
@@ -42,7 +52,7 @@ func phaseOne():
 	bossActions()
 
 
-func phaseTwo():
+func phaseThree():
 	if !emitterOut:
 		AudioManager.playSound("res://Assets/Audio/SFX/Enemy/enemyCharge.wav")
 		yield(get_tree().create_tween().tween_property(emitter1, "position", Vector2(0, -emitterGap), 0.25), "finished")
@@ -79,6 +89,21 @@ func emitterShoot(shotCount: int):
 	yieldTimer.start(0.15);yield(yieldTimer,"timeout")
 	emitter2.get_child(0).angleShoot(0, angle2, shotCount)
 	bossTimer.start(0.5);yield(bossTimer,"timeout")
+
+
+func simpleShoot():
+	var player = currentScene.get_node("Player")
+	var angle = 180
+	if player:
+		angle = rad2deg(get_angle_to(player.position))
+	projCreator.angleShoot(0, angle)
+	setBounce(0.5, angle)
+	bossTimer.start(1);yield(bossTimer,"timeout")
+	if player:
+		angle = rad2deg(get_angle_to(player.position))
+	projCreator.angleShoot(0, angle, 2)
+	setBounce(0.5, angle)
+	bossTimer.start(1);yield(bossTimer,"timeout")
 
 
 func aimShoot():
