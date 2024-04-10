@@ -88,6 +88,7 @@ func replayPressed():
 	AudioManager.playSound("res://Assets/Audio/SFX/UI/menuSelect.wav")
 	$GameOver/Menu/VBoxContainer/Replay.release_focus()
 	GameManager.resetScore()
+	GameManager.deathCount = true
 	var transition: FadeTransition = load("res://Scenes/Objects/Visuals/Transition.tscn").instance()
 	transition.fade_mode = FadeTransition.fadeType.FADE_OUT
 	transition.targetScene = GameManager.levelPaths[GameManager.currentLevel]

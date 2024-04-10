@@ -92,7 +92,6 @@ func death():
 	currentScene.call_deferred("add_child", explosion)
 	AudioManager.playSound("res://Assets/Audio/SFX/Player/playerDeath.wav")
 	emit_signal("death")
-	GameManager.deathCount = true
 	queue_free()
 
 
