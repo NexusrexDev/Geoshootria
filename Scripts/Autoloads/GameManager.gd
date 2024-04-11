@@ -62,3 +62,9 @@ func freezeFrame(timeScale: float, duration: float):
 
 func shakeCamera(value: float):
     emit_signal("cameraShake", value)
+
+
+func _process(_delta):
+    if Input.is_key_pressed(KEY_F5):
+        var image: Image = get_viewport().get_texture().get_data();image.flip_y()
+        image.save_png("res://Scenes/Recording/Screenshots/" + str(OS.get_unix_time()) + ".png")

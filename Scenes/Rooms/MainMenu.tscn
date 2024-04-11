@@ -31,17 +31,16 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -64.0
-margin_top = -84.0
+margin_top = -82.0
 margin_right = 64.0
-margin_bottom = -22.0
+margin_bottom = -20.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 alignment = 1
 
 [node name="Play" type="Button" parent="Main"]
-margin_top = 11.0
 margin_right = 128.0
-margin_bottom = 29.0
+margin_bottom = 18.0
 focus_neighbour_top = NodePath("../Exit")
 focus_neighbour_bottom = NodePath("../Settings")
 mouse_filter = 2
@@ -49,9 +48,9 @@ text = "Play"
 flat = true
 
 [node name="Settings" type="Button" parent="Main"]
-margin_top = 33.0
+margin_top = 22.0
 margin_right = 128.0
-margin_bottom = 51.0
+margin_bottom = 40.0
 focus_neighbour_top = NodePath("../Play")
 focus_neighbour_bottom = NodePath("../Exit")
 mouse_filter = 2
@@ -59,7 +58,6 @@ text = "Settings"
 flat = true
 
 [node name="Exit" type="Button" parent="Main"]
-visible = false
 margin_top = 44.0
 margin_right = 128.0
 margin_bottom = 62.0
