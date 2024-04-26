@@ -110,6 +110,10 @@ window/stretch/aspect="keep_width"
 
 enabled=PoolStringArray( "res://addons/imrp/plugin.cfg" )
 
+[global]
+
+ico=false
+
 [input]
 
 ui_accept={
