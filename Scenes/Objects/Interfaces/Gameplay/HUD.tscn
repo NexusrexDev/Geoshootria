@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/FPSLabel.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Sprites/Background/menuback.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Sprites/UI/Warning.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Sprites/UI/bosshealth.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Objects/Interfaces/TouchEmu.tscn" type="PackedScene" id=10]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -222,6 +223,12 @@ margin_bottom = 18.0
 mouse_filter = 2
 text = "Main Menu"
 flat = true
+
+[node name="TouchEmu" parent="." instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 320.0
+margin_bottom = 180.0
 
 [connection signal="pressed" from="GameOver/Menu/VBoxContainer/Replay" to="." method="replayPressed"]
 [connection signal="pressed" from="GameOver/Menu/VBoxContainer/MenuReturn" to="." method="mainPressed"]

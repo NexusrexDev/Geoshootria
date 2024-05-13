@@ -35,6 +35,9 @@ func _ready():
 
 	invisTimer.connect("timeout", self, "resetInvis")
 	flashTimer.connect("timeout", self, "resetFlash")
+	
+	var touchEmu = HUD.get_node("TouchEmu")
+	touchEmu.connect("joystick_moved", self, "setMotion")
 
 func _process(delta):
 	if canControl:
@@ -48,15 +51,20 @@ func _process(delta):
 		motion = Vector2.ZERO
 	spriteAnchor.scale = spriteAnchor.scale.linear_interpolate(Vector2(1,1), delta * 4)
 
+func setMotion(value):
+	motion = value
+
 func _physics_process(_delta):
 	# Movement
 	if canControl:
-		var x_input : float = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-		var y_input : float = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-		var input : Vector2 = Vector2(x_input, y_input).normalized()
-		isFocus = Input.get_action_strength("gp_focus")
-
-		motion = input
+		if OS.has_feature("Android") or OS.is_debug_build():
+			pass
+		else:
+			var x_input : float = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+			var y_input : float = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+			var input : Vector2 = Vector2(x_input, y_input).normalized()
+			isFocus = Input.get_action_strength("gp_focus")
+			motion = input
 	
 	var focusValue = (int(isFocus) * focusSpeed)
 	move_and_slide(motion * (speed - focusValue))
