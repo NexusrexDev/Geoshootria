@@ -11,9 +11,13 @@ export(Texture) var joystickTop
 signal joystick_moved(pos)
 
 func _ready():
-	if OS.has_feature("Android") or OS.is_debug_build():
-		set_process_input(true)
-		set_process(true)
+	if visible:
+		if OS.has_feature("Android") or OS.is_debug_build():
+			set_process_input(true)
+			set_process(true)
+		else:
+			set_process_input(false)
+			set_process(false)
 	else:
 		set_process_input(false)
 		set_process(false)

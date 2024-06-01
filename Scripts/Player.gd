@@ -57,7 +57,7 @@ func setMotion(value):
 func _physics_process(_delta):
 	# Movement
 	if canControl:
-		if OS.has_feature("Android") or OS.is_debug_build():
+		if OS.has_feature("Android"):
 			pass
 		else:
 			var x_input : float = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
