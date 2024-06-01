@@ -204,6 +204,10 @@ gp_focus={
  ]
 }
 
+[mono]
+
+project/assembly_name="Geoshootria"
+
 [physics]
 
 common/enable_pause_aware_picking=true
